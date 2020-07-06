@@ -45,8 +45,8 @@ gulp.task(`server`, function () {
   gulp.watch(`source/*.html`, gulp.series(`html`, `refresh`));
   gulp.watch(`source/js/**/*.js`, gulp.series(`js`, `refresh`));
   gulp.watch(
-    `source/img/**/*.{png,jpg,gif,webp}`,
-    gulp.series(`copy`, `refresh`)
+      `source/img/**/*.{png,jpg,gif,webp}`,
+      gulp.series(`copy`, `refresh`)
   );
 });
 
@@ -59,48 +59,49 @@ gulp.task(`js`, () => {
   return gulp
     .src(`./source/js/`)
     .pipe(
-      webpack({
-        entry,
-        mode: `development`,
-        output: {
-          filename: `[name].js`,
-          chunkFilename: `vendor.js`,
-        },
-        optimization: {
-          splitChunks: {
-            chunks: `all`,
+        webpack({
+          entry,
+          mode: `development`,
+          output: {
+            filename: `[name].js`,
+            chunkFilename: `vendor.js`,
           },
-        },
-        watch: false,
-        devtool: `source-map`,
-        module: {
-          rules: [
-            {
-              test: /\.m?js$/,
-              exclude: /(node_modules|bower_components)/,
-              use: {
-                loader: `babel-loader`,
-                options: {
-                  presets: [
-                    [
-                      `@babel/preset-env`,
-                      {
-                        debug: true,
-                        corejs: 3,
-                        useBuiltIns: `usage`,
-                      },
+          optimization: {
+            splitChunks: {
+              chunks: `all`,
+            },
+          },
+          watch: false,
+          devtool: `source-map`,
+          module: {
+            rules: [
+              {
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                  loader: `babel-loader`,
+                  options: {
+                    presets: [
+                      [
+                        `@babel/preset-env`,
+                        {
+                          debug: true,
+                          corejs: 3,
+                          useBuiltIns: `usage`,
+                        },
+                      ],
+                      [`@babel/preset-react`],
                     ],
-                  ],
-                  plugins: [
-                    `@babel/plugin-transform-runtime`,
-                    `@babel/plugin-transform-async-to-generator`,
-                  ],
+                    plugins: [
+                      `@babel/plugin-transform-runtime`,
+                      `@babel/plugin-transform-async-to-generator`,
+                    ],
+                  },
                 },
               },
-            },
-          ],
-        },
-      })
+            ],
+          },
+        })
     )
     .pipe(gulp.dest(`./build/js`));
 });
@@ -121,36 +122,36 @@ gulp.task(`images`, function () {
 gulp.task(`webp`, function () {
   return gulp
     .src(`source/img/**/*.{png,jpg}`)
-    .pipe(webp({ quality: 90 }))
+    .pipe(webp({quality: 90}))
     .pipe(gulp.dest(`source/img`));
 });
 
-gulp.task('html', function () {
+gulp.task(`html`, function () {
   return gulp
-    .src('source/*.html')
+    .src(`source/*.html`)
     .pipe(posthtml([include()]))
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest(`build`));
 });
 
-gulp.task('sprite', function () {
+gulp.task(`sprite`, function () {
   return gulp
-    .src('source/img/svg/*.svg')
-    .pipe(svgstore({ inlineSvg: true }))
-    .pipe(rename('sprite.svg'))
-    .pipe(gulp.dest('build/img/svg'));
+    .src(`source/img/svg/*.svg`)
+    .pipe(svgstore({inlineSvg: true}))
+    .pipe(rename(`sprite.svg`))
+    .pipe(gulp.dest(`build/img/svg`));
 });
 
 gulp.task(`copy`, function () {
   return gulp
     .src(
-      [
-        `source/fonts/**/*.{woff,woff2}`,
-        `source/img/**/*.{webp,jpg,png,gif}`,
-        `source//*.ico`,
-      ],
-      {
-        base: `source`,
-      }
+        [
+          `source/fonts/**/*.{woff,woff2}`,
+          `source/img/**/*.{webp,jpg,png,gif}`,
+          `source//*.ico`,
+        ],
+        {
+          base: `source`,
+        }
     )
     .pipe(gulp.dest(`build`));
 });
