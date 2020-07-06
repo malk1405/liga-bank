@@ -41,7 +41,6 @@ gulp.task(`server`, function () {
   });
 
   gulp.watch(`source/sass/**/*.{scss,sass}`, gulp.series(`css`));
-  gulp.watch(`source/img/**/*.svg`, gulp.series(`sprite`, `refresh`));
   gulp.watch(`source/*.html`, gulp.series(`html`, `refresh`));
   gulp.watch(`source/js/**/*.js`, gulp.series(`js`, `refresh`));
   gulp.watch(
@@ -56,7 +55,29 @@ gulp.task(`js`, () => {
     return acc;
   }, {});
 
+  const babel = {
+    loader: `babel-loader`,
+    options: {
+      presets: [
+        [
+          `@babel/preset-env`,
+          {
+            debug: true,
+            corejs: 3,
+            useBuiltIns: `usage`,
+          },
+        ],
+        [`@babel/preset-react`],
+      ],
+      plugins: [
+        `@babel/plugin-transform-runtime`,
+        `@babel/plugin-transform-async-to-generator`,
+      ],
+    },
+  };
+
   return gulp
+
     .src(`./source/js/`)
     .pipe(
         webpack({
@@ -78,26 +99,21 @@ gulp.task(`js`, () => {
               {
                 test: /\.m?js$/,
                 exclude: /(node_modules|bower_components)/,
-                use: {
-                  loader: `babel-loader`,
-                  options: {
-                    presets: [
-                      [
-                        `@babel/preset-env`,
-                        {
-                          debug: true,
-                          corejs: 3,
-                          useBuiltIns: `usage`,
-                        },
-                      ],
-                      [`@babel/preset-react`],
-                    ],
-                    plugins: [
-                      `@babel/plugin-transform-runtime`,
-                      `@babel/plugin-transform-async-to-generator`,
-                    ],
+                use: babel,
+              },
+              {
+                test: /\.svg$/,
+                use: [
+                  babel,
+                  {
+                    loader: `react-svg-loader`,
+                    options: {
+                      svgo: {
+                        plugins: [{removeViewBox: false}],
+                      },
+                    },
                   },
-                },
+                ],
               },
             ],
           },
@@ -109,14 +125,6 @@ gulp.task(`js`, () => {
 gulp.task(`refresh`, function (done) {
   server.reload();
   done();
-});
-
-gulp.task(`images`, function () {
-  return gulp
-    .src(`source/img/**/*.{svg}`)
-    .pipe(imagemin([imagemin.svgo()]))
-
-    .pipe(gulp.dest(`source/img`));
 });
 
 gulp.task(`webp`, function () {
@@ -133,21 +141,13 @@ gulp.task(`html`, function () {
     .pipe(gulp.dest(`build`));
 });
 
-gulp.task(`sprite`, function () {
-  return gulp
-    .src(`source/img/svg/*.svg`)
-    .pipe(svgstore({inlineSvg: true}))
-    .pipe(rename(`sprite.svg`))
-    .pipe(gulp.dest(`build/img/svg`));
-});
-
 gulp.task(`copy`, function () {
   return gulp
     .src(
         [
           `source/fonts/**/*.{woff,woff2}`,
           `source/img/**/*.{webp,jpg,png,gif}`,
-          `source//*.ico`,
+          `source/*.ico`,
         ],
         {
           base: `source`,
