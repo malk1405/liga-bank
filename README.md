@@ -3,6 +3,7 @@
 Реализация проекта Лига Банк от [HTML Academy](https://htmlacademy.ru/)
 
 **Статус: в разработке**
+Завершен на 0%
 
 [Результат](https://malk1405.github.io/liga-bank/)
 
