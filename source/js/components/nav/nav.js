@@ -5,6 +5,7 @@ import MediaContext from '../../context/media';
 import links from '../../shared/links';
 import Link from '../link/link';
 import Hamburger from '../hamburger/hamburger';
+import NavItem from './item/item';
 
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,13 +24,9 @@ function Nav() {
       <Hamburger isOpen={isOpen} onClick={onToggle} />
       <ul className="nav__links">
         {links.map(({text, href}) => (
-          <li
-            className="nav__item"
-            key={text}
-            style={isPhone && isOpen ? {height: `30px`} : null}
-          >
+          <NavItem key={text} isOpen={isPhone && isOpen}>
             <Link href={href}>{text}</Link>
-          </li>
+          </NavItem>
         ))}
       </ul>
     </nav>
