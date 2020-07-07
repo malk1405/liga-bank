@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     queries.forEach(({type, query}) => {
       const mql = window.matchMedia(query);
-      mql.addEventListener(`change`, changeMedia);
+      mql.addListener(changeMedia);
 
       changeMedia();
 
