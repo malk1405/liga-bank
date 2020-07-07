@@ -1,15 +1,23 @@
-import React from 'react';
+import React, {useState, useCallback} from 'react';
 
-import {YMaps, Map as YandexMap} from 'react-yandex-maps';
+import DynamicMap from './dynamic/map';
+import StaticMap from './static/map';
+import Toggle from './static/toggle';
 
 function Map() {
+  const [isDynamic, setIsDynamic] = useState(false);
+
+  const toggleDynamic = useCallback(() => {
+    setIsDynamic((value) => !value);
+  }, [setIsDynamic]);
+
   return (
-    <YMaps>
+    <div>
       <div>
-        My awesome application with maps!
-        <YandexMap defaultState={{center: [55.75, 37.57], zoom: 9}} />
+        {isDynamic ? <div>Чекбоксы</div> : <Toggle onclick={toggleDynamic} />}
       </div>
-    </YMaps>
+      {isDynamic ? <DynamicMap /> : <StaticMap />}
+    </div>
   );
 }
 
