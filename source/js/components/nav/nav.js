@@ -1,19 +1,21 @@
-import React from 'react';
+import React, {useState, useCallback} from 'react';
 import links from '../../shared/links';
 import Link from '../link/link';
+import Hamburger from '../hamburger/hamburger';
 
 function Nav() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const onToggle = useCallback(() => {
+    setIsOpen((v) => !v);
+  }, [setIsOpen]);
+
   return (
     <nav>
-      <button aria-expanded="false">
-        <div className="hamburger">
-          <div className="hamburger__inner"></div>
-        </div>
-        <span className="visually-hidden">Меню</span>
-      </button>
+      <Hamburger isOpen={isOpen} onClick={onToggle} />
       <ul>
         {links.map(({text, href}) => (
-          <li key={text}>
+          <li key={text} style={{height: `100px`}}>
             <Link href={href}>{text}</Link>
           </li>
         ))}
