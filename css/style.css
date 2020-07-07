@@ -349,6 +349,20 @@ template {
 .picture img {
   display: block; }
 
+.input-label,
+.input,
+.button {
+  background-color: transparent;
+  padding: 0; }
+  .input-label:hover,
+  .input:hover,
+  .button:hover {
+    cursor: pointer; }
+
+.input,
+.button--main {
+  border-radius: 4px; }
+
 :root {
   font-size: 62.5%; }
 
@@ -394,6 +408,52 @@ button:focus {
   position: relative;
   width: 100%;
   z-index: 1; }
+
+.hamburger {
+  border: none;
+  display: none;
+  height: 11px;
+  position: relative;
+  width: 16px; }
+
+@media screen and (max-width: 767px) {
+  .hamburger {
+    display: block; } }
+
+.hamburger__inner {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); }
+  .hamburger__inner, .hamburger__inner::before, .hamburger__inner::after {
+    content: "";
+    background-color: black;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out; }
+  .hamburger__inner::before {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px); }
+  .hamburger__inner::after {
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px); }
+  .hamburger__inner--open {
+    background-color: transparent; }
+    .hamburger__inner--open::before {
+      -webkit-transform: rotate(135deg);
+              transform: rotate(135deg); }
+    .hamburger__inner--open::after {
+      -webkit-transform: rotate(-135deg);
+              transform: rotate(-135deg); }
+
+@media screen and (max-width: 767px) {
+  .nav__item {
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: height 0.3s ease-out;
+    transition: height 0.3s ease-out; } }
 
 .modal,
 .modal__backdrop {
