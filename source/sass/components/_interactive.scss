@@ -1,0 +1,14 @@
+.input-label,
+.input,
+.button {
+  background-color: transparent;
+  padding: 0;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.input,
+.button--main {
+  border-radius: 4px;
+}

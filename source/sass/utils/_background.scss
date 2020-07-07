@@ -1,0 +1,50 @@
+// Для отладки
+
+.body {
+  position: relative;
+
+  &,
+  & *,
+  & *::after,
+  & *::before {
+    background: rgba(209, 10, 66, 0.11) !important;
+  }
+
+  & picture {
+    opacity: 0.4;
+  }
+
+  &__bg {
+    position: relative;
+    height: 0;
+    margin: 0 auto;
+    width: 1366px;
+    max-width: 100%;
+
+    @include mq(phone) {
+      width: 320px;
+    }
+
+    &::after {
+      content: "";
+
+      background-position: left;
+      background-repeat: no-repeat;
+      display: block;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: -100000;
+
+      background-image: url("../img/temp/desktop.png") !important;
+      height: 7942px;
+
+      @include mq(phone) {
+        background-image: url("../img/temp/phone.png") !important;
+      }
+    }
+  }
+}
+
+// Для отладки. Конец

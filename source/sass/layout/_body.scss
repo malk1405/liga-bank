@@ -1,0 +1,47 @@
+:root {
+  font-size: 62.5%;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: none;
+}
+
+a,
+input,
+button {
+  &:focus {
+    border-color: transparent;
+    outline: 0;
+  }
+}
+
+.body {
+  display: flex;
+  font-size: 1.7rem;
+  line-height: 1.7;
+  min-width: 320px;
+  position: relative;
+  width: 100%;
+
+  &--lock {
+    overflow-y: scroll;
+    position: fixed;
+  }
+}
+
+.body__iefix {
+  height: 100vh;
+}
+
+.body__wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1366px;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}

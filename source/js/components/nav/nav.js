@@ -4,20 +4,21 @@ import Link from '../link/link';
 
 function Nav() {
   return (
-    <React.Fragment>
-      <button>
-        <span className="visually-hidden header__hamburger">Показать меню</span>
+    <nav>
+      <button aria-expanded="false">
+        <div className="hamburger">
+          <div className="hamburger__inner"></div>
+        </div>
+        <span className="visually-hidden">Меню</span>
       </button>
-      <nav>
-        <ul>
-          {links.map(({text, href}) => (
-            <li key={text}>
-              <Link href={href}>{text}</Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </React.Fragment>
+      <ul>
+        {links.map(({text, href}) => (
+          <li key={text}>
+            <Link href={href}>{text}</Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }
 

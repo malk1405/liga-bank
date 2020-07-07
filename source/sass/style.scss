@@ -1,0 +1,18 @@
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+@import "base/typography";
+@import "base/normalize";
+@import "base/reset";
+
+@import "components/visually-hidden";
+@import "components/picture";
+
+@import "layout/body";
+@import "layout/header";
+@import "layout/footer";
+
+@import "pages/main";
+
+// Для отладки
+// @import "utils/background";

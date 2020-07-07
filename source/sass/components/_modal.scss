@@ -1,0 +1,65 @@
+.modal,
+.modal__backdrop {
+  height: 100%;
+  width: 100%;
+}
+
+.modal {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.modal-wrapper {
+  display: flex;
+  max-height: 100vh;
+  overflow-y: auto;
+  border-radius: 8px;
+}
+
+.modal__backdrop {
+  background-color: #ebebeb;
+  content: "";
+  left: 0;
+  opacity: 0.95;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
+
+.modal__body {
+  background-color: white;
+  min-height: 521px;
+  position: relative;
+  width: 480px;
+}
+
+.modal__close-btn {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+
+  svg {
+    display: flex;
+  }
+}
+
+@include mq(phone) {
+  .modal-wrapper {
+    border-radius: 0;
+  }
+
+  .modal__body {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .modal__close-btn {
+    right: 24px;
+    top: 24px;
+  }
+}
