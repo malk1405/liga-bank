@@ -1,2 +1,51 @@
 .hamburger {
+  border: none;
+  display: none;
+  height: 11px;
+  position: relative;
+  width: 16px;
+}
+
+@include mq(phone) {
+  .hamburger {
+    display: block;
+  }
+}
+
+.hamburger__inner {
+  top: 50%;
+  transform: translateY(-50%);
+
+  &,
+  &::before,
+  &::after {
+    content: "";
+    background-color: black;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+
+    transition: all 0.3s ease-out;
+  }
+
+  &::before {
+    transform: translateY(5px);
+  }
+
+  &::after {
+    transform: translateY(-5px);
+  }
+
+  &--open {
+    background-color: transparent;
+
+    &::before {
+      transform: rotate(135deg);
+    }
+
+    &::after {
+      transform: rotate(-135deg);
+    }
+  }
 }

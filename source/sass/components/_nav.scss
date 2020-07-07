@@ -1,0 +1,13 @@
+.nav {
+}
+
+.nav__item {
+}
+
+@include mq(phone) {
+  .nav__item {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+  }
+}
