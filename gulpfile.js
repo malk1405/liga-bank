@@ -7,9 +7,7 @@ let autoprefixer = require(`autoprefixer`);
 let server = require(`browser-sync`).create();
 let csso = require(`gulp-csso`);
 let rename = require(`gulp-rename`);
-let imagemin = require(`gulp-imagemin`);
 let webp = require(`gulp-webp`);
-let svgstore = require(`gulp-svgstore`);
 let posthtml = require(`gulp-posthtml`);
 let include = require(`posthtml-include`);
 let del = require(`del`);
@@ -82,7 +80,7 @@ gulp.task(`js`, () => {
     .pipe(
         webpack({
           entry,
-          mode: `development`,
+          mode: `production`,
           output: {
             filename: `[name].js`,
             chunkFilename: `vendor.js`,
