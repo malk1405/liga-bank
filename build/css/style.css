@@ -1,3 +1,24 @@
+@font-face {
+  font-display: swap;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/roboto-400.woff2") format("woff2"), url("../fonts/raleway-400.woff") format("woff"); }
+
+@font-face {
+  font-display: swap;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/roboto-500.woff2") format("woff2"), url("../fonts/raleway-500.woff") format("woff"); }
+
+@font-face {
+  font-display: swap;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/roboto-700.woff2") format("woff2"), url("../fonts/raleway-700.woff") format("woff"); }
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -347,6 +368,7 @@ button:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  font-family: "Roboto", Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
   font-size: 1.7rem;
   line-height: 1.7;
   min-width: 320px;
