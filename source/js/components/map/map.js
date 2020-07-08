@@ -14,7 +14,7 @@ function Map() {
   return (
     <div>
       <div>
-        {isDynamic ? <div>Чекбоксы</div> : <Toggle onclick={toggleDynamic} />}
+        {isDynamic ? <div>Чекбоксы</div> : <Toggle onClick={toggleDynamic} />}
       </div>
       {isDynamic ? <DynamicMap /> : <StaticMap />}
     </div>

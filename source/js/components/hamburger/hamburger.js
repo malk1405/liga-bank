@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Hamburger({onClick, isOpen}) {
   let className = `hamburger__inner`;
@@ -19,5 +20,11 @@ function Hamburger({onClick, isOpen}) {
     </button>
   );
 }
+
+
+Hamburger.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired
+};
 
 export default Hamburger;
