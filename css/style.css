@@ -334,6 +334,17 @@ template {
   -webkit-box-sizing: border-box;
           box-sizing: border-box; }
 
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: none; }
+
+a:focus,
+input:focus,
+button:focus {
+  outline: 0; }
+
 .visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -365,18 +376,6 @@ template {
 
 :root {
   font-size: 62.5%; }
-
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
-  outline: none; }
-
-a:focus,
-input:focus,
-button:focus {
-  border-color: transparent;
-  outline: 0; }
 
 .body {
   display: -webkit-box;
