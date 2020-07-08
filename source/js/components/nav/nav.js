@@ -24,8 +24,10 @@ function Nav() {
       <Hamburger isOpen={isOpen} onClick={onToggle} />
       <ul className="nav__links">
         {links.map(({text, href}) => (
-          <NavItem key={text} isOpen={isPhone && isOpen}>
-            <Link href={href}>{text}</Link>
+          <NavItem key={text} isOpen={isOpen}>
+            <Link href={href} tabindex={isOpen || !isPhone ? 0 : -1}>
+              {text}{` `}
+            </Link>
           </NavItem>
         ))}
       </ul>

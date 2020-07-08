@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Link({children, href, classes}) {
+function Link({children, href, classes, tabindex}) {
   return (
-    <a href={href || `#`} className={classes}>
+    <a href={href || `#`} className={classes} tabIndex={tabindex}>
       {children}
     </a>
   );
