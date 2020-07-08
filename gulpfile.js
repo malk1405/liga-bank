@@ -14,6 +14,8 @@ let del = require(`del`);
 
 let webpack = require(`webpack-stream`);
 
+let argv = require(`yargs`).argv;
+
 gulp.task(`css`, function () {
   return gulp
     .src(`source/sass/style.scss`)
@@ -80,7 +82,7 @@ gulp.task(`js`, () => {
     .pipe(
         webpack({
           entry,
-          mode: `production`,
+          mode: argv.d ? `development` : `production`,
           output: {
             filename: `[name].js`,
             chunkFilename: `vendor.js`,

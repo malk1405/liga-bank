@@ -70,6 +70,7 @@
     "stylelint-config-htmlacademy": "^0.1.4",
     "svg-inline-loader": "^0.8.2",
     "webpack": "^4.43.0",
-    "webpack-stream": "^5.2.1"
+    "webpack-stream": "^5.2.1",
+    "yargs": "^15.4.0"
   }
 }
