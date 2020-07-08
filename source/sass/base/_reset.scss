@@ -3,3 +3,18 @@
 *::before {
   box-sizing: border-box;
 }
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: none;
+}
+
+a,
+input,
+button {
+  &:focus {
+    outline: 0;
+  }
+}
