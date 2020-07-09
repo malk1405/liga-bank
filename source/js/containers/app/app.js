@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import Header from '../../components/header/header';
 import Home from '../pages/home/home';
 import MediaContext from '../../context/media';
+import Footer from '../../components/footer/footer';
 
 const sizes = {phone: 768, tablet: 1366};
 const queries = Object.keys(sizes).map((el) => ({
@@ -33,6 +34,7 @@ function App() {
       <React.Fragment>
         <Header />
         <Home />
+        <Footer />
       </React.Fragment>
     </MediaContext.Provider>
   );
