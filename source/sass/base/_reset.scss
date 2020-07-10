@@ -13,7 +13,9 @@ button:-moz-focusring,
 
 a,
 input,
-button {
+button,
+div,
+section {
   &:focus {
     outline: 0;
   }
