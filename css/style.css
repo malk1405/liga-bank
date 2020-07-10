@@ -342,7 +342,9 @@ button:-moz-focusring,
 
 a:focus,
 input:focus,
-button:focus {
+button:focus,
+div:focus,
+section:focus {
   outline: 0; }
 
 .visually-hidden {
