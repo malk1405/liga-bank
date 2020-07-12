@@ -30,9 +30,28 @@
 }
 
 @include mq(phone) {
+  .nav {
+    order: -1;
+  }
+
+  .nav__links {
+    background-color: $bg-color-primary;
+    flex-direction: column;
+    left: 0;
+    padding: 0 15px;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 1;
+  }
+
   .nav__item {
     height: 0;
     overflow: hidden;
     transition: height 0.3s ease-out;
+  }
+
+  .nav__item a {
+    line-height: 2;
   }
 }

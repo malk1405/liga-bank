@@ -7,3 +7,9 @@
     padding: 0 45px;
   }
 }
+
+@include mq(phone) {
+  .container {
+    padding: 0 15px;
+  }
+}

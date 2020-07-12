@@ -10,6 +10,7 @@
   line-height: 1.9rem;
   padding-bottom: 3.5rem;
   padding-top: 3.4rem;
+  position: relative;
 }
 
 .header__logo {
@@ -44,6 +45,7 @@
   .header {
     font-size: 1.4rem;
     line-height: 1.6rem;
+    padding-bottom: 2.3rem;
     padding-top: 2.1rem;
   }
 
@@ -64,5 +66,32 @@
 
   .header__login span {
     display: none;
+  }
+}
+
+@include mq(phone) {
+  .header {
+    padding-bottom: 1.2rem;
+    padding-top: 1.2rem;
+  }
+
+  .header__logo {
+    margin-left: 1.1rem;
+    transform: translateY(-0.5rem);
+  }
+
+  .header__logo a,
+  .header__logo svg {
+    width: 120px;
+    height: 24px;
+  }
+
+  .header__login {
+    margin-right: 0;
+  }
+
+  .header__login svg {
+    width: 14px;
+    height: 16px;
   }
 }
