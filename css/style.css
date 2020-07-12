@@ -466,7 +466,9 @@ section:focus {
               transform: rotate(-135deg); }
 
 .nav {
-  padding: 0; }
+  padding: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0; }
 
 .nav__links {
   display: -webkit-box;
@@ -501,6 +503,8 @@ section:focus {
   padding-top: 3.4rem; }
 
 .header__logo {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   margin-left: -36px;
   margin-right: 5.8rem;
   margin-top: -12px; }
@@ -523,7 +527,8 @@ section:focus {
   display: flex;
   margin-right: 2px;
   margin-left: auto;
-  padding: 0; }
+  padding: 0;
+  text-align: left; }
 
 .header__login svg {
   margin-right: 1rem; }
