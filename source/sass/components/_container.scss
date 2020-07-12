@@ -1,3 +1,9 @@
 .container {
   padding: 0 96px;
 }
+
+@include mq(tablet) {
+  .container {
+    padding: 0 45px;
+  }
+}

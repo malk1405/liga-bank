@@ -39,3 +39,30 @@
 .header__login svg {
   margin-right: 1rem;
 }
+
+@include mq(tablet) {
+  .header {
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    padding-top: 2.1rem;
+  }
+
+  .header__logo {
+    margin: 0;
+    margin-right: auto;
+  }
+
+  .header__logo a,
+  .header__logo svg {
+    width: 133px;
+    height: 25px;
+  }
+
+  .header__login svg {
+    margin-right: -1px;
+  }
+
+  .header__login span {
+    display: none;
+  }
+}

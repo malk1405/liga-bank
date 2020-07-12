@@ -41,6 +41,11 @@
       background-image: url("../img/temp/desktop.png") !important;
       background-size: 1366px;
 
+      @include mq(tablet) {
+        background-image: url("../img/temp/tablet.png") !important;
+        background-size: 768px;
+      }
+
       @include mq(phone) {
         background-image: url("../img/temp/phone.png") !important;
       }

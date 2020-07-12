@@ -12,7 +12,7 @@ function Map() {
   }, [setIsDynamic]);
 
   return (
-    <div>
+    <div className="map">
       <div>
         {isDynamic ? <div>Чекбоксы</div> : <Toggle onClick={toggleDynamic} />}
       </div>
