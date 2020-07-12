@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Link({children, href, classes, tabindex}) {
   return (
-    <a href={href} className={classes} tabIndex={tabindex}>
+    <a href={href} className={`link ${classes}`} tabIndex={tabindex}>
       {children}
     </a>
   );

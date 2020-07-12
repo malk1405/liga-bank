@@ -32,6 +32,10 @@ function App() {
   return (
     <MediaContext.Provider value={media}>
       <React.Fragment>
+        {/* Для отладки */}
+        <div className="body__bg"></div>
+        {/* Для отладки. Конец */}
+
         <Header />
         <Home />
         <Footer />

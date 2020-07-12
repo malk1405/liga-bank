@@ -4,9 +4,9 @@ import LogoImg from '../../../img/svg/logo.svg';
 
 function Logo() {
   return (
-    <div>
+    <div className="header__logo">
       <a>
-        <LogoImg />
+        <LogoImg/>
       </a>
     </div>
   );

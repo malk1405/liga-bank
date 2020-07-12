@@ -17,7 +17,7 @@ function Header() {
   };
 
   return (
-    <header>
+    <header className="container header">
       <Logo></Logo>
       <Nav></Nav>
       <Login onClick={openModal}></Login>

@@ -1,2 +1,39 @@
 @import "../components/hamburger";
 @import "../components/nav";
+
+.header {
+  align-items: center;
+  background-color: $bg-color-primary;
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: normal;
+  line-height: 1.9rem;
+  padding-bottom: 3.5rem;
+  padding-top: 3.4rem;
+}
+
+.header__logo {
+  margin-left: -36px;
+  margin-right: 5.8rem;
+  margin-top: -12px;
+}
+
+.header__logo a,
+.header__logo svg {
+  display: flex;
+  width: 150px;
+  height: 27px;
+}
+
+.header__login {
+  align-items: center;
+  border: none;
+  display: flex;
+  margin-right: 2px;
+  margin-left: auto;
+  padding: 0;
+}
+
+.header__login svg {
+  margin-right: 1rem;
+}
