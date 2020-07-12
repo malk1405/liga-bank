@@ -13,6 +13,7 @@
 }
 
 .header__logo {
+  flex-shrink: 0;
   margin-left: -36px;
   margin-right: 5.8rem;
   margin-top: -12px;
@@ -32,6 +33,7 @@
   margin-right: 2px;
   margin-left: auto;
   padding: 0;
+  text-align: left;
 }
 
 .header__login svg {

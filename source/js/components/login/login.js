@@ -8,8 +8,7 @@ function Login({onClick}) {
     <button
       title="Войти в Интернет-банк"
       onClick={onClick}
-      className="header__login button
-      "
+      className="header__login button"
     >
       <LoginImg />
       <span>Войти в Интернет-банк</span>
