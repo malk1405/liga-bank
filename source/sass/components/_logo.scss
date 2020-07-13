@@ -1,0 +1,22 @@
+.logo a,
+.logo svg {
+  display: flex;
+  width: 150px;
+  height: 27px;
+}
+
+@include mq(tablet) {
+  .logo a,
+  .logo svg {
+    width: 133px;
+    height: 25px;
+  }
+}
+
+@include mq(phone) {
+  .logo a,
+  .logo svg {
+    width: 120px;
+    height: 24px;
+  }
+}
