@@ -25,7 +25,7 @@ function Nav() {
       <ul className="nav__links">
         {links.map(({text, href}) => (
           <NavItem key={text} isOpen={isOpen}>
-            <Link href={href} tabindex={isOpen || !isPhone ? 0 : -1}>
+            <Link href={href} tabindex={isOpen || !isPhone ? null : -1}>
               {text}
             </Link>
           </NavItem>

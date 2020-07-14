@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Link({children, href, classes, tabindex}) {
   return (
-    <a href={href} className={`link ${classes}`} tabIndex={tabindex}>
+    <a href={href} className={`link ${classes}`.trim()} tabIndex={tabindex}>
       {children}
     </a>
   );
@@ -11,7 +11,8 @@ function Link({children, href, classes, tabindex}) {
 
 Link.defaultProps = {
   href: `#`,
-  tabindex: 0,
+  tabindex: null,
+  classes: ``
 };
 
 Link.propTypes = {
