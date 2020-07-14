@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import LogoImg from '../../../img/svg/logo.svg';
+import LogoImg from '../../../img/svg/inline/logo.svg';
 
 function Logo({classes}) {
   return (

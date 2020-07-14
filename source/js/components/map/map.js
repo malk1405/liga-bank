@@ -5,7 +5,7 @@ import StaticMap from './static/map';
 import Toggle from './static/toggle';
 
 function Map() {
-  const [isDynamic, setIsDynamic] = useState(false);
+  const [isDynamic, setIsDynamic] = useState(true);
 
   const toggleDynamic = useCallback(() => {
     setIsDynamic((value) => !value);

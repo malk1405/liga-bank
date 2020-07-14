@@ -1,9 +1,9 @@
 import React from 'react';
 
-import FacebookImg from '../../../img/svg/facebook.svg';
-import InstagramImg from '../../../img/svg/instagram.svg';
-import TwitterImg from '../../../img/svg/twitter.svg';
-import YoutubeImg from '../../../img/svg/youtube.svg';
+import FacebookImg from '../../../img/svg/inline/facebook.svg';
+import InstagramImg from '../../../img/svg/inline/instagram.svg';
+import TwitterImg from '../../../img/svg/inline/twitter.svg';
+import YoutubeImg from '../../../img/svg/inline/youtube.svg';
 
 const socialLinks = [
   {img: <FacebookImg />, title: `Facebook`},

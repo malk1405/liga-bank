@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import LoginImg from '../../../img/svg/login.svg';
+import LoginImg from '../../../img/svg/inline/login.svg';
 
 function Login({onClick}) {
   return (

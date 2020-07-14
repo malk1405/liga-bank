@@ -12,6 +12,8 @@ let posthtml = require(`gulp-posthtml`);
 let include = require(`posthtml-include`);
 let del = require(`del`);
 
+let path = require(`path`);
+
 let webpack = require(`webpack-stream`);
 
 let argv = require(`yargs`).argv;
@@ -103,15 +105,26 @@ gulp.task(`js`, () => {
               },
               {
                 test: /\.svg$/,
-                use: [
-                  babel,
+                oneOf: [
                   {
-                    loader: `react-svg-loader`,
-                    options: {
-                      svgo: {
-                        plugins: [{removeViewBox: false}],
+                    include: path.resolve(__dirname, `./source/img/svg/url`),
+                    use: {
+                      loader: `svg-url-loader`
+                    }
+                  },
+                  {
+                    include: path.resolve(__dirname, `./source/img/svg/inline`),
+                    use: [
+                      babel,
+                      {
+                        loader: `react-svg-loader`,
+                        options: {
+                          svgo: {
+                            plugins: [{removeViewBox: false}],
+                          },
+                        },
                       },
-                    },
+                    ],
                   },
                 ],
               },

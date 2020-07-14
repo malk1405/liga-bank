@@ -1,7 +1,7 @@
 import React from 'react';
 
-import CellphoneImg from '../../../img/svg/cellphone-footer.svg';
-import PhoneImg from '../../../img/svg/phone-footer.svg';
+import CellphoneImg from '../../../img/svg/inline/cellphone-footer.svg';
+import PhoneImg from '../../../img/svg/inline/phone-footer.svg';
 
 const contacts = [
   {
