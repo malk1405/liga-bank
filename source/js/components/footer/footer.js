@@ -29,7 +29,7 @@ function Footer() {
           <div key={tel} className="footer__contact contact">
             {img}
             <div className="contact__text">
-              <a className="link" href={`tel:${tel}`}>
+              <a className="link" href={`tel:${tel.split(` `).join(``)}`}>
                 {tel}
               </a>
               <p>{text}</p>
