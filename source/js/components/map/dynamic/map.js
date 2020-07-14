@@ -11,16 +11,18 @@ const icons = {
   phone: {
     svg: SvgUrlSm,
     size: [31, 35],
+    offset: [-15, -35]
   },
   desktop: {
     svg: SvgUrlLg,
     size: [37, 42],
+    offset: [-18, -42]
   },
 };
 
 function DynamicMap({locations}) {
   const {isPhone} = useContext(MediaContext);
-  const {svg, size} = isPhone ? icons.phone : icons.desktop;
+  const {svg, size, offset} = isPhone ? icons.phone : icons.desktop;
 
   return (
     <YMaps>
@@ -28,7 +30,7 @@ function DynamicMap({locations}) {
         <YandexMap
           defaultState={{
             center: [55.751574, 37.573856],
-            zoom: 5,
+            zoom: 3,
           }}
         >
           {locations.map(({geometry}) => (
@@ -39,6 +41,7 @@ function DynamicMap({locations}) {
                 iconLayout: `default#image`,
                 iconImageHref: svg,
                 iconImageSize: size,
+                iconImageOffset: offset
               }}
             />
           ))}
