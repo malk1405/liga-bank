@@ -29,20 +29,21 @@ function Footer() {
           <ul className="footer__phones list">
             {contacts.map(({Img, tel, text, mod}) => (
               <li key={tel} className={`footer__phone footer__phone--${mod}`}>
-                <Img
-                  className={`footer__phone-icon footer__phone-icon--${mod}`}
-                />
                 <a className="link" href={`tel:${tel.split(` `).join(``)}`}>
+                  <Img
+                    className={`footer__phone-icon footer__phone-icon--${mod}`}
+                    preserveAspectRatio="xMinYMid meet"
+                  />
                   {tel}
                 </a>
                 <p>{text}</p>
               </li>
             ))}
           </ul>
-          <ul className="footer__social social">
+          <ul className="footer__social">
             {socialLinks.map(({Img, title, mod}, id) => (
               <li key={id} className="footer__social-item">
-                <a href="#" title={title} aria-label={title}>
+                <a href="#" className="link" title={title} aria-label={title}>
                   <Img
                     className={`footer__social-icon footer__social-icon--${mod}`}
                   />

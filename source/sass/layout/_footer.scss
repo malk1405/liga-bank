@@ -67,23 +67,31 @@ $mr: 80px;
   margin-right: $mr;
   max-width: 200px;
   min-width: 140px;
-  padding-left: 29px;
   position: relative;
   width: 155px;
-
-  &--phone {
-    padding-left: 32px;
-  }
 
   &:nth-child(2n + 1) {
     flex-grow: 1;
   }
 }
 
+@mixin icon($mod, $width) {
+  .footer__phone--#{$mod} {
+    padding-left: $width;
+  }
+
+  .footer__phone-icon--#{$mod} {
+    width: $width;
+  }
+}
+
+@include icon("cellphone", 29px);
+@include icon("phone", 32px);
+
 .footer__phone-icon {
+  left: 0;
   position: absolute;
   top: 2px;
-  left: 0;
 }
 
 .footer__social {
@@ -99,4 +107,8 @@ $mr: 80px;
 
 .footer__social-item {
   margin-left: 15px;
+}
+
+.footer__social-icon {
+  fill: currentColor;
 }

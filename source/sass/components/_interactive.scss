@@ -11,8 +11,17 @@
 .button,
 .link {
   &:hover {
-    text-decoration: underline;
+    color: $blue-color-main;
   }
+
+  &:active {
+    color: $text-color-secondary;
+  }
+}
+
+.button svg,
+.link svg {
+  fill: currentColor;
 }
 
 .button {
