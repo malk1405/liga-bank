@@ -17,11 +17,13 @@ function Header() {
   };
 
   return (
-    <header className="container header">
-      <Logo classes="header__logo"></Logo>
-      <Nav></Nav>
-      <Login onClick={openModal}></Login>
-      {modalIsOpen && <Modal onClose={closeModal}>модальное окно</Modal>}
+    <header className="header">
+      <div className="container header__container">
+        <Logo classes="header__logo"></Logo>
+        <Nav></Nav>
+        <Login onClick={openModal}></Login>
+        {modalIsOpen && <Modal onClose={closeModal}>модальное окно</Modal>}
+      </div>
     </header>
   );
 }

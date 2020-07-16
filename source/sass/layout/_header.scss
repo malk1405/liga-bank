@@ -2,8 +2,11 @@
 @import "../components/nav";
 
 .header {
-  align-items: center;
   background-color: $bg-color-primary;
+}
+
+.header__container {
+  align-items: center;
   display: flex;
   font-size: 1.6rem;
   font-weight: normal;
@@ -35,7 +38,7 @@
 }
 
 @include mq(tablet) {
-  .header {
+  .header__container {
     font-size: 1.4rem;
     line-height: 1.6rem;
     padding-bottom: 2.3rem;
@@ -57,7 +60,7 @@
 }
 
 @include mq(phone) {
-  .header {
+  .header__container {
     padding-bottom: 1.2rem;
     padding-top: 1.2rem;
   }
