@@ -168,3 +168,40 @@ $mr: 80px;
     margin-left: 20px;
   }
 }
+
+@include mq(phone) {
+  .footer {
+    padding: 4rem 0;
+  }
+
+  .footer__container {
+    flex-direction: column;
+  }
+
+  .footer__logo {
+    left: 10px;
+  }
+
+  .footer__info {
+    display: none;
+  }
+
+  .footer__links {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    margin-bottom: 0.9rem;
+    margin-top: 4.2rem;
+  }
+
+  .footer__link {
+    margin-bottom: 1rem;
+  }
+
+  .footer__phone {
+    margin-bottom: 1.9rem;
+  }
+
+  .footer__social {
+    margin-top: 0;
+  }
+}
