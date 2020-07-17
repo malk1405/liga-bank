@@ -785,6 +785,30 @@ section:focus {
   .footer__social-item {
     margin-left: 20px; } }
 
+@media screen and (max-width: 767px) {
+  .footer {
+    padding: 4rem 0; }
+  .footer__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+  .footer__logo {
+    left: 10px; }
+  .footer__info {
+    display: none; }
+  .footer__links {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    margin-bottom: 0.9rem;
+    margin-top: 4.2rem; }
+  .footer__link {
+    margin-bottom: 1rem; }
+  .footer__phone {
+    margin-bottom: 1.9rem; }
+  .footer__social {
+    margin-top: 0; } }
+
 .modal,
 .modal__backdrop {
   height: 100%;
