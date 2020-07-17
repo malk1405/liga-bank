@@ -376,8 +376,8 @@ section:focus {
 .button:focus,
 .link:focus {
   outline: none;
-  -webkit-box-shadow: 0 0 0 2px rgba(255, 0, 0, 0), 0 0 0 2px rgba(44, 54, 242, 0.4);
-          box-shadow: 0 0 0 2px rgba(255, 0, 0, 0), 0 0 0 2px rgba(44, 54, 242, 0.4); }
+  -webkit-box-shadow: 0 0 0 2px white, 0 0 0 4px rgba(44, 54, 242, 0.4), 0 0 0 2px rgba(255, 0, 0, 0), 0 0 0 2px white;
+          box-shadow: 0 0 0 2px white, 0 0 0 4px rgba(44, 54, 242, 0.4), 0 0 0 2px rgba(255, 0, 0, 0), 0 0 0 2px white; }
 
 .button:hover,
 .link:hover {
@@ -546,7 +546,8 @@ section:focus {
   .nav {
     -webkit-box-ordinal-group: 0;
         -ms-flex-order: -1;
-            order: -1; }
+            order: -1;
+    margin-left: 0; }
   .nav__links {
     background-color: #f6f7ff;
     -webkit-box-orient: vertical;
@@ -555,17 +556,19 @@ section:focus {
             flex-direction: column;
     left: 0;
     padding: 0 15px;
+    padding-left: 13px;
     position: absolute;
     top: 100%;
     width: 100%;
     z-index: 1; }
   .nav__item {
     height: 0;
-    overflow: hidden;
+    overflow-y: hidden;
     -webkit-transition: height 0.3s ease-out;
     transition: height 0.3s ease-out; }
   .nav__item a {
-    line-height: 2; } }
+    line-height: 2;
+    margin-left: 4px; } }
 
 .header {
   background-color: #f6f7ff; }
