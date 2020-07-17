@@ -372,6 +372,13 @@ section:focus {
   .button:hover {
     cursor: pointer; }
 
+.input:focus,
+.button:focus,
+.link:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 2px rgba(255, 0, 0, 0), 0 0 0 2px rgba(44, 54, 242, 0.4);
+          box-shadow: 0 0 0 2px rgba(255, 0, 0, 0), 0 0 0 2px rgba(44, 54, 242, 0.4); }
+
 .button:hover,
 .link:hover {
   color: #2c36f2; }

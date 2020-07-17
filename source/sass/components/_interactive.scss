@@ -8,6 +8,15 @@
   }
 }
 
+.input,
+.button,
+.link {
+  &:focus {
+    outline: none;
+    box-shadow: $focus-shadow;
+  }
+}
+
 .button,
 .link {
   &:hover {
