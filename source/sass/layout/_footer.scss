@@ -112,3 +112,59 @@ $mr: 80px;
 .footer__social-icon {
   fill: currentColor;
 }
+
+@include mq(tablet) {
+  .footer__container {
+    align-self: start;
+  }
+
+  .footer__nav,
+  .footer__contacts,
+  .footer__phones {
+    flex-direction: column;
+  }
+
+  .footer__nav {
+    margin-right: 15%;
+  }
+
+  .footer__logo {
+    top: -6px;
+  }
+
+  .footer__info {
+    margin: 0;
+    margin-top: 2.7rem;
+    order: 1;
+  }
+
+  .footer__links {
+    margin-right: 0;
+    margin-top: 4.8rem;
+  }
+
+  .footer__contacts {
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .footer__phones {
+    flex-grow: 0;
+  }
+
+  .footer__phone {
+    margin-bottom: 2.4rem;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .footer__social {
+    margin-top: 0.1rem;
+    margin-left: -20px;
+    max-width: 200px;
+  }
+
+  .footer__social-item {
+    margin-left: 20px;
+  }
+}

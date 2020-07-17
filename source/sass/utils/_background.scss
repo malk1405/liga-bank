@@ -2,7 +2,7 @@
 
 .body {
   position: relative;
-  height: 3808px;
+  height: 3736px;
 
   &,
   & *,
@@ -43,8 +43,9 @@
       background-size: 1366px;
 
       @include mq(tablet) {
+        height: 3736px;
         background-image: url("../img/temp/tablet.png") !important;
-        background-size: 768px;
+        background-size: 3736px;
       }
 
       @include mq(phone) {
