@@ -690,7 +690,8 @@ function Features() {
   }, "\u041F\u0440\u0435\u0438\u043C\u0443\u0449\u0435\u0441\u0442\u0432\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tabs_tabs__WEBPACK_IMPORTED_MODULE_1__["default"], {
     config: _tabs__WEBPACK_IMPORTED_MODULE_2__["default"],
     className: className,
-    Panel: _panel__WEBPACK_IMPORTED_MODULE_3__["default"]
+    Panel: _panel__WEBPACK_IMPORTED_MODULE_3__["default"],
+    hasAutoChange: true
   }));
 }
 
@@ -1790,22 +1791,66 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var setNextId = function setNextId(newId, length) {
+  if (newId < 0) {
+    return length - 1;
+  }
+
+  if (newId >= length) {
+    return 0;
+  }
+
+  return newId;
+};
+
 function Tabs(_ref) {
   var config = _ref.config,
       className = _ref.className,
-      Panel = _ref.Panel;
+      Panel = _ref.Panel,
+      hasAutoChange = _ref.hasAutoChange;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(0),
       _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default()(_useState, 2),
       selectedId = _useState2[0],
       setSelectedId = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(false),
+      _useState4 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default()(_useState3, 2),
+      isInteracted = _useState4[0],
+      setIsInteracted = _useState4[1];
+
+  var container = Object(react__WEBPACK_IMPORTED_MODULE_2__["useRef"])(null);
+
   var handleChange = function handleChange(e) {
     setSelectedId(e.target.value);
   };
 
+  var getInteraction = function getInteraction() {
+    setIsInteracted(true);
+  };
+
+  var loseInteraction = function loseInteraction() {
+    container.current.contains(document.activeElement);
+    setIsInteracted(container.current.contains(document.activeElement));
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
+    var interval = hasAutoChange && !isInteracted ? setInterval(function () {
+      setSelectedId(function (id) {
+        return setNextId(id + 1, config.length);
+      });
+    }, 4000) : null;
+    return function () {
+      clearInterval(interval);
+    };
+  }, [hasAutoChange, isInteracted, config]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "".concat(className, "__tabs-container")
+    className: "".concat(className, "__tabs-container"),
+    onMouseOver: getInteraction,
+    onFocus: getInteraction,
+    onMouseLeave: loseInteraction,
+    onBlur: loseInteraction,
+    ref: container
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("ul", {
     className: "list ".concat(className, "__tabs")
   }, config.map(function (_ref2, id) {
@@ -1828,10 +1873,14 @@ function Tabs(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Panel, null, config[selectedId].content)));
 }
 
+Tabs.defaultProps = {
+  hasAutoChange: false
+};
 Tabs.propTypes = {
   config: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.any).isRequired,
   className: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string.isRequired,
-  Panel: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.func.isRequired
+  Panel: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.func.isRequired,
+  hasAutoChange: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool
 };
 /* harmony default export */ __webpack_exports__["default"] = (Tabs);
 
