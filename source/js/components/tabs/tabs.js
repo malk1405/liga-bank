@@ -13,9 +13,12 @@ const setNextId = (newId, length) => {
   return newId;
 };
 
-function Tabs({config, className, Panel, hasAutoChange}) {
+function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
   const [selectedId, setSelectedId] = useState(0);
+  const [isDragged, setIsDragged] = useState(false);
   const [isInteracted, setIsInteracted] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [curX, setCurX] = useState(0);
 
   const container = useRef(null);
 
@@ -32,9 +35,39 @@ function Tabs({config, className, Panel, hasAutoChange}) {
     setIsInteracted(container.current.contains(document.activeElement));
   };
 
+  const onDrag = (type) => {
+    return (e) => {
+      setIsDragged(true);
+      setStartX(getX(e));
+      setCurX(getX(e));
+      const moveEvent = type === `mouse` ? `mousemove` : `touchmove`;
+      const endEvent = type === `mouse` ? `mouseup` : `touchend`;
+
+      document.addEventListener(moveEvent, onMove);
+      document.addEventListener(endEvent, onEnd);
+
+      function onMove(evt) {
+        setCurX(getX(evt));
+      }
+
+      function onEnd() {
+        document.removeEventListener(moveEvent, onMove);
+        document.removeEventListener(endEvent, onEnd);
+        setIsDragged(false);
+      }
+
+      function getX(evt) {
+        return type === `mouse` ? evt.clientX : evt.touches[0].clientX;
+      }
+    };
+  };
+
+  const onTouchStart = onDrag(`touch`);
+  const onMouseDown = onDrag(`mouse`);
+
   useEffect(() => {
     const interval =
-      hasAutoChange && !isInteracted
+      hasAutoChange && !isInteracted && !isDragged
         ? setInterval(() => {
           setSelectedId((id) => setNextId(id + 1, config.length));
         }, 4000)
@@ -42,7 +75,11 @@ function Tabs({config, className, Panel, hasAutoChange}) {
     return () => {
       clearInterval(interval);
     };
-  }, [hasAutoChange, isInteracted, config]);
+  }, [hasAutoChange, isDragged, isInteracted, config]);
+
+  const style = isDragged
+    ? {transform: `translateX(${curX - startX}px)`}
+    : null;
 
   return (
     <div
@@ -68,8 +105,12 @@ function Tabs({config, className, Panel, hasAutoChange}) {
           </label>
         ))}
       </ul>
-      <div className={`${className}__panel-container`}>
-        <Panel>{config[selectedId].content}</Panel>
+      <div
+        className={`${className}__panel-container`}
+        onTouchStart={hasSwipe ? onTouchStart : null}
+        onMouseDown={onMouseDown}
+      >
+        <Panel style={style}>{config[selectedId].content}</Panel>
       </div>
     </div>
   );
@@ -77,6 +118,7 @@ function Tabs({config, className, Panel, hasAutoChange}) {
 
 Tabs.defaultProps = {
   hasAutoChange: false,
+  hasSwipe: false,
 };
 
 Tabs.propTypes = {
@@ -84,6 +126,7 @@ Tabs.propTypes = {
   className: PropTypes.string.isRequired,
   Panel: PropTypes.func.isRequired,
   hasAutoChange: PropTypes.bool,
+  hasSwipe: PropTypes.bool,
 };
 
 export default Tabs;
