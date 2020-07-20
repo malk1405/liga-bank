@@ -2,15 +2,16 @@ import React, {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 
 const getNextId = (newId, length) => {
-  if (newId < 0) {
+  const id = Number(newId);
+  if (id < 0) {
     return length - 1;
   }
 
-  if (newId >= length) {
+  if (id >= length) {
     return 0;
   }
 
-  return newId;
+  return id;
 };
 
 function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
@@ -78,9 +79,9 @@ function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
 
   let nextId = null;
   if (offset > 0) {
-    nextId = getNextId(+selectedId + 1, config.length);
+    nextId = getNextId(selectedId + 1, config.length);
   } else if (offset < 0) {
-    nextId = getNextId(+selectedId - 1, config.length);
+    nextId = getNextId(selectedId - 1, config.length);
   }
 
   const style = isDragged ? {transform: `translateX(${offset}px)`} : null;
@@ -96,17 +97,26 @@ function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
     >
       <ul className={`list ${className}__tabs`}>
         {config.map(({title, mod}, id) => (
-          <label key={mod} className={`${className}__label`}>
-            <input
-              type="radio"
-              name={`tab-${className}`}
-              value={id}
-              onChange={handleChange}
-              checked={+selectedId === id}
-            />
-            <span className={`${className}__radio`}></span>
-            <span>{title}</span>
-          </label>
+          <li key={mod} className={`${className}__tab`}>
+            <label className={`${className}__label`}>
+              <input
+                type="radio"
+                name={`tab-${className}`}
+                className={`visually-hidden ${className}__radio`}
+                value={id}
+                onChange={handleChange}
+                checked={+selectedId === id}
+              />
+              <span
+                className={`${className}__radio-clone ${className}__radio-clone--${mod}${
+                  +selectedId === id
+                    ? ` ${className}__radio-clone--selected`
+                    : ``
+                }`}
+              ></span>
+              <span className={`${className}__title`}>{title}</span>
+            </label>
+          </li>
         ))}
       </ul>
       <div
@@ -115,7 +125,9 @@ function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
         onMouseDown={onMouseDown}
       >
         <Panel style={style}>{config[selectedId].content}</Panel>
-        {nextId !== null && <Panel>{config[nextId].content}</Panel>}
+        {nextId !== null && (
+          <Panel mod={[`next`]}>{config[nextId].content}</Panel>
+        )}
       </div>
     </div>
   );

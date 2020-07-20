@@ -886,6 +886,57 @@ section:focus {
     right: 24px;
     top: 24px; } }
 
+.features__tabs-container {
+  position: relative; }
+
+.features__tabs {
+  bottom: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  left: 50%;
+  margin-left: -8px;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 1; }
+
+.features__tab {
+  margin-left: 8px; }
+
+.features__radio-clone {
+  background-color: #2c36f2;
+  border-radius: 8px;
+  display: block;
+  height: 8px;
+  width: 8px; }
+  .features__radio-clone--selected {
+    background-color: #e0e0e0; }
+  .features__radio-clone--selected.features__radio-clone--credits {
+    background-color: #f6f7ff; }
+
+.features__title {
+  display: none; }
+
+.features__panel-container {
+  overflow: hidden;
+  position: relative; }
+
+.features__panel {
+  min-height: 400px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+  .features__panel--next {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%; }
+
 .map {
   max-width: 100%;
   overflow: hidden; }
