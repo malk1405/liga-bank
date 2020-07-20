@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 
-const setNextId = (newId, length) => {
+const getNextId = (newId, length) => {
   if (newId < 0) {
     return length - 1;
   }
@@ -17,8 +17,7 @@ function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
   const [selectedId, setSelectedId] = useState(0);
   const [isDragged, setIsDragged] = useState(false);
   const [isInteracted, setIsInteracted] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [curX, setCurX] = useState(0);
+  const [offset, setOffset] = useState(0);
 
   const container = useRef(null);
 
@@ -38,8 +37,7 @@ function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
   const onDrag = (type) => {
     return (e) => {
       setIsDragged(true);
-      setStartX(getX(e));
-      setCurX(getX(e));
+      const startX = getX(e);
       const moveEvent = type === `mouse` ? `mousemove` : `touchmove`;
       const endEvent = type === `mouse` ? `mouseup` : `touchend`;
 
@@ -47,13 +45,14 @@ function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
       document.addEventListener(endEvent, onEnd);
 
       function onMove(evt) {
-        setCurX(getX(evt));
+        setOffset(getX(evt) - startX);
       }
 
       function onEnd() {
         document.removeEventListener(moveEvent, onMove);
         document.removeEventListener(endEvent, onEnd);
         setIsDragged(false);
+        setOffset(0);
       }
 
       function getX(evt) {
@@ -69,7 +68,7 @@ function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
     const interval =
       hasAutoChange && !isInteracted && !isDragged
         ? setInterval(() => {
-          setSelectedId((id) => setNextId(id + 1, config.length));
+          setSelectedId((id) => getNextId(id + 1, config.length));
         }, 4000)
         : null;
     return () => {
@@ -77,9 +76,14 @@ function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
     };
   }, [hasAutoChange, isDragged, isInteracted, config]);
 
-  const style = isDragged
-    ? {transform: `translateX(${curX - startX}px)`}
-    : null;
+  let nextId = null;
+  if (offset > 0) {
+    nextId = getNextId(+selectedId + 1, config.length);
+  } else if (offset < 0) {
+    nextId = getNextId(+selectedId - 1, config.length);
+  }
+
+  const style = isDragged ? {transform: `translateX(${offset}px)`} : null;
 
   return (
     <div
@@ -111,6 +115,7 @@ function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
         onMouseDown={onMouseDown}
       >
         <Panel style={style}>{config[selectedId].content}</Panel>
+        {nextId !== null && <Panel>{config[nextId].content}</Panel>}
       </div>
     </div>
   );
