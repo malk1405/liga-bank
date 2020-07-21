@@ -917,15 +917,13 @@ section:focus {
   .features__radio-clone--selected.features__radio-clone--dark {
     background-color: #e0e0e0; }
 
-.features__title {
-  display: none; }
-
 .features__panel-container {
   overflow: hidden;
   position: relative; }
 
 .features__panel {
   min-height: 400px;
+  padding: 114px 0;
   -webkit-user-drag: none;
   -webkit-user-select: none;
      -moz-user-select: none;
