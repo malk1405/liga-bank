@@ -926,6 +926,7 @@ section:focus {
 
 .features__panel {
   min-height: 400px;
+  -webkit-user-drag: none;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
