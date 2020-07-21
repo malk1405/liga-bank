@@ -3,15 +3,13 @@ import PropTypes from 'prop-types';
 
 function Panel({children, style, mod}) {
   const className = `features__panel`;
-  const classes = [
-    `container`,
-    className,
-    ...mod.map((el) => `${className}--${el}`),
-  ];
+  const classes = [className, ...mod.map((el) => `${className}--${el}`)];
   return (
     <div className={classes.join(` `)} style={style}>
-      <p>Лига Банк</p>
-      {children}
+      <div className="container">
+        <p>Лига Банк</p>
+        {children}
+      </div>
     </div>
   );
 }

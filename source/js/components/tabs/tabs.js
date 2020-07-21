@@ -1,5 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
+import Tab from './tab';
+import getClasses from '../../utils/getClasses';
 
 const getNextId = (newId, length) => {
   const id = Number(newId);
@@ -14,7 +16,7 @@ const getNextId = (newId, length) => {
   return id;
 };
 
-function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
+function Tabs({config, block, Panel, hasAutoChange, hasSwipe}) {
   const [selectedId, setSelectedId] = useState(0);
   const [isDragged, setIsDragged] = useState(false);
   const [isSliding, setIsSliding] = useState(false);
@@ -121,49 +123,54 @@ function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
     transform,
   };
 
+  const currentPanelMod = [config[selectedId].mod];
+  if (isSliding) {
+    currentPanelMod.push(`sliding`);
+  }
+
+  const nextPanelMod = [`next`];
+  if (nextId.current !== null) {
+    nextPanelMod.push(config[nextId.current].mod);
+  }
+
+  if (isSliding) {
+    currentPanelMod.push(`sliding`);
+  }
+
   return (
     <div
-      className={`${className}__tabs-container`}
+      className={getClasses({block, element: `tabs-container`})}
       onMouseOver={getInteraction}
       onFocus={getInteraction}
       onMouseLeave={loseInteraction}
       onBlur={loseInteraction}
       ref={container}
     >
-      <ul className={`list ${className}__tabs`}>
-        {config.map(({title, mod}, id) => (
-          <li key={mod} className={`${className}__tab`}>
-            <label className={`${className}__label`}>
-              <input
-                type="radio"
-                name={`tab-${className}`}
-                className={`visually-hidden ${className}__radio`}
-                value={id}
-                onChange={handleChange}
-                checked={+selectedId === id}
-              />
-              <span
-                className={`${className}__radio-clone ${className}__radio-clone--${mod}${
-                  +selectedId === id
-                    ? ` ${className}__radio-clone--selected`
-                    : ``
-                }`}
-              ></span>
-              <span className={`${className}__title`}>{title}</span>
-            </label>
+      <ul className={`list ${block}__tabs`}>
+        {config.map(({title, mod, tabMod}, id) => (
+          <li key={mod} className={`${block}__tab`}>
+            <Tab
+              onChange={handleChange}
+              id={id}
+              isSelected={+selectedId === id}
+              block={block}
+              mod={tabMod}
+            >
+              <span className={`${block}__title`}>{title}</span>
+            </Tab>
           </li>
         ))}
       </ul>
       <div
-        className={`${className}__panel-container`}
+        className={`${block}__panel-container`}
         onTouchStart={hasSwipe && !isSliding ? onTouchStart : null}
         onMouseDown={hasSwipe && !isSliding ? onMouseDown : null}
       >
-        <Panel style={style} mod={isSliding ? [`sliding`] : []}>
+        <Panel style={style} mod={currentPanelMod}>
           {config[selectedId].content}
         </Panel>
         {nextId.current !== null && (
-          <Panel mod={[`next`]}>{config[nextId.current].content}</Panel>
+          <Panel mod={nextPanelMod}>{config[nextId.current].content}</Panel>
         )}
       </div>
     </div>
@@ -177,7 +184,7 @@ Tabs.defaultProps = {
 
 Tabs.propTypes = {
   config: PropTypes.arrayOf(PropTypes.any).isRequired,
-  className: PropTypes.string.isRequired,
+  block: PropTypes.string.isRequired,
   Panel: PropTypes.func.isRequired,
   hasAutoChange: PropTypes.bool,
   hasSwipe: PropTypes.bool,

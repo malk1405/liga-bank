@@ -25,6 +25,7 @@ const tabs = [
   {
     title: `Рядом`,
     mod: `near`,
+    tabMod: [`dark`],
     content: (
       <React.Fragment>
         <p>Всегда рядом</p>

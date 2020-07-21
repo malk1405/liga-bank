@@ -4,11 +4,11 @@ import config from './tabs';
 import Panel from './panel';
 
 function Features() {
-  const className = `features`;
+  const block = `features`;
   return (
-    <section className={className}>
+    <section className={block}>
       <h2 className="visually-hidden">Преимущества</h2>
-      <Tabs config={config} className={className} Panel={Panel} hasAutoChange hasSwipe></Tabs>
+      <Tabs config={config} block={block} Panel={Panel} hasAutoChange hasSwipe></Tabs>
     </section>
   );
 }

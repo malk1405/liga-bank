@@ -18,18 +18,18 @@
 }
 
 .features__radio-clone {
-  background-color: $blue-color-main;
+  background-color: $blue-color-dark;
   border-radius: 8px;
   display: block;
   height: 8px;
   width: 8px;
 
   &--selected {
-    background-color: $tab-circle-color;
+    background-color: $bg-color-primary;
   }
 
-  &--selected#{&}--credits {
-    background-color: $bg-color-primary;
+  &--selected#{&}--dark {
+    background-color: $tab-circle-color;
   }
 }
 
@@ -46,6 +46,9 @@
   min-height: 400px;
   user-select: none;
 
+  background-size: cover;
+  background-position: top left;
+
   &--next {
     height: 100%;
     left: 50%;
@@ -53,6 +56,11 @@
     transform: translateX(-50%);
     top: 0;
     width: 100%;
+    z-index: -1;
+  }
+
+  &--credits {
+    background-color: $blue-color-main;
   }
 
   &--sliding {
