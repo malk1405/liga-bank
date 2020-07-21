@@ -7,7 +7,7 @@ const tabs = [
     content: (
       <React.Fragment>
         <p>Кредиты на любой случай</p>
-        <a href="#calculator" className="link">
+        <a draggable="false" href="#calculator" className="link">
           Рассчитать кредит
         </a>
       </React.Fragment>
@@ -29,7 +29,7 @@ const tabs = [
     content: (
       <React.Fragment>
         <p>Всегда рядом</p>
-        <a href="#departments" className="link">
+        <a draggable="false" href="#departments" className="link">
           Найти отделение
         </a>
       </React.Fragment>
