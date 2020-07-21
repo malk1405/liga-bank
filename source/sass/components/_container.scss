@@ -2,6 +2,10 @@
   margin: 0 auto;
   max-width: 1366px;
   padding: 0 98px;
+
+  &--features {
+    padding: 0 268px;
+  }
 }
 
 @include mq(tablet) {

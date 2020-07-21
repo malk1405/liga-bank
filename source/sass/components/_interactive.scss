@@ -33,16 +33,31 @@
   fill: currentColor;
 }
 
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
 .button {
   border: none;
+
+  &--main {
+    background-color: $blue-color-main;
+    color: $bg-color-primary;
+    display: inline-block;
+    font-size: 1.8rem;
+    padding: 1.4rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  &--main:hover {
+    opacity: 0.8;
+    color: $bg-color-primary;
+  }
 }
 
 .input,
 .button--main {
   border-radius: 4px;
-}
-
-.link {
-  color: inherit;
-  text-decoration: none;
 }

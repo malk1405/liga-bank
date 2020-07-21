@@ -14,7 +14,14 @@ const tabs = [
         <Link
           draggable={false}
           href="#calculator"
-          classes={getClasses({block, element: `link`, modifiers: [`light`]})}
+          classes={`${getClasses({
+            block: `button`,
+            modifiers: [`main`],
+          })} ${getClasses({
+            block,
+            element: `link`,
+            modifiers: [`light`, `credits`],
+          })}`}
         >
           Рассчитать кредит
         </Link>
@@ -40,7 +47,10 @@ const tabs = [
         <Link
           draggable={false}
           href="#departments"
-          classes={getClasses({block, element: `link`})}
+          classes={`${getClasses({
+            block: `button`,
+            modifiers: [`main`],
+          })} ${getClasses({block, element: `link`, modifiers: [`near`]})}`}
         >
           Найти отделение
         </Link>
