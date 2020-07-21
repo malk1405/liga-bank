@@ -10,7 +10,9 @@ function Panel({children, style, block, mod}) {
       style={style}
     >
       <div className="container">
-        <p>Лига Банк</p>
+        <p className={getClasses({block, element: `title`, modifiers: mod})}>
+          Лига Банк
+        </p>
         {children}
       </div>
     </div>

@@ -1,5 +1,8 @@
 import React from 'react';
 import Link from '../link/link';
+import getClasses from '../../utils/getClasses';
+
+const block = `features`;
 
 const tabs = [
   {
@@ -8,7 +11,11 @@ const tabs = [
     content: (
       <React.Fragment>
         <p>Кредиты на любой случай</p>
-        <Link draggable={false} href="#calculator" className="link">
+        <Link
+          draggable={false}
+          href="#calculator"
+          classes={getClasses({block, element: `link`, modifiers: [`light`]})}
+        >
           Рассчитать кредит
         </Link>
       </React.Fragment>
@@ -30,7 +37,11 @@ const tabs = [
     content: (
       <React.Fragment>
         <p>Всегда рядом</p>
-        <Link draggable={false} href="#departments" className="link">
+        <Link
+          draggable={false}
+          href="#departments"
+          classes={getClasses({block, element: `link`})}
+        >
           Найти отделение
         </Link>
       </React.Fragment>
@@ -38,4 +49,5 @@ const tabs = [
   },
 ];
 
+export {block};
 export default tabs;

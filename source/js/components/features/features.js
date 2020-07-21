@@ -1,12 +1,11 @@
 import React from 'react';
 
-import config from './tabs';
+import config, {block} from './tabs';
 import Tabs from '../tabs/tabs';
 import Tab from './tab';
 import Panel from './panel';
 
 function Features() {
-  const block = `features`;
   return (
     <section className={block}>
       <h2 className="visually-hidden">Преимущества</h2>
