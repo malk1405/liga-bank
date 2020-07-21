@@ -25,7 +25,7 @@ Panel.propTypes = {
   children: PropTypes.node,
   style: PropTypes.object,
   block: PropTypes.string.isRequired,
-  mod: PropTypes.arrayOf[PropTypes.string],
+  mod: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default Panel;
