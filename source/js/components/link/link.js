@@ -4,6 +4,13 @@ import PropTypes from 'prop-types';
 function Link({children, href, classes, tabindex, draggable}) {
   const [isDragged, setIsDragged] = useState(false);
 
+  const onDragStart =
+    draggable === false
+      ? (e) => {
+        e.preventDefault();
+      }
+      : null;
+
   const onMouseDown =
     draggable === false
       ? (e) => {
@@ -39,6 +46,7 @@ function Link({children, href, classes, tabindex, draggable}) {
       tabIndex={tabindex}
       onClick={onClick}
       onMouseDown={onMouseDown}
+      onDragStart={onDragStart}
     >
       {children}
     </a>
