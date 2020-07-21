@@ -9,7 +9,7 @@ function Features() {
   return (
     <section className={block}>
       <h2 className="visually-hidden">Преимущества</h2>
-      <Tabs config={config} block={block} Tab={Tab} Panel={Panel} hasAutoChange hasSwipe></Tabs>
+      <Tabs config={config} block={block} Tab={Tab} Panel={Panel} hasSwipe></Tabs>
     </section>
   );
 }
