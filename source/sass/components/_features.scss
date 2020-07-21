@@ -128,3 +128,56 @@
     min-width: 243px;
   }
 }
+
+@include mq(tablet) {
+  .features__tabs {
+    bottom: 15px;
+  }
+
+  .features__panel {
+    min-height: 300px;
+
+    &--credits {
+      background-image: url("../img/main/slide1@1x--md.jpg");
+
+      @include mret() {
+        background-image: url("../img/main/slide1@2x--md.jpg");
+      }
+    }
+
+    &--confidence {
+      background-image: url("../img/main/slide2@1x--md.jpg");
+
+      @include mret() {
+        background-image: url("../img/main/slide2@2x--md.jpg");
+      }
+    }
+
+    &--near {
+      background-image: url("../img/main/slide3@1x--md.jpg");
+
+      @include mret() {
+        background-image: url("../img/main/slide3@2x--md.jpg");
+      }
+    }
+  }
+
+  .features__panel {
+    padding: 60px 0 75px;
+  }
+
+  .features__panel p {
+    font-size: 1.8rem;
+  }
+
+  .features__panel .features__title {
+    font-size: 4.6rem;
+    margin-bottom: 0rem;
+  }
+
+  .features__link {
+    font-size: 1.6rem;
+    margin-top: 2.6rem;
+    min-width: 206px;
+  }
+}

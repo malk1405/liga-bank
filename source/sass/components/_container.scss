@@ -11,6 +11,10 @@
 @include mq(tablet) {
   .container {
     padding: 0 45px;
+
+    &--features {
+      padding: 0 86px;
+    }
   }
 }
 

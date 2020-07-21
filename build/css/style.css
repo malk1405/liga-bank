@@ -447,7 +447,9 @@ section:focus {
 
 @media screen and (max-width: 1023px) {
   .container {
-    padding: 0 45px; } }
+    padding: 0 45px; }
+    .container--features {
+      padding: 0 86px; } }
 
 @media screen and (max-width: 767px) {
   .container {
@@ -549,9 +551,9 @@ section:focus {
 @media screen and (max-width: 1023px) {
   .nav {
     margin-right: 0;
-    margin-left: 2rem; }
+    margin-left: 1.9rem; }
   .nav__item {
-    margin-right: 2rem; }
+    margin-right: 2.1rem; }
   .nav__item a {
     line-height: 2.5rem; } }
 
@@ -1004,6 +1006,44 @@ section:focus {
             box-shadow: 0 0 0 2px red; }
   .features__link--near {
     min-width: 243px; }
+
+@media screen and (max-width: 1023px) {
+  .features__tabs {
+    bottom: 15px; }
+  .features__panel {
+    min-height: 300px; }
+    .features__panel--credits {
+      background-image: url("../img/main/slide1@1x--md.jpg"); } }
+    @media screen and (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 1023px) and (min-resolution: 144dpi), screen and (max-width: 1023px) and (min-resolution: 1.5dppx) {
+      .features__panel--credits {
+        background-image: url("../img/main/slide1@2x--md.jpg"); } }
+
+@media screen and (max-width: 1023px) {
+    .features__panel--confidence {
+      background-image: url("../img/main/slide2@1x--md.jpg"); } }
+    @media screen and (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 1023px) and (min-resolution: 144dpi), screen and (max-width: 1023px) and (min-resolution: 1.5dppx) {
+      .features__panel--confidence {
+        background-image: url("../img/main/slide2@2x--md.jpg"); } }
+
+@media screen and (max-width: 1023px) {
+    .features__panel--near {
+      background-image: url("../img/main/slide3@1x--md.jpg"); } }
+    @media screen and (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 1023px) and (min-resolution: 144dpi), screen and (max-width: 1023px) and (min-resolution: 1.5dppx) {
+      .features__panel--near {
+        background-image: url("../img/main/slide3@2x--md.jpg"); } }
+
+@media screen and (max-width: 1023px) {
+  .features__panel {
+    padding: 60px 0 75px; }
+  .features__panel p {
+    font-size: 1.8rem; }
+  .features__panel .features__title {
+    font-size: 4.6rem;
+    margin-bottom: 0rem; }
+  .features__link {
+    font-size: 1.6rem;
+    margin-top: 2.6rem;
+    min-width: 206px; } }
 
 .map {
   max-width: 100%;
