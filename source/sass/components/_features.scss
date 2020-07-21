@@ -39,14 +39,13 @@
 }
 
 .features__panel {
-  min-height: 400px;
-  padding: 96px 0 114px;
-  -webkit-user-drag: none;
-  user-select: none;
-
   background-size: cover;
   background-position: top left;
   background-repeat: no-repeat;
+  color: #2b3c4f;
+  min-height: 400px;
+  padding: 96px 0 114px;
+  user-select: none;
 
   &--next {
     height: 100%;
@@ -94,14 +93,13 @@
   letter-spacing: -0.005em;
 }
 
-.features__panel--confidence p {
-}
-
 .features__panel .features__title {
   font-size: 5.4rem;
   font-weight: bold;
   letter-spacing: 0;
   margin-bottom: 1px;
+
+  color: $text-color-primary;
 
   &--credits {
     color: $bg-color-primary;

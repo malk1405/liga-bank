@@ -935,16 +935,16 @@ section:focus {
   position: relative; }
 
 .features__panel {
+  background-size: cover;
+  background-position: top left;
+  background-repeat: no-repeat;
+  color: #2b3c4f;
   min-height: 400px;
   padding: 96px 0 114px;
-  -webkit-user-drag: none;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none;
-  background-size: cover;
-  background-position: top left;
-  background-repeat: no-repeat; }
+          user-select: none; }
   .features__panel--next {
     height: 100%;
     left: 50%;
@@ -985,7 +985,8 @@ section:focus {
   font-size: 5.4rem;
   font-weight: bold;
   letter-spacing: 0;
-  margin-bottom: 1px; }
+  margin-bottom: 1px;
+  color: #1f1e25; }
   .features__panel .features__title--credits {
     color: #f6f7ff; }
 
