@@ -166,11 +166,13 @@ function Tabs({config, block, Panel, hasAutoChange, hasSwipe}) {
         onTouchStart={hasSwipe && !isSliding ? onTouchStart : null}
         onMouseDown={hasSwipe && !isSliding ? onMouseDown : null}
       >
-        <Panel style={style} mod={currentPanelMod}>
+        <Panel block={block} style={style} mod={currentPanelMod}>
           {config[selectedId].content}
         </Panel>
         {nextId.current !== null && (
-          <Panel mod={nextPanelMod}>{config[nextId.current].content}</Panel>
+          <Panel block={block} mod={nextPanelMod}>
+            {config[nextId.current].content}
+          </Panel>
         )}
       </div>
     </div>

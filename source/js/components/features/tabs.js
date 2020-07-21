@@ -29,7 +29,9 @@ const tabs = [
     content: (
       <React.Fragment>
         <p>Всегда рядом</p>
-        <a href="#departments" className="link">Найти отделение</a>
+        <a href="#departments" className="link">
+          Найти отделение
+        </a>
       </React.Fragment>
     ),
   },
