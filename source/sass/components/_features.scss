@@ -48,9 +48,14 @@
 
   &--next {
     height: 100%;
-    left: 0;
+    left: 50%;
     position: absolute;
+    transform: translateX(-50%);
     top: 0;
     width: 100%;
+  }
+
+  &--sliding {
+    transition: transform 0.3s ease-in;
   }
 }

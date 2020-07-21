@@ -17,8 +17,20 @@ const getNextId = (newId, length) => {
 function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
   const [selectedId, setSelectedId] = useState(0);
   const [isDragged, setIsDragged] = useState(false);
+  const [isSliding, setIsSliding] = useState(false);
   const [isInteracted, setIsInteracted] = useState(false);
   const [offset, setOffset] = useState(0);
+  const [transform, setTransform] = useState(null);
+
+  const nextId = useRef(null);
+
+  if (offset > 0) {
+    nextId.current = getNextId(selectedId + 1, config.length);
+  } else if (offset < 0) {
+    nextId.current = getNextId(selectedId - 1, config.length);
+  } else {
+    nextId.current = null;
+  }
 
   const container = useRef(null);
 
@@ -53,7 +65,7 @@ function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
         document.removeEventListener(moveEvent, onMove);
         document.removeEventListener(endEvent, onEnd);
         setIsDragged(false);
-        setOffset(0);
+        setIsSliding(true);
       }
 
       function getX(evt) {
@@ -77,14 +89,37 @@ function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
     };
   }, [hasAutoChange, isDragged, isInteracted, config]);
 
-  let nextId = null;
-  if (offset > 0) {
-    nextId = getNextId(selectedId + 1, config.length);
-  } else if (offset < 0) {
-    nextId = getNextId(selectedId - 1, config.length);
-  }
+  useEffect(() => {
+    let timeout = null;
+    if (isSliding) {
+      timeout = setTimeout(() => {
+        setIsSliding(false);
+        setOffset((offs) => {
+          if (Math.abs(offs) >= 20) {
+            setSelectedId(nextId.current);
+          }
 
-  const style = isDragged ? {transform: `translateX(${offset}px)`} : null;
+          return 0;
+        });
+      }, 300);
+    }
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [isSliding, setSelectedId, nextId, offset]);
+
+  useEffect(() => {
+    setTransform(null);
+    if (isDragged) {
+      setTransform(`translateX(${offset}px)`);
+    } else if (isSliding && Math.abs(offset) > 20) {
+      setTransform(`translateX(${Math.sign(offset)}00%)`);
+    }
+  }, [isSliding, isDragged, setTransform, offset]);
+
+  const style = {
+    transform,
+  };
 
   return (
     <div
@@ -121,12 +156,14 @@ function Tabs({config, className, Panel, hasAutoChange, hasSwipe}) {
       </ul>
       <div
         className={`${className}__panel-container`}
-        onTouchStart={hasSwipe ? onTouchStart : null}
-        onMouseDown={onMouseDown}
+        onTouchStart={hasSwipe && !isSliding ? onTouchStart : null}
+        onMouseDown={hasSwipe && !isSliding ? onMouseDown : null}
       >
-        <Panel style={style}>{config[selectedId].content}</Panel>
-        {nextId !== null && (
-          <Panel mod={[`next`]}>{config[nextId].content}</Panel>
+        <Panel style={style} mod={isSliding ? [`sliding`] : []}>
+          {config[selectedId].content}
+        </Panel>
+        {nextId.current !== null && (
+          <Panel mod={[`next`]}>{config[nextId.current].content}</Panel>
         )}
       </div>
     </div>

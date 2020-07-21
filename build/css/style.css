@@ -932,10 +932,17 @@ section:focus {
           user-select: none; }
   .features__panel--next {
     height: 100%;
-    left: 0;
+    left: 50%;
     position: absolute;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
     top: 0;
     width: 100%; }
+  .features__panel--sliding {
+    -webkit-transition: -webkit-transform 0.3s ease-in;
+    transition: -webkit-transform 0.3s ease-in;
+    transition: transform 0.3s ease-in;
+    transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in; }
 
 .map {
   max-width: 100%;
