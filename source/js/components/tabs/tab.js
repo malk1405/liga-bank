@@ -21,11 +21,13 @@ function Tab({block, mod, isSelected, children, onChange, id}) {
   const labelMod = isFocused ? [`focused`] : [];
 
   return (
-    <label className={getClasses({block, element: `label`, modifiers: labelMod})}>
+    <label
+      className={getClasses({block, element: `label`, modifiers: labelMod})}
+    >
       <input
         type="radio"
         name={`tab-${block}`}
-        className={`visually-hidden ${getClasses({block, element: `radio`})}`}
+        className="visually-hidden"
         value={id}
         onChange={onChange}
         onFocus={onFocus}

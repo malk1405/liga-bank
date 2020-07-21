@@ -23,7 +23,6 @@ $blue-color-main: #2c36f2;
 $blue-color-dark: #2028b6;
 $blue-color-tab: #565ef5;
 
-$focus-shadow: 0 0 0 2px white, 0 0 0 4px rgba($blue-color-main, 0.4),
-  0 0 0 2px rgba(red, 0), 0 0 0 2px white;
+$focus-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(red, 0.5);
 
 //=== /Colors ===/

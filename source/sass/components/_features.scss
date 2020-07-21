@@ -17,6 +17,20 @@
   margin-left: 8px;
 }
 
+.features__label {
+  border-radius: 100%;
+  cursor: pointer;
+  display: block;
+
+  &--focused {
+    box-shadow: $focus-shadow;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
 .features__radio-clone {
   background-color: $blue-color-dark;
   border-radius: 8px;
@@ -121,7 +135,6 @@
 
   &--light:focus {
     color: $text-color-primary;
-    box-shadow: 0 0 0 2px red;
   }
 
   &--near {
