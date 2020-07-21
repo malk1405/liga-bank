@@ -1,14 +1,27 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
 function Link({children, href, classes, tabindex, draggable}) {
   const [isDragged, setIsDragged] = useState(false);
-  const [isPressed, setIsPressed] = useState(false);
 
   const onMouseDown =
     draggable === false
-      ? () => {
-        setIsPressed(true);
+      ? (e) => {
+        const startX = e.clientX;
+        document.addEventListener(`mousemove`, onMouseMove);
+
+        function onMouseMove(evt) {
+          if (evt.clientX !== startX) {
+            document.addEventListener(`click`, onClickInner);
+            document.removeEventListener(`mousemove`, onMouseMove);
+            setIsDragged(true);
+          }
+        }
+
+        function onClickInner() {
+          setIsDragged(false);
+          document.removeEventListener(`click`, onClickInner);
+        }
       }
       : null;
 
@@ -17,26 +30,6 @@ function Link({children, href, classes, tabindex, draggable}) {
       e.preventDefault();
     }
     : null;
-
-  useEffect(() => {
-    if (isPressed) {
-      document.addEventListener(`mousemove`, onMouseMove);
-      document.addEventListener(`click`, onClickInner);
-    }
-
-    function onMouseMove() {
-      setIsDragged(true);
-    }
-
-    function onClickInner() {
-      setIsPressed(false);
-      setIsDragged(false);
-    }
-    return () => {
-      document.removeEventListener(`mousemove`, onMouseMove);
-      document.removeEventListener(`click`, onClickInner);
-    };
-  }, [isPressed, setIsDragged]);
 
   return (
     <a
