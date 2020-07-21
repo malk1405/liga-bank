@@ -907,15 +907,15 @@ section:focus {
   margin-left: 8px; }
 
 .features__radio-clone {
-  background-color: #2c36f2;
+  background-color: #2028b6;
   border-radius: 8px;
   display: block;
   height: 8px;
   width: 8px; }
   .features__radio-clone--selected {
-    background-color: #e0e0e0; }
-  .features__radio-clone--selected.features__radio-clone--credits {
     background-color: #f6f7ff; }
+  .features__radio-clone--selected.features__radio-clone--dark {
+    background-color: #e0e0e0; }
 
 .features__title {
   display: none; }
@@ -929,7 +929,9 @@ section:focus {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none; }
+          user-select: none;
+  background-size: cover;
+  background-position: top left; }
   .features__panel--next {
     height: 100%;
     left: 50%;
@@ -937,7 +939,10 @@ section:focus {
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
     top: 0;
-    width: 100%; }
+    width: 100%;
+    z-index: -1; }
+  .features__panel--credits {
+    background-color: #2c36f2; }
   .features__panel--sliding {
     -webkit-transition: -webkit-transform 0.3s ease-in;
     transition: -webkit-transform 0.3s ease-in;
