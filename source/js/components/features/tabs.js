@@ -2,8 +2,8 @@ import React from 'react';
 
 const tabs = [
   {
-    title: `Кредиты`,
     mod: `credits`,
+    tabContent: `Кредиты`,
     content: (
       <React.Fragment>
         <p>Кредиты на любой случай</p>
@@ -14,8 +14,8 @@ const tabs = [
     ),
   },
   {
-    title: `Уверенность`,
     mod: `confidence`,
+    tabContent: `Уверенность`,
     content: (
       <React.Fragment>
         <p>Ваша уверенность в завтрашнем дне</p>
@@ -23,8 +23,8 @@ const tabs = [
     ),
   },
   {
-    title: `Рядом`,
     mod: `near`,
+    tabContent: `Рядом`,
     tabMod: [`dark`],
     content: (
       <React.Fragment>

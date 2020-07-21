@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
-import Tab from './tab';
+import TabContainer from './tab';
 import getClasses from '../../utils/getClasses';
 
 const getNextId = (newId, length) => {
@@ -16,7 +16,7 @@ const getNextId = (newId, length) => {
   return id;
 };
 
-function Tabs({config, block, Panel, hasAutoChange, hasSwipe}) {
+function Tabs({config, block, Tab, Panel, hasAutoChange, hasSwipe}) {
   const [selectedId, setSelectedId] = useState(0);
   const [isDragged, setIsDragged] = useState(false);
   const [isSliding, setIsSliding] = useState(false);
@@ -147,17 +147,17 @@ function Tabs({config, block, Panel, hasAutoChange, hasSwipe}) {
       ref={container}
     >
       <ul className={`list ${block}__tabs`}>
-        {config.map(({title, mod, tabMod}, id) => (
+        {config.map(({tabContent, mod, tabMod}, id) => (
           <li key={mod} className={`${block}__tab`}>
-            <Tab
+            <TabContainer
               onChange={handleChange}
               id={id}
               isSelected={+selectedId === id}
               block={block}
               mod={tabMod}
             >
-              <span className={`${block}__title`}>{title}</span>
-            </Tab>
+              <Tab>{tabContent}</Tab>
+            </TabContainer>
           </li>
         ))}
       </ul>
@@ -187,6 +187,7 @@ Tabs.defaultProps = {
 Tabs.propTypes = {
   config: PropTypes.arrayOf(PropTypes.any).isRequired,
   block: PropTypes.string.isRequired,
+  Tab: PropTypes.func.isRequired,
   Panel: PropTypes.func.isRequired,
   hasAutoChange: PropTypes.bool,
   hasSwipe: PropTypes.bool,
