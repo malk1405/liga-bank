@@ -376,8 +376,8 @@ section:focus {
 .button:focus,
 .link:focus {
   outline: none;
-  -webkit-box-shadow: 0 0 0 2px white, 0 0 0 4px rgba(44, 54, 242, 0.4), 0 0 0 2px rgba(255, 0, 0, 0), 0 0 0 2px white;
-          box-shadow: 0 0 0 2px white, 0 0 0 4px rgba(44, 54, 242, 0.4), 0 0 0 2px rgba(255, 0, 0, 0), 0 0 0 2px white; }
+  -webkit-box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5);
+          box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5); }
 
 .button:hover,
 .link:hover {
@@ -921,6 +921,16 @@ section:focus {
 .features__tab {
   margin-left: 8px; }
 
+.features__label {
+  border-radius: 100%;
+  cursor: pointer;
+  display: block; }
+  .features__label--focused {
+    -webkit-box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5);
+            box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5); }
+  .features__label:active {
+    opacity: 0.6; }
+
 .features__radio-clone {
   background-color: #2028b6;
   border-radius: 8px;
@@ -1001,9 +1011,7 @@ section:focus {
   .features__link--light:hover {
     color: #1f1e25; }
   .features__link--light:focus {
-    color: #1f1e25;
-    -webkit-box-shadow: 0 0 0 2px red;
-            box-shadow: 0 0 0 2px red; }
+    color: #1f1e25; }
   .features__link--near {
     min-width: 243px; }
 
