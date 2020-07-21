@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from '../link/link';
 
 const tabs = [
   {
@@ -7,9 +8,9 @@ const tabs = [
     content: (
       <React.Fragment>
         <p>Кредиты на любой случай</p>
-        <a draggable="false" href="#calculator" className="link">
+        <Link draggable={false} href="#calculator" className="link">
           Рассчитать кредит
-        </a>
+        </Link>
       </React.Fragment>
     ),
   },
@@ -29,9 +30,9 @@ const tabs = [
     content: (
       <React.Fragment>
         <p>Всегда рядом</p>
-        <a draggable="false" href="#departments" className="link">
+        <Link draggable={false} href="#departments" className="link">
           Найти отделение
-        </a>
+        </Link>
       </React.Fragment>
     ),
   },
