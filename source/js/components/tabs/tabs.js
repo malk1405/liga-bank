@@ -27,9 +27,9 @@ function Tabs({config, block, Tab, Panel, hasAutoChange, hasSwipe}) {
   const nextId = useRef(null);
 
   if (offset > 0) {
-    nextId.current = getNextId(selectedId + 1, config.length);
-  } else if (offset < 0) {
     nextId.current = getNextId(selectedId - 1, config.length);
+  } else if (offset < 0) {
+    nextId.current = getNextId(selectedId + 1, config.length);
   } else {
     nextId.current = null;
   }
