@@ -1027,30 +1027,31 @@ section:focus {
 @media screen and (max-width: 1023px) {
   .features__tabs {
     bottom: 15px; }
-  .features__panel {
+  .features__panel-wrapper--credits {
+    background: url("../img/main/cards@1x--md.png") left 85% top 55.5%/auto 232px no-repeat, url("../img/main/blocks--md.svg") right bottom no-repeat; } }
+  @media screen and (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 1023px) and (min-resolution: 144dpi), screen and (max-width: 1023px) and (min-resolution: 1.5dppx) {
+    .features__panel-wrapper--credits {
+      background-image: url("../img/main/cards@2x--md.png"), url("../img/main/blocks--md.svg"); } }
+
+@media screen and (max-width: 1023px) {
+  .features__panel-wrapper--confidence {
+    background: url("../img/main/man@1x--md.png") left 86% center/auto 300px no-repeat; } }
+  @media screen and (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 1023px) and (min-resolution: 144dpi), screen and (max-width: 1023px) and (min-resolution: 1.5dppx) {
+    .features__panel-wrapper--confidence {
+      background-image: url("../img/main/man@2x--md.png"); } }
+
+@media screen and (max-width: 1023px) {
+  .features__panel-wrapper--near {
+    background: url("../img/main/girl@1x--md.png") left 90% center/auto 300px no-repeat; } }
+  @media screen and (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 1023px) and (min-resolution: 144dpi), screen and (max-width: 1023px) and (min-resolution: 1.5dppx) {
+    .features__panel-wrapper--near {
+      background-image: url("../img/main/girl@2x--md.png"); } }
+
+@media screen and (max-width: 1023px) {
+  .features__content-wrapper {
+    max-width: 340px;
     min-height: 300px;
     padding: 60px 0 70px; }
-    .features__panel--credits {
-      background-image: url("../img/main/slide1@1x--md.jpg"); } }
-    @media screen and (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 1023px) and (min-resolution: 144dpi), screen and (max-width: 1023px) and (min-resolution: 1.5dppx) {
-      .features__panel--credits {
-        background-image: url("../img/main/slide1@2x--md.jpg"); } }
-
-@media screen and (max-width: 1023px) {
-    .features__panel--confidence {
-      background-image: url("../img/main/slide2@1x--md.jpg"); } }
-    @media screen and (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 1023px) and (min-resolution: 144dpi), screen and (max-width: 1023px) and (min-resolution: 1.5dppx) {
-      .features__panel--confidence {
-        background-image: url("../img/main/slide2@2x--md.jpg"); } }
-
-@media screen and (max-width: 1023px) {
-    .features__panel--near {
-      background-image: url("../img/main/slide3@1x--md.jpg"); } }
-    @media screen and (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 1023px) and (min-resolution: 144dpi), screen and (max-width: 1023px) and (min-resolution: 1.5dppx) {
-      .features__panel--near {
-        background-image: url("../img/main/slide3@2x--md.jpg"); } }
-
-@media screen and (max-width: 1023px) {
   .features__panel p {
     font-size: 1.8rem; }
   .features__panel .features__title {
