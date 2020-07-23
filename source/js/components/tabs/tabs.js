@@ -1,73 +1,66 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import TabContainer from './tab';
 import getClasses from '../../utils/getClasses';
+import useTabs from '../../hooks/useTabs';
+import {
+  DRAG_START,
+  DRAG,
+  DRAG_END,
+  movingStates,
+  SET_ID,
+  INTERACT,
+} from '../../hooks/acitons';
 
-const getNextId = (newId, length) => {
-  const id = Number(newId);
-  if (id < 0) {
-    return length - 1;
-  }
+function Tabs({config, block, Tab, Panel, autoChangeTimeout, hasSwipe}) {
+  const [{selectedId, nextId, movingState, direction}, dispatch] = useTabs({
+    numberOfTabs: config.length,
+    timeout: autoChangeTimeout,
+  });
 
-  if (id >= length) {
-    return 0;
-  }
-
-  return id;
-};
-
-function Tabs({config, block, Tab, Panel, hasAutoChange, hasSwipe}) {
-  const [selectedId, setSelectedId] = useState(0);
-  const [isDragged, setIsDragged] = useState(false);
-  const [isSliding, setIsSliding] = useState(false);
-  const [isInteracted, setIsInteracted] = useState(false);
-  const [offset, setOffset] = useState(0);
-  const [transform, setTransform] = useState(null);
-
-  const nextId = useRef(null);
-
-  if (offset > 0) {
-    nextId.current = getNextId(selectedId - 1, config.length);
-  } else if (offset < 0) {
-    nextId.current = getNextId(selectedId + 1, config.length);
-  } else {
-    nextId.current = null;
-  }
-
+  const panelRef = useRef(null);
   const container = useRef(null);
 
   const handleChange = (e) => {
-    setSelectedId(e.target.value);
+    dispatch({type: SET_ID, payload: {id: e.target.value}});
   };
 
   const getInteraction = () => {
-    setIsInteracted(true);
+    dispatch({type: INTERACT, payload: {interactive: true}});
   };
 
   const loseInteraction = () => {
-    container.current.contains(document.activeElement);
-    setIsInteracted(container.current.contains(document.activeElement));
+    dispatch({
+      type: INTERACT,
+      payload: {
+        interactive: container.current.contains(document.activeElement),
+      },
+    });
   };
 
   const onDrag = (type) => {
     return (e) => {
-      setIsDragged(true);
-      const startX = getX(e);
+      dispatch({type: DRAG_START});
       const moveEvent = type === `mouse` ? `mousemove` : `touchmove`;
       const endEvent = type === `mouse` ? `mouseup` : `touchend`;
+
+      const startX = getX(e);
+      let offset;
 
       document.addEventListener(moveEvent, onMove);
       document.addEventListener(endEvent, onEnd);
 
       function onMove(evt) {
-        setOffset(getX(evt) - startX);
+        offset = getX(evt) - startX;
+        panelRef.current.style.transform = `translateX(${offset}px)`;
+        dispatch({type: DRAG, payload: {offset}});
       }
 
       function onEnd() {
         document.removeEventListener(moveEvent, onMove);
         document.removeEventListener(endEvent, onEnd);
-        setIsDragged(false);
-        setIsSliding(true);
+
+        dispatch({type: DRAG_END, payload: {offset}});
       }
 
       function getX(evt) {
@@ -80,61 +73,21 @@ function Tabs({config, block, Tab, Panel, hasAutoChange, hasSwipe}) {
   const onMouseDown = onDrag(`mouse`);
 
   useEffect(() => {
-    const interval =
-      hasAutoChange && !isInteracted && !isDragged
-        ? setInterval(() => {
-          setSelectedId((id) => getNextId(id + 1, config.length));
-        }, 4000)
-        : null;
-    return () => {
-      clearInterval(interval);
-    };
-  }, [hasAutoChange, isDragged, isInteracted, config]);
-
-  useEffect(() => {
-    let timeout = null;
-    if (isSliding) {
-      timeout = setTimeout(() => {
-        setIsSliding(false);
-        setOffset((offs) => {
-          if (Math.abs(offs) >= 20) {
-            setSelectedId(nextId.current);
-          }
-
-          return 0;
-        });
-      }, 300);
+    if (movingState === movingStates.isIdle) {
+      panelRef.current.style.transform = null;
+    } else if (movingState === movingStates.isSliding) {
+      panelRef.current.style.transform = `translateX(${direction * 100}%)`;
     }
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [isSliding, setSelectedId, nextId, offset]);
-
-  useEffect(() => {
-    setTransform(null);
-    if (isDragged) {
-      setTransform(`translateX(${offset}px)`);
-    } else if (isSliding && Math.abs(offset) > 20) {
-      setTransform(`translateX(${Math.sign(offset)}00%)`);
-    }
-  }, [isSliding, isDragged, setTransform, offset]);
-
-  const style = {
-    transform,
-  };
+  }, [movingState, panelRef]);
 
   const currentPanelMod = [config[selectedId].mod];
-  if (isSliding) {
+  if (movingState === movingStates.isSliding) {
     currentPanelMod.push(`sliding`);
   }
 
   const nextPanelMod = [`next`];
-  if (nextId.current !== null) {
-    nextPanelMod.push(config[nextId.current].mod);
-  }
-
-  if (isSliding) {
-    currentPanelMod.push(`sliding`);
+  if (nextId !== null) {
+    nextPanelMod.push(config[nextId].mod);
   }
 
   return (
@@ -163,15 +116,19 @@ function Tabs({config, block, Tab, Panel, hasAutoChange, hasSwipe}) {
       </ul>
       <div
         className={`${block}__panel-container`}
-        onTouchStart={hasSwipe && !isSliding ? onTouchStart : null}
-        onMouseDown={hasSwipe && !isSliding ? onMouseDown : null}
+        onTouchStart={
+          hasSwipe && movingState === movingStates.isIdle ? onTouchStart : null
+        }
+        onMouseDown={
+          hasSwipe && movingState === movingStates.isIdle ? onMouseDown : null
+        }
       >
-        <Panel block={block} style={style} mod={currentPanelMod}>
+        <Panel panelRef={panelRef} block={block} mod={currentPanelMod}>
           {config[selectedId].content}
         </Panel>
-        {nextId.current !== null && (
+        {nextId !== null && (
           <Panel block={block} mod={nextPanelMod}>
-            {config[nextId.current].content}
+            {config[nextId].content}
           </Panel>
         )}
       </div>
@@ -180,7 +137,7 @@ function Tabs({config, block, Tab, Panel, hasAutoChange, hasSwipe}) {
 }
 
 Tabs.defaultProps = {
-  hasAutoChange: false,
+  autoChangeTimeout: 0,
   hasSwipe: false,
 };
 
@@ -189,7 +146,7 @@ Tabs.propTypes = {
   block: PropTypes.string.isRequired,
   Tab: PropTypes.func.isRequired,
   Panel: PropTypes.func.isRequired,
-  hasAutoChange: PropTypes.bool,
+  autoChangeTimeout: PropTypes.number,
   hasSwipe: PropTypes.bool,
 };
 

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import getClasses from '../../utils/getClasses';
 
-function Panel({children, style, block, mod}) {
+function Panel({children, panelRef, block, mod}) {
   return (
     <div
+      ref={panelRef}
       className={getClasses({block, element: `panel`, modifiers: mod})}
-      style={style}
     >
       <div
         className={
@@ -17,9 +17,10 @@ function Panel({children, style, block, mod}) {
         }
       >
         <div className={getClasses({block, element: `content-wrapper`})}>
-
-          <p className={getClasses({block, element: `title`, modifiers: mod})}>
-          Лига Банк
+          <p
+            className={getClasses({block, element: `title`, modifiers: mod})}
+          >
+            Лига Банк
           </p>
           {children}
         </div>
@@ -34,9 +35,9 @@ Panel.defaultProps = {
 
 Panel.propTypes = {
   children: PropTypes.node,
-  style: PropTypes.object,
   block: PropTypes.string.isRequired,
   mod: PropTypes.arrayOf(PropTypes.string),
+  panelRef: PropTypes.shape({current: PropTypes.instanceOf(Element)}),
 };
 
 export default Panel;
