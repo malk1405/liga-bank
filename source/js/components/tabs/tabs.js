@@ -109,7 +109,7 @@ function Tabs({config, block, Tab, Panel, autoChangeTimeout, hasSwipe}) {
               block={block}
               mod={tabMod}
             >
-              <Tab>{tabContent}</Tab>
+              <Tab block={block} mod={[mod]}>{tabContent}</Tab>
             </TabContainer>
           </li>
         ))}

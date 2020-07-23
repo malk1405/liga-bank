@@ -41,7 +41,10 @@ const reducer = (
   const setId = (newId) => {
     const idNum = getNextId(newId);
 
-    if (idNum === state.selectedId) {
+    if (
+      idNum === state.selectedId &&
+      state.movingState === movingStates.isIdle
+    ) {
       return state;
     }
     return {
