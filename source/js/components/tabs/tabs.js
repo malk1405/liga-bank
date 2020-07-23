@@ -74,7 +74,7 @@ function Tabs({config, block, Tab, Panel, autoChangeTimeout, hasSwipe}) {
 
   useEffect(() => {
     if (movingState === movingStates.isIdle) {
-      panelRef.current.style.transform = null;
+      panelRef.current.style.transform = ``;
     } else if (movingState === movingStates.isSliding) {
       panelRef.current.style.transform = `translateX(${direction * 100}%)`;
     }
