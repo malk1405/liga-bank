@@ -962,6 +962,9 @@ section:focus {
     z-index: -1; }
   .features__panel--credits {
     background-color: #2c36f2;
+    background-size: 100% 100%;
+    background-image: url("../img/main/blocks--lg.svg");
+    background-repeat: no-repeat;
     color: #e0e1ea; }
   .features__panel--confidence {
     background-color: #dee2ed;
@@ -976,10 +979,10 @@ section:focus {
     transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in; }
 
 .features__panel-wrapper--credits {
-  background: url("../img/main/cards@1x--lg.png") left 698px top 53.5%/auto 286px no-repeat, url("../img/main/blocks--lg.svg") left/cover; }
+  background: url("../img/main/cards@1x--lg.png") left 698px top 53.5%/auto 286px no-repeat; }
   @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
     .features__panel-wrapper--credits {
-      background-image: url("../img/main/cards@2x--lg.png"), url("../img/main/blocks--lg.svg"); } }
+      background-image: url("../img/main/cards@2x--lg.png"); } }
 
 .features__panel-wrapper--confidence {
   background: url("../img/main/man@1x--lg.png") left 781px center/auto 400px no-repeat; }
@@ -1027,11 +1030,15 @@ section:focus {
 @media screen and (max-width: 1023px) {
   .features__tabs {
     bottom: 15px; }
+  .features__panel--credits {
+    background-size: auto;
+    background-position: right bottom;
+    background-image: url("../img/main/blocks--md.svg"); }
   .features__panel-wrapper--credits {
-    background: url("../img/main/cards@1x--md.png") left 85% top 55.5%/auto 232px no-repeat, url("../img/main/blocks--md.svg") right bottom no-repeat; } }
+    background: url("../img/main/cards@1x--md.png") left 85% top 55.5%/auto 232px no-repeat; } }
   @media screen and (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 1023px) and (min-resolution: 144dpi), screen and (max-width: 1023px) and (min-resolution: 1.5dppx) {
     .features__panel-wrapper--credits {
-      background-image: url("../img/main/cards@2x--md.png"), url("../img/main/blocks--md.svg"); } }
+      background-image: url("../img/main/cards@2x--md.png"); } }
 
 @media screen and (max-width: 1023px) {
   .features__panel-wrapper--confidence {
@@ -1066,6 +1073,8 @@ section:focus {
   .features__tabs {
     bottom: 10px;
     margin-left: -3px; }
+  .features__panel--credits {
+    background-image: none; }
   .features__tab {
     margin-left: 6px; }
   .features__radio-clone {
