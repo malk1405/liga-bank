@@ -1072,30 +1072,31 @@ section:focus {
     border-radius: 6px;
     height: 6px;
     width: 6px; }
-  .features__panel {
+  .features__panel-wrapper--credits.features__panel-wrapper {
+    background: url("../img/main/cards@1x--sm.png") left calc(40% + 227px) top 45%/auto 190px no-repeat !important; } }
+  @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 767px) and (min-resolution: 144dpi), screen and (max-width: 767px) and (min-resolution: 1.5dppx) {
+    .features__panel-wrapper--credits.features__panel-wrapper {
+      background-image: url("../img/main/cards@2x--sm.png") !important; } }
+
+@media screen and (max-width: 767px) {
+  .features__panel-wrapper--confidence.features__panel-wrapper {
+    background: url("../img/main/man@1x--sm.png") left calc(80% + 53px) center/auto 226px no-repeat !important; } }
+  @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 767px) and (min-resolution: 144dpi), screen and (max-width: 767px) and (min-resolution: 1.5dppx) {
+    .features__panel-wrapper--confidence.features__panel-wrapper {
+      background-image: url("../img/main/man@2x--sm.png") !important; } }
+
+@media screen and (max-width: 767px) {
+  .features__panel-wrapper--near.features__panel-wrapper {
+    background: url("../img/main/girl@1x--sm.png") left calc(80% + 58px) center/auto 226px no-repeat !important; } }
+  @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 767px) and (min-resolution: 144dpi), screen and (max-width: 767px) and (min-resolution: 1.5dppx) {
+    .features__panel-wrapper--near.features__panel-wrapper {
+      background-image: url("../img/main/girl@2x--sm.png") !important; } }
+
+@media screen and (max-width: 767px) {
+  .features__content-wrapper {
+    max-width: 210px;
     min-height: 226px;
     padding: 35px 0 45px; }
-    .features__panel--credits {
-      background-image: url("../img/main/slide1@1x--sm.jpg"); } }
-    @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 767px) and (min-resolution: 144dpi), screen and (max-width: 767px) and (min-resolution: 1.5dppx) {
-      .features__panel--credits {
-        background-image: url("../img/main/slide1@2x--sm.jpg"); } }
-
-@media screen and (max-width: 767px) {
-    .features__panel--confidence {
-      background-image: url("../img/main/slide2@1x--sm.jpg"); } }
-    @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 767px) and (min-resolution: 144dpi), screen and (max-width: 767px) and (min-resolution: 1.5dppx) {
-      .features__panel--confidence {
-        background-image: url("../img/main/slide2@2x--sm.jpg"); } }
-
-@media screen and (max-width: 767px) {
-    .features__panel--near {
-      background-image: url("../img/main/slide3@1x--sm.jpg"); } }
-    @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 767px) and (min-resolution: 144dpi), screen and (max-width: 767px) and (min-resolution: 1.5dppx) {
-      .features__panel--near {
-        background-image: url("../img/main/slide3@2x--sm.jpg"); } }
-
-@media screen and (max-width: 767px) {
   .features__panel p {
     font-size: 1.6rem; }
   .features__panel--confidence p {
