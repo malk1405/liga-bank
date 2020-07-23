@@ -67,6 +67,9 @@
 
   &--credits {
     background-color: $blue-color-main;
+    background-size: 100% 100%;
+    background-image: url("../img/main/blocks--lg.svg");
+    background-repeat: no-repeat;
 
     color: #e0e1ea;
 
@@ -97,12 +100,10 @@
 .features__panel-wrapper {
   &--credits {
     background: url("../img/main/cards@1x--lg.png") left 698px top 53.5% / auto
-        286px no-repeat,
-      url("../img/main/blocks--lg.svg") left / cover;
+      286px no-repeat;
 
     @include mret() {
-      background-image: url("../img/main/cards@2x--lg.png"),
-        url("../img/main/blocks--lg.svg");
+      background-image: url("../img/main/cards@2x--lg.png");
     }
   }
 
@@ -176,15 +177,19 @@
     bottom: 15px;
   }
 
+  .features__panel--credits {
+    background-size: auto;
+    background-position: right bottom;
+    background-image: url("../img/main/blocks--md.svg");
+  }
+
   .features__panel-wrapper {
     &--credits {
       background: url("../img/main/cards@1x--md.png") left 85% top 55.5% / auto
-          232px no-repeat,
-        url("../img/main/blocks--md.svg") right bottom no-repeat;
+        232px no-repeat;
 
       @include mret() {
-        background-image: url("../img/main/cards@2x--md.png"),
-          url("../img/main/blocks--md.svg");
+        background-image: url("../img/main/cards@2x--md.png");
       }
     }
 
@@ -232,6 +237,10 @@
   .features__tabs {
     bottom: 10px;
     margin-left: -3px;
+  }
+
+  .features__panel--credits {
+    background-image: none;
   }
 
   .features__tab {
