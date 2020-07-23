@@ -53,12 +53,6 @@
 }
 
 .features__panel {
-  background-size: cover;
-  background-position: top left;
-  background-repeat: no-repeat;
-  color: #2b3c4f;
-  min-height: 400px;
-  padding: 96px 0 110px;
   user-select: none;
 
   &--next {
@@ -73,33 +67,68 @@
 
   &--credits {
     background-color: $blue-color-main;
-    background-image: url("../img/main/slide1@1x--lg.jpg");
+
     color: #e0e1ea;
 
     @include mret() {
-      background-image: url("../img/main/slide1@2x--lg.jpg");
     }
   }
 
   &--confidence {
-    background-image: url("../img/main/slide2@1x--lg.jpg");
+    background-color: #dee2ed;
+    background-image: linear-gradient(to bottom right, #dee2ed, #f6fbff);
 
     @include mret() {
-      background-image: url("../img/main/slide2@2x--lg.jpg");
     }
   }
 
   &--near {
-    background-image: url("../img/main/slide3@1x--lg.jpg");
+    background-color: #e7f1fd;
 
     @include mret() {
-      background-image: url("../img/main/slide3@2x--lg.jpg");
     }
   }
 
   &--sliding {
     transition: transform 0.3s ease-in;
   }
+}
+
+.features__panel-wrapper {
+  &--credits {
+    background: url("../img/main/cards@1x--lg.png") left 698px top 53.5% / auto
+        286px no-repeat,
+      url("../img/main/blocks--lg.svg") left / cover;
+
+    @include mret() {
+      background-image: url("../img/main/cards@2x--lg.png"),
+        url("../img/main/blocks--lg.svg");
+    }
+  }
+
+  &--confidence {
+    background: url("../img/main/man@1x--lg.png") left 781px center / auto 400px
+      no-repeat;
+
+    @include mret() {
+      background-image: url("../img/main/man@2x--lg.png");
+    }
+  }
+
+  &--near {
+    background: url("../img/main/girl@1x--lg.png") left 775px center / auto
+      400px no-repeat;
+
+    @include mret() {
+      background-image: url("../img/main/girl@2x--lg.png");
+    }
+  }
+}
+
+.features__content-wrapper {
+  max-width: 500px;
+  min-height: 400px;
+  padding: 96px 0 110px;
 }
 
 .features__panel p {

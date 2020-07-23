@@ -9,11 +9,20 @@ function Panel({children, style, block, mod}) {
       className={getClasses({block, element: `panel`, modifiers: mod})}
       style={style}
     >
-      <div className={getClasses({block: `container`, modifiers: [block]})}>
-        <p className={getClasses({block, element: `title`, modifiers: mod})}>
+      <div
+        className={
+          getClasses({block: `container`, modifiers: [block]}) +
+          ` ` +
+          getClasses({block, element: `panel-wrapper`, modifiers: mod})
+        }
+      >
+        <div className={getClasses({block, element: `content-wrapper`})}>
+
+          <p className={getClasses({block, element: `title`, modifiers: mod})}>
           Лига Банк
-        </p>
-        {children}
+          </p>
+          {children}
+        </div>
       </div>
     </div>
   );

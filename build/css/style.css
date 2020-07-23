@@ -947,12 +947,6 @@ section:focus {
   position: relative; }
 
 .features__panel {
-  background-size: cover;
-  background-position: top left;
-  background-repeat: no-repeat;
-  color: #2b3c4f;
-  min-height: 400px;
-  padding: 96px 0 110px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -968,26 +962,41 @@ section:focus {
     z-index: -1; }
   .features__panel--credits {
     background-color: #2c36f2;
-    background-image: url("../img/main/slide1@1x--lg.jpg");
     color: #e0e1ea; }
-    @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
-      .features__panel--credits {
-        background-image: url("../img/main/slide1@2x--lg.jpg"); } }
   .features__panel--confidence {
-    background-image: url("../img/main/slide2@1x--lg.jpg"); }
-    @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
-      .features__panel--confidence {
-        background-image: url("../img/main/slide2@2x--lg.jpg"); } }
+    background-color: #dee2ed;
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#dee2ed), to(#f6fbff));
+    background-image: linear-gradient(to bottom right, #dee2ed, #f6fbff); }
   .features__panel--near {
-    background-image: url("../img/main/slide3@1x--lg.jpg"); }
-    @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
-      .features__panel--near {
-        background-image: url("../img/main/slide3@2x--lg.jpg"); } }
+    background-color: #e7f1fd; }
   .features__panel--sliding {
     -webkit-transition: -webkit-transform 0.3s ease-in;
     transition: -webkit-transform 0.3s ease-in;
     transition: transform 0.3s ease-in;
     transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in; }
+
+.features__panel-wrapper--credits {
+  background: url("../img/main/cards@1x--lg.png") left 698px top 53.5%/auto 286px no-repeat, url("../img/main/blocks--lg.svg") left/cover; }
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+    .features__panel-wrapper--credits {
+      background-image: url("../img/main/cards@2x--lg.png"), url("../img/main/blocks--lg.svg"); } }
+
+.features__panel-wrapper--confidence {
+  background: url("../img/main/man@1x--lg.png") left 781px center/auto 400px no-repeat; }
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+    .features__panel-wrapper--confidence {
+      background-image: url("../img/main/man@2x--lg.png"); } }
+
+.features__panel-wrapper--near {
+  background: url("../img/main/girl@1x--lg.png") left 775px center/auto 400px no-repeat; }
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+    .features__panel-wrapper--near {
+      background-image: url("../img/main/girl@2x--lg.png"); } }
+
+.features__content-wrapper {
+  max-width: 500px;
+  min-height: 400px;
+  padding: 96px 0 110px; }
 
 .features__panel p {
   margin: 0;
