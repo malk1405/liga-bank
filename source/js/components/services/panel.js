@@ -16,7 +16,7 @@ function Panel({children, panelRef, block, mod}) {
           getClasses({block, element: `panel-wrapper`, modifiers: mod})
         }
       >
-        <div className={getClasses({block, element: `content-wrapper`})}>
+        <div className={getClasses({block, element: `content-wrapper`, modifiers: mod})}>
           {children}
         </div>
       </div>

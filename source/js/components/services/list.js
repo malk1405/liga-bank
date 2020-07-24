@@ -8,7 +8,7 @@ import getClasses from '../../utils/getClasses';
 
 function List({children}) {
   return (
-    <ul className={getClasses({block, element: `list`})}>
+    <ul className={getClasses({block, element: `list`}) + ` list`}>
       {children.map((el, i) => (
         <ListItem key={i} block={block}>
           {el}

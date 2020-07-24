@@ -8,6 +8,8 @@ import InsuranceSVG from '../../../img/svg/inline/security.svg';
 import PhoneSVG from '../../../img/svg/inline/phone.svg';
 
 import getClasses from '../../utils/getClasses';
+import Description from './description';
+import Button from './button';
 
 const block = `services`;
 
@@ -18,7 +20,9 @@ const tabs = [
     tabMod: [`dark`],
     content: (
       <React.Fragment>
-        <p>Вклады Лига Банка – это выгодная инвестиция в свое будущее</p>
+        <Description>
+          Вклады Лига Банка – это выгодная инвестиция в свое будущее
+        </Description>
         <List>
           {[
             `Проценты по вкладам до 7%`,
@@ -26,15 +30,7 @@ const tabs = [
             `Возможность ежемесячной капитализации или вывод процентов на банковскую карту`,
           ]}
         </List>
-        <Link
-          classes={getClasses({
-            block: `button`,
-            modifiers: [`main`],
-          })}
-          draggable={false}
-        >
-          Узнать подробнее
-        </Link>
+        <Button></Button>
       </React.Fragment>
     ),
   },
@@ -44,8 +40,8 @@ const tabs = [
     tabMod: [`dark`],
     content: (
       <React.Fragment>
-        <p>Лига Банк выдает кредиты под любые цели</p>
-        <List>{[`Ипотечный кредит`, `Автокредит`, `Потребительский`]}</List>
+        <Description>Лига Банк выдает кредиты под любые цели</Description>
+        <List>{[`Ипотечный кредит`, `Автокредит`, `Потребительский кредит`]}</List>
         <p>
           Рассчитайте ежемесячный платеж и ставку по кредиту воспользовавшись
           нашим{` `}
@@ -67,7 +63,9 @@ const tabs = [
     tabMod: [`dark`],
     content: (
       <React.Fragment>
-        <p>Лига Страхование — застрахуем все что захотите</p>
+        <Description>
+          Лига Страхование — застрахуем все что захотите
+        </Description>
         <List>
           {[
             `Автомобильное страхование`,
@@ -75,15 +73,7 @@ const tabs = [
             `Страхование недвижимости`,
           ]}
         </List>
-        <Link
-          classes={getClasses({
-            block: `button`,
-            modifiers: [`main`],
-          })}
-          draggable={false}
-        >
-          Узнать подробнее
-        </Link>
+        <Button></Button>
       </React.Fragment>
     ),
   },
@@ -93,10 +83,10 @@ const tabs = [
     tabMod: [`dark`],
     content: (
       <React.Fragment>
-        <p>
+        <Description>
           Лига Банк — это огромное количество онлайн-сервисов для вашего
           удобства
-        </p>
+        </Description>
         <List>
           {[
             <React.Fragment key="0">
@@ -107,15 +97,7 @@ const tabs = [
             `Приложение Лига-проездной позволит вам оплачивать билеты по всему миру`,
           ]}
         </List>
-        <Link
-          classes={getClasses({
-            block: `button`,
-            modifiers: [`main`],
-          })}
-          draggable={false}
-        >
-          Узнать подробнее
-        </Link>
+        <Button></Button>
       </React.Fragment>
     ),
   },
