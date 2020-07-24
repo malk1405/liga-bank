@@ -9,7 +9,7 @@ import MediaContext from '../../context/media';
 function Services() {
   const {isTablet} = useContext(MediaContext);
   return (
-    <section className={block}>
+    <section className={`${block} container`}>
       <h2 className="visually-hidden">Услуги</h2>
       <Tabs
         config={config}

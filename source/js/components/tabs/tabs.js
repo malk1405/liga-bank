@@ -25,18 +25,22 @@ function Tabs({config, block, Tab, Panel, autoChangeTimeout, hasSwipe}) {
     dispatch({type: SET_ID, payload: {id: e.target.value}});
   };
 
-  const getInteraction = () => {
-    dispatch({type: INTERACT, payload: {interactive: true}});
-  };
+  const getInteraction = autoChangeTimeout
+    ? () => {
+      dispatch({type: INTERACT, payload: {interactive: true}});
+    }
+    : null;
 
-  const loseInteraction = () => {
-    dispatch({
-      type: INTERACT,
-      payload: {
-        interactive: container.current.contains(document.activeElement),
-      },
-    });
-  };
+  const loseInteraction = autoChangeTimeout
+    ? () => {
+      dispatch({
+        type: INTERACT,
+        payload: {
+          interactive: container.current.contains(document.activeElement),
+        },
+      });
+    }
+    : null;
 
   const onDrag = (type) => {
     return (e) => {
@@ -109,7 +113,9 @@ function Tabs({config, block, Tab, Panel, autoChangeTimeout, hasSwipe}) {
               block={block}
               mod={tabMod}
             >
-              <Tab block={block} mod={[mod]}>{tabContent}</Tab>
+              <Tab block={block} mod={[mod]}>
+                {tabContent}
+              </Tab>
             </TabContainer>
           </li>
         ))}

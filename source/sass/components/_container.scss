@@ -6,6 +6,10 @@
   &--features {
     padding: 0 268px;
   }
+
+  &--services {
+    padding: 0 70px;
+  }
 }
 
 @include mq(tablet) {

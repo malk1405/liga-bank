@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 import getClasses from '../../utils/getClasses';
 
 function Tab({block, mod, isSelected, children, onChange, id}) {
-  const cloneMod = [...mod];
-  if (isSelected) {
-    cloneMod.push(`selected`);
-  }
-
   const [isFocused, setIsFocused] = useState(false);
 
   const onFocus = () => {
@@ -18,7 +13,17 @@ function Tab({block, mod, isSelected, children, onChange, id}) {
     setIsFocused(false);
   };
 
-  const labelMod = isFocused ? [`focused`] : [];
+  const labelMod = [];
+  const cloneMod = [...mod];
+
+  if (isFocused) {
+    labelMod.push(`focused`);
+  }
+
+  if (isSelected) {
+    cloneMod.push(`selected`);
+    labelMod.push(`selected`);
+  }
 
   return (
     <label

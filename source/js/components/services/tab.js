@@ -7,7 +7,7 @@ import {block} from "./tabs";
 function Tab({mod, children: {SVG, text}}) {
   return (
     <React.Fragment>
-      <SVG className={getClasses({block, element: `icon`, mod})} />
+      <SVG className={getClasses({block, element: `icon`, modifiers: mod})} />
       <span>{text}</span>
     </React.Fragment>
   );
