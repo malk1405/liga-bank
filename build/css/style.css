@@ -1163,12 +1163,17 @@ section:focus {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  position: relative;
   width: 100%; }
   .services__label--selected {
     cursor: auto; }
   .services__label--selected, .services__label:hover {
     background-color: #f6f7ff;
     fill: #2c36f2; }
+  .services__label--focused {
+    -webkit-box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5);
+            box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5);
+    z-index: 1; }
 
 .services__label .radio-clone {
   display: none; }

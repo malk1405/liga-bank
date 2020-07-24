@@ -25,6 +25,7 @@
   fill: $blue-color-tab;
   height: 100%;
   justify-content: center;
+  position: relative;
   width: 100%;
 
   &--selected {
@@ -35,6 +36,11 @@
   &:hover {
     background-color: $bg-color-primary;
     fill: $blue-color-main;
+  }
+
+  &--focused {
+    box-shadow: $focus-shadow;
+    z-index: 1;
   }
 }
 
