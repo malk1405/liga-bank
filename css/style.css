@@ -444,6 +444,8 @@ section:focus {
   padding: 0 98px; }
   .container--features {
     padding: 0 268px; }
+  .container--services {
+    padding: 0 70px; }
 
 @media screen and (max-width: 1023px) {
   .container {
@@ -1125,10 +1127,61 @@ section:focus {
 
 .services {
   font-size: 1.8rem;
-  font-weight: normal; }
+  font-weight: normal;
+  margin-top: 6rem; }
+
+.services__tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-weight: 500; }
+
+.services__tab {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  min-height: 93px;
+  width: 25%; }
+
+.services__label {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  fill: #565ef5;
+  height: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%; }
+  .services__label--selected {
+    cursor: auto; }
+  .services__label--selected, .services__label:hover {
+    background-color: #f6f7ff;
+    fill: #2c36f2; }
+
+.services__label .radio-clone {
+  display: none; }
+
+.services__icon {
+  margin-right: 1rem; }
 
 .services__link {
   font-weight: 500; }
+
+@media screen and (max-width: 1023px) {
+  .services__label .radio-clone {
+    display: block; } }
 
 .map {
   max-width: 100%;
