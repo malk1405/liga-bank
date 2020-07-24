@@ -1180,26 +1180,39 @@ section:focus {
   font-weight: 500; }
 
 .services__panel-wrapper {
-  background: #f6f7ff right calc(60% - 305px) center/440px 290px no-repeat; }
-  .services__panel-wrapper--deposits {
+  position: relative;
+  background: #f6f7ff; }
+  .services__panel-wrapper::after {
+    background-size: cover;
+    background-position: center;
+    content: "";
+    max-width: 440px;
+    height: 290px;
+    position: absolute;
+    right: 11.5%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    width: calc(440px - (1170px - 100%) / 1.8); }
+  .services__panel-wrapper--deposits::after {
     background-image: url("../img/services/tab1@1x--lg.jpg"); }
     @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
-      .services__panel-wrapper--deposits {
+      .services__panel-wrapper--deposits::after {
         background-image: url("../img/services/tab1@2x--lg.jpg"); } }
-  .services__panel-wrapper--credits {
+  .services__panel-wrapper--credits::after {
     background-image: url("../img/services/tab2@1x--lg.jpg"); }
     @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
-      .services__panel-wrapper--credits {
+      .services__panel-wrapper--credits::after {
         background-image: url("../img/services/tab2@2x--lg.jpg"); } }
-  .services__panel-wrapper--insurance {
+  .services__panel-wrapper--insurance::after {
     background-image: url("../img/services/tab3@1x--lg.jpg"); }
     @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
-      .services__panel-wrapper--insurance {
+      .services__panel-wrapper--insurance::after {
         background-image: url("../img/services/tab3@2x--lg.jpg"); } }
-  .services__panel-wrapper--online {
+  .services__panel-wrapper--online::after {
     background-image: url("../img/services/tab4@1x--lg.jpg"); }
     @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
-      .services__panel-wrapper--online {
+      .services__panel-wrapper--online::after {
         background-image: url("../img/services/tab4@2x--lg.jpg"); } }
 
 .services__content-wrapper {
