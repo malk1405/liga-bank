@@ -51,10 +51,24 @@
 }
 
 .services__panel-wrapper {
-  background: $bg-color-primary right calc(60% - 305px) center / 440px 290px
-    no-repeat;
+  position: relative;
 
-  &--deposits {
+  background: $bg-color-primary;
+
+  &::after {
+    background-size: cover;
+    background-position: center;
+    content: "";
+    max-width: 440px;
+    height: 290px;
+    position: absolute;
+    right: 11.5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(440px - (1170px - 100%) / 1.8);
+  }
+
+  &--deposits::after {
     background-image: url("../img/services/tab1@1x--lg.jpg");
 
     @include mret() {
@@ -62,7 +76,7 @@
     }
   }
 
-  &--credits {
+  &--credits::after {
     background-image: url("../img/services/tab2@1x--lg.jpg");
 
     @include mret() {
@@ -70,7 +84,7 @@
     }
   }
 
-  &--insurance {
+  &--insurance::after {
     background-image: url("../img/services/tab3@1x--lg.jpg");
 
     @include mret() {
@@ -78,7 +92,7 @@
     }
   }
 
-  &--online {
+  &--online::after {
     background-image: url("../img/services/tab4@1x--lg.jpg");
 
     @include mret() {
