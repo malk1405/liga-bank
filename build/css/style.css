@@ -455,6 +455,84 @@ section:focus {
   .container {
     padding: 0 15px; } }
 
+.radio-clone {
+  background-color: #2028b6;
+  border-radius: 100%;
+  display: block;
+  height: 8px;
+  width: 8px; }
+  .radio-clone--selected {
+    background-color: #f6f7ff; }
+  .radio-clone--selected.radio-clone--dark {
+    background-color: #e0e0e0; }
+
+@media screen and (max-width: 767px) {
+  .features__radio-clone {
+    height: 6px;
+    width: 6px; } }
+
+.modal,
+.modal__backdrop {
+  height: 100%;
+  width: 100%; }
+
+.modal {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  z-index: 1000; }
+
+.modal-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-height: 100vh;
+  overflow-y: auto;
+  border-radius: 8px; }
+
+.modal__backdrop {
+  background-color: #ebebeb;
+  content: "";
+  left: 0;
+  opacity: 0.95;
+  position: fixed;
+  top: 0;
+  z-index: -1; }
+
+.modal__body {
+  background-color: white;
+  min-height: 521px;
+  position: relative;
+  width: 480px; }
+
+.modal__close-btn {
+  position: absolute;
+  right: 32px;
+  top: 32px; }
+  .modal__close-btn svg {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+
+@media screen and (max-width: 767px) {
+  .modal-wrapper {
+    border-radius: 0; }
+  .modal__body {
+    height: 100vh;
+    width: 100vw; }
+  .modal__close-btn {
+    right: 24px;
+    top: 24px; } }
+
 :root {
   font-size: 62.5%; }
 
@@ -839,68 +917,6 @@ section:focus {
   .footer__social {
     margin-top: 0; } }
 
-.modal,
-.modal__backdrop {
-  height: 100%;
-  width: 100%; }
-
-.modal {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  left: 0;
-  position: fixed;
-  top: 0;
-  z-index: 1000; }
-
-.modal-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  max-height: 100vh;
-  overflow-y: auto;
-  border-radius: 8px; }
-
-.modal__backdrop {
-  background-color: #ebebeb;
-  content: "";
-  left: 0;
-  opacity: 0.95;
-  position: fixed;
-  top: 0;
-  z-index: -1; }
-
-.modal__body {
-  background-color: white;
-  min-height: 521px;
-  position: relative;
-  width: 480px; }
-
-.modal__close-btn {
-  position: absolute;
-  right: 32px;
-  top: 32px; }
-  .modal__close-btn svg {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex; }
-
-@media screen and (max-width: 767px) {
-  .modal-wrapper {
-    border-radius: 0; }
-  .modal__body {
-    height: 100vh;
-    width: 100vw; }
-  .modal__close-btn {
-    right: 24px;
-    top: 24px; } }
-
 .features__tabs-container {
   position: relative; }
 
@@ -930,17 +946,6 @@ section:focus {
             box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5); }
   .features__label:active {
     opacity: 0.6; }
-
-.features__radio-clone {
-  background-color: #2028b6;
-  border-radius: 8px;
-  display: block;
-  height: 8px;
-  width: 8px; }
-  .features__radio-clone--selected {
-    background-color: #f6f7ff; }
-  .features__radio-clone--selected.features__radio-clone--dark {
-    background-color: #e0e0e0; }
 
 .features__panel-container {
   overflow: hidden;
@@ -1077,10 +1082,6 @@ section:focus {
     background-image: none; }
   .features__tab {
     margin-left: 6px; }
-  .features__radio-clone {
-    border-radius: 6px;
-    height: 6px;
-    width: 6px; }
   .features__panel-wrapper--credits.features__panel-wrapper {
     background: url("../img/main/cards@1x--sm.png") left calc(40% + 227px) top 45%/auto 190px no-repeat !important; } }
   @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 767px) and (min-resolution: 144dpi), screen and (max-width: 767px) and (min-resolution: 1.5dppx) {
@@ -1121,6 +1122,13 @@ section:focus {
     margin-top: 2.4rem;
     min-width: 188px;
     padding: 1.2rem; } }
+
+.services {
+  font-size: 1.8rem;
+  font-weight: normal; }
+
+.services__link {
+  font-weight: 500; }
 
 .map {
   max-width: 100%;

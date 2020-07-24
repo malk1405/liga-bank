@@ -1,0 +1,22 @@
+.radio-clone {
+  background-color: $blue-color-dark;
+  border-radius: 100%;
+  display: block;
+  height: 8px;
+  width: 8px;
+
+  &--selected {
+    background-color: $bg-color-primary;
+  }
+
+  &--selected#{&}--dark {
+    background-color: $tab-circle-color;
+  }
+}
+
+@include mq(phone) {
+  .features__radio-clone {
+    height: 6px;
+    width: 6px;
+  }
+}

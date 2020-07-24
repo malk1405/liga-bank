@@ -31,22 +31,6 @@
   }
 }
 
-.features__radio-clone {
-  background-color: $blue-color-dark;
-  border-radius: 8px;
-  display: block;
-  height: 8px;
-  width: 8px;
-
-  &--selected {
-    background-color: $bg-color-primary;
-  }
-
-  &--selected#{&}--dark {
-    background-color: $tab-circle-color;
-  }
-}
-
 .features__panel-container {
   overflow: hidden;
   position: relative;
@@ -245,12 +229,6 @@
 
   .features__tab {
     margin-left: 6px;
-  }
-
-  .features__radio-clone {
-    border-radius: 6px;
-    height: 6px;
-    width: 6px;
   }
 
   .features__panel-wrapper {

@@ -36,8 +36,7 @@ function Tab({block, mod, isSelected, children, onChange, id}) {
       />
       <span
         className={getClasses({
-          block,
-          element: `radio-clone`,
+          block: `radio-clone`,
           modifiers: cloneMod,
         })}
       ></span>

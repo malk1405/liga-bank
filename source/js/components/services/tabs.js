@@ -15,6 +15,7 @@ const tabs = [
   {
     mod: `deposits`,
     tabContent: {text: `Вклады`, SVG: VaultSVG},
+    tabMod: [`dark`],
     content: (
       <React.Fragment>
         <p>Вклады Лига Банка – это выгодная инвестиция в свое будущее</p>
@@ -40,13 +41,21 @@ const tabs = [
   {
     mod: `credits`,
     tabContent: {text: `Кредиты`, SVG: CreditsSVG},
+    tabMod: [`dark`],
     content: (
       <React.Fragment>
         <p>Лига Банк выдает кредиты под любые цели</p>
         <List>{[`Ипотечный кредит`, `Автокредит`, `Потребительский`]}</List>
         <p>
           Рассчитайте ежемесячный платеж и ставку по кредиту воспользовавшись
-          нашим <Link draggable={false}>кредитным калькулятором</Link>
+          нашим{` `}
+          <Link
+            classes={getClasses({block, element: `link`})}
+            draggable={false}
+            href="#calculator"
+          >
+            кредитным калькулятором
+          </Link>
         </p>
       </React.Fragment>
     ),
@@ -54,6 +63,8 @@ const tabs = [
   {
     mod: `insurance`,
     tabContent: {text: `Страхование`, SVG: InsuranceSVG},
+
+    tabMod: [`dark`],
     content: (
       <React.Fragment>
         <p>Лига Страхование — застрахуем все что захотите</p>
@@ -79,6 +90,7 @@ const tabs = [
   {
     mod: `online`,
     tabContent: {text: `Онлайн-сервисы`, SVG: PhoneSVG},
+    tabMod: [`dark`],
     content: (
       <React.Fragment>
         <p>
