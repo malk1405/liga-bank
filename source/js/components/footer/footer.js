@@ -25,7 +25,7 @@ function Footer() {
             ))}
           </ul>
         </div>
-        <div className="footer__contacts">
+        <div className="footer__contacts" id="contacts">
           <ul className="footer__phones list">
             {contacts.map(({Img, tel, text, mod}) => (
               <li key={tel} className={`footer__phone footer__phone--${mod}`}>
