@@ -11,6 +11,11 @@ function NumberInput({value, onChange, text, validate, errorMessage}) {
   const [position, setPosition] = useState(null);
   const [hasError, setHasError] = useState(false);
   const inputRef = useRef(null);
+  const isDelRef = useRef(null);
+
+  const handleKeyDown = (e) => {
+    isDelRef.current = e.keyCode === 46;
+  };
 
   const handleChange = (e) => {
     const {value: newValue, selectionEnd: cursorPosition} = e.target;
@@ -18,16 +23,12 @@ function NumberInput({value, onChange, text, validate, errorMessage}) {
     if (/^[0-9 ]*$/.test(newValue)) {
       const val = Number(newValue.replace(/ /g, ``)) || 0;
       if (val === value) {
-        setPosition(cursorPosition);
+        setPosition(cursorPosition + isDelRef.current);
       } else {
         const addedSymbols =
           modifyValue(val).length - modifyValue(value).length;
-
-        setPosition(
-            addedSymbols < 0
-              ? cursorPosition + addedSymbols + 1
-              : cursorPosition + addedSymbols - 1
-        );
+        const newPos = cursorPosition + addedSymbols - Math.sign(addedSymbols);
+        setPosition(newPos < 0 ? 0 : newPos);
         onChange(val);
       }
     } else {
@@ -57,6 +58,7 @@ function NumberInput({value, onChange, text, validate, errorMessage}) {
           size={modifiedValue.length}
           className={getClasses({block, element: `field`})}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
         ></input>
         {text}
       </label>
