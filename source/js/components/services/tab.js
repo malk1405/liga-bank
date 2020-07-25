@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import getClasses from '../../utils/getClasses';
 
-import {block} from "./tabs";
+import {block} from './tabs';
 
 function Tab({mod, children: {SVG, text}}) {
   return (
-    <React.Fragment>
+    <span className={getClasses({block, element: `tab-info`})}>
       <SVG className={getClasses({block, element: `icon`, modifiers: mod})} />
       <span>{text}</span>
-    </React.Fragment>
+    </span>
   );
 }
 

@@ -48,12 +48,18 @@
   display: none;
 }
 
+.services__tab-info {
+  align-items: center;
+  display: flex;
+}
+
 .services__icon {
   margin-right: 1rem;
 }
 
 .services__link {
   font-weight: 500;
+  text-decoration: underline;
 }
 
 .services__panel-wrapper {
@@ -110,6 +116,8 @@
 .services__content-wrapper {
   max-width: 392px;
   padding: 5.5rem 0 5.2rem;
+  position: relative;
+  z-index: 1;
 
   &--credits {
     max-width: 370px;
@@ -135,7 +143,7 @@
 }
 
 .services__description p {
-  font-weight: bold;
+  font-weight: 500;
   font-size: 2.2rem;
   margin-top: 0;
 }
@@ -166,11 +174,145 @@
 }
 
 @include mq(tablet) {
+  .services {
+    font-size: 1.6rem;
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .services__tabs-container {
+    position: relative;
+  }
+
+  .services__tabs {
+    bottom: 15px;
+    left: 50%;
+    margin-left: -4px;
+    position: absolute;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .services__tab {
+    margin-left: 8px;
+    min-height: auto;
+    width: auto;
+  }
+
+  .services__label {
+    border-radius: 100%;
+  }
+
+  .services__tab-info {
+    display: none;
+  }
+
   .services__label .radio-clone {
     display: block;
   }
 
+  .services__panel-container {
+    position: relative;
+    overflow: hidden;
+  }
+
   .services__panel {
     user-select: none;
+
+    &--next {
+      height: 100%;
+      left: 50%;
+      position: absolute;
+      transform: translateX(-50%);
+      top: 0;
+      width: 100%;
+      z-index: -1;
+    }
+
+    &--sliding {
+      transition: transform 0.3s ease-in;
+    }
+  }
+
+  .services__panel-wrapper {
+    min-height: 380px;
+
+    &::after {
+      height: 260px;
+      right: calc(45px + (100% - 768px) / 2);
+      top: 50%;
+      transform: translateY(-50%);
+      width: 289px;
+    }
+
+    &--deposits::after {
+      background-image: url("../img/services/tab1@1x--md.jpg");
+
+      @include mret() {
+        background-image: url("../img/services/tab1@2x--md.jpg");
+      }
+    }
+
+    &--credits::after {
+      background-image: url("../img/services/tab2@1x--md.jpg");
+
+      @include mret() {
+        background-image: url("../img/services/tab2@2x--md.jpg");
+      }
+    }
+
+    &--insurance::after {
+      background-image: url("../img/services/tab3@1x--md.jpg");
+
+      @include mret() {
+        background-image: url("../img/services/tab3@2x--md.jpg");
+      }
+    }
+
+    &--online::after {
+      background-image: url("../img/services/tab4@1x--md.jpg");
+
+      @include mret() {
+        background-image: url("../img/services/tab4@2x--md.jpg");
+      }
+    }
+  }
+
+  .services__content-wrapper {
+    max-width: 370px;
+
+    &--credits {
+      max-width: 330px;
+
+      .services__description {
+        max-width: 250px;
+      }
+    }
+
+    &--insurance {
+      max-width: 300px;
+    }
+
+    &--online {
+      max-width: 340px;
+    }
+  }
+
+  .services__description p {
+    font-size: 1.8rem;
+  }
+
+  .services__list {
+    margin-top: 2.4rem;
+  }
+
+  .services__item {
+    margin-bottom: 1.4rem;
+    line-height: 2.1rem;
+  }
+
+  .services__button {
+    margin-top: 1.4rem;
+    margin-bottom: 0.5rem;
   }
 }
