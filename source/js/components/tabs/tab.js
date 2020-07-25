@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import getClasses from '../../utils/getClasses';
 
-function Tab({block, mod, isSelected, children, onChange, id}) {
+function Tab({block, mod, isSelected, children, onChange, id, title}) {
   const [isFocused, setIsFocused] = useState(false);
 
   const onFocus = () => {
@@ -28,6 +28,8 @@ function Tab({block, mod, isSelected, children, onChange, id}) {
   return (
     <label
       className={getClasses({block, element: `label`, modifiers: labelMod})}
+      aria-label={title}
+      title={title}
     >
       <input
         type="radio"
@@ -62,6 +64,7 @@ Tab.propTypes = {
   children: PropTypes.node,
   onChange: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
+  title: PropTypes.string
 };
 
 export default Tab;

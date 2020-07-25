@@ -112,6 +112,7 @@ function Tabs({config, block, Tab, Panel, autoChangeTimeout, hasSwipe}) {
               isSelected={+selectedId === id}
               block={block}
               mod={tabMod}
+              title={tabContent.text}
             >
               <Tab block={block} mod={[mod]}>
                 {tabContent}
