@@ -190,7 +190,7 @@
     margin-left: -4px;
     position: absolute;
     transform: translateX(-50%);
-    z-index: 1;
+    z-index: 2;
   }
 
   .services__tab {
@@ -240,8 +240,6 @@
     &::after {
       height: 260px;
       right: calc(45px + (100% - 768px) / 2);
-      top: 50%;
-      transform: translateY(-50%);
       width: 289px;
     }
 
@@ -314,5 +312,106 @@
   .services__button {
     margin-top: 1.4rem;
     margin-bottom: 0.5rem;
+  }
+}
+
+@include mq(phone) {
+  .services__tabs {
+    bottom: 10px;
+    margin-left: -3px;
+  }
+
+  .services__tab {
+    margin-left: 6px;
+  }
+
+  .services__panel-wrapper {
+    min-height: 362px;
+
+    &::after {
+      height: calc(113 * (100vw / 320));
+      background-size: contain;
+      background-repeat: no-repeat;
+      max-height: 50%;
+      right: calc((100% - 320px) / 3);
+      top: 98px;
+      transform: none;
+      width: calc(87 * (100vw / 320));
+    }
+
+    &--deposits::after {
+      background-image: url("../img/services/tab1@2x--sm.jpg");
+    }
+
+    &--credits::after {
+      background-image: url("../img/services/tab2@2x--sm.jpg");
+    }
+
+    &--insurance::after {
+      background-image: url("../img/services/tab3@2x--sm.jpg");
+    }
+
+    &--online::after {
+      background-image: url("../img/services/tab4@2x--sm.jpg");
+    }
+  }
+
+  .services p {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    margin-top: 2.2rem;
+  }
+
+  .services__description p {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    margin-top: 0;
+  }
+
+  .services__content-wrapper {
+    max-width: 300px;
+    padding-bottom: 2.5rem;
+
+    &--credits {
+      max-width: 270px;
+
+      .services__description {
+        max-width: 220px;
+      }
+    }
+
+    &--insurance {
+      max-width: 250px;
+    }
+
+    &--online {
+      max-width: 230px;
+    }
+  }
+
+  .services__list {
+    margin-top: 2.1rem;
+    max-width: 250px;
+  }
+
+  .services__item {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    margin-bottom: 1.2rem;
+    padding-left: 1.5rem;
+  }
+
+  .services__mark {
+    height: 8px;
+    top: 4px;
+    width: 10px;
+  }
+
+  .services__button {
+    font-size: 1.4rem;
+    margin-top: 1.1rem;
+    height: 4.3rem;
+    width: 290px;
+    margin-bottom: 0;
   }
 }
