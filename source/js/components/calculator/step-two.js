@@ -51,6 +51,7 @@ function StepTwo({id}) {
 
       {Boolean(firstPay) && (
         <NumberField
+          title="Первоначальный взнос"
           value={{v: firstPay}}
           text={conjugate(firstPay, rubles)}
         />
