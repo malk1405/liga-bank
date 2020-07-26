@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Step from './step';
 import StepOne from './step-one';
+import StepTwo from './step-two';
 
 function Calculator() {
   const [id, setId] = useState(null);
@@ -14,6 +15,12 @@ function Calculator() {
       <Step num={1} title="Цель кредита">
         <StepOne id={id} onChange={onChange}></StepOne>
       </Step>
+
+      {typeof id === `number` && (
+        <Step num={2} title="Введите параметры кредита">
+          <StepTwo id={id}></StepTwo>
+        </Step>
+      )}
     </section>
   );
 }
