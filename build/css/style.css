@@ -1385,7 +1385,7 @@ section:focus {
   .services__panel-wrapper {
     min-height: 362px; }
     .services__panel-wrapper::after {
-      height: calc(113 * (100vw / 320));
+      height: calc(113px - 50px + (100vw / 320) * 50);
       background-size: contain;
       background-repeat: no-repeat;
       max-height: 50%;
@@ -1393,7 +1393,7 @@ section:focus {
       top: 98px;
       -webkit-transform: none;
               transform: none;
-      width: calc(87 * (100vw / 320)); }
+      width: calc(87px - 50px + (100vw / 320) * 50); }
     .services__panel-wrapper--deposits::after {
       background-image: url("../img/services/tab1@2x--sm.jpg"); }
     .services__panel-wrapper--credits::after {

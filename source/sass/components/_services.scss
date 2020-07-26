@@ -329,14 +329,14 @@
     min-height: 362px;
 
     &::after {
-      height: calc(113 * (100vw / 320));
+      height: calc(113px - 50px + (100vw / 320) * 50);
       background-size: contain;
       background-repeat: no-repeat;
       max-height: 50%;
       right: calc((100% - 320px) / 3);
       top: 98px;
       transform: none;
-      width: calc(87 * (100vw / 320));
+      width: calc(87px - 50px + (100vw / 320) * 50);
     }
 
     &--deposits::after {
