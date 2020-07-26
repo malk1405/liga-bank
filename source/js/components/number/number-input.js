@@ -7,9 +7,8 @@ function modifyValue(num) {
 }
 
 const block = `number-input`;
-function NumberInput({value, onChange, text, validate, errorMessage}) {
+function NumberInput({value, onChange}) {
   const [position, setPosition] = useState(null);
-  const [hasError, setHasError] = useState(false);
   const inputRef = useRef(null);
   const isDelRef = useRef(null);
 
@@ -43,44 +42,25 @@ function NumberInput({value, onChange, text, validate, errorMessage}) {
     }
   }, [position]);
 
-  useEffect(() => {
-    setHasError(!validate(value));
-  }, [value, validate]);
-
   const modifiedValue = modifyValue(value);
 
   return (
-    <div className={getClasses({block})}>
-      <label>
-        <input
-          ref={inputRef}
-          value={modifiedValue}
-          size={modifiedValue.length}
-          className={getClasses({block, element: `field`})}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-        ></input>
-        {text}
-      </label>
-      {hasError && <p>{errorMessage}</p>}
-    </div>
+    <input
+      ref={inputRef}
+      type="text"
+      inputMode="numeric"
+      value={modifiedValue}
+      size={modifiedValue.length}
+      className={getClasses({block, element: `field`})}
+      onChange={handleChange}
+      onKeyDown={handleKeyDown}
+    ></input>
   );
 }
-
-NumberInput.defaultProps = {
-  validate() {
-    return true;
-  },
-
-  errorMessage: `Ошибка`,
-};
 
 NumberInput.propTypes = {
   value: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired,
-  validate: PropTypes.func,
-  errorMessage: PropTypes.string,
 };
 
 export default NumberInput;
