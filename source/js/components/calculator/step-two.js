@@ -1,10 +1,10 @@
 import React, {useEffect, useState, useCallback, useRef} from 'react';
 import PropTypes from 'prop-types';
 
-import conjugate, {rubles, years} from '../../utils/conjugate';
-
 import creditTypes from './credit-types';
 import NumberField from '../number/number-field';
+import {rubles, years} from '../../utils/conjugate';
+import Range from '../range/range';
 
 function StepTwo({id}) {
   const [price, setPrice] = useState(null);
@@ -43,25 +43,51 @@ function StepTwo({id}) {
   return (
     <form>
       <NumberField
-        value={{v: price}}
+        value={price}
         title={config.priceTitle}
         onChange={setPrice}
-        text={conjugate(price, rubles)}
+        units={rubles}
+        min={config.price.min}
+        max={config.price.max}
+        step={config.price.step}
       />
 
-      {Boolean(firstPay) && (
-        <NumberField
-          title="Первоначальный взнос"
-          value={{v: firstPay}}
-          text={conjugate(firstPay, rubles)}
-        />
+      {Boolean(config.firstPay) && (
+        <React.Fragment>
+          <NumberField
+            title="Первоначальный взнос"
+            value={firstPay}
+            units={rubles}
+            min={(price * config.firstPay.minPercentage) / 100}
+            max={price}
+            onChange={setFirstPay}
+            hasAutoCorrection
+          />
+          <Range
+            min={config.firstPay.minPercentage}
+            max={100}
+            step={5}
+            value={firstPayPercent}
+            onChange={setFirstPayPercent}
+          />
+        </React.Fragment>
       )}
 
       <NumberField
-        value={{v: period}}
+        value={period}
         title="Срок кредитования"
         onChange={setPeriod}
-        text={conjugate(period, years)}
+        units={years}
+        min={config.period.min}
+        max={config.period.max}
+        hasAutoCorrection
+      />
+      <Range
+        min={config.period.min}
+        max={config.period.max}
+        step={1}
+        value={period}
+        onChange={setPeriod}
       />
 
       {config.checkboxes.map(({name, title}) => (

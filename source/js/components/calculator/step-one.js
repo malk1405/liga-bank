@@ -24,12 +24,14 @@ function StepOne({onChange, id}) {
 
   return !creditTypes[id] ? (
     <React.Fragment>
-      <button onClick={handleVisibilty}>Выберите цель кредита</button>
+      <button type="button" onClick={handleVisibilty}>
+        Выберите цель кредита
+      </button>
       {isVisible && (
         <ul>
           {creditTypes.map(({title}, i) => (
             <li key={i}>
-              <button onClick={handleClick} data-id={i}>
+              <button type="button" onClick={handleClick} data-id={i}>
                 {title}
               </button>
             </li>
@@ -38,7 +40,9 @@ function StepOne({onChange, id}) {
       )}
     </React.Fragment>
   ) : (
-    <button onClick={handleClick}>{creditTypes[id].title}</button>
+    <button type="button" onClick={handleClick}>
+      {creditTypes[id].title}
+    </button>
   );
 }
 
