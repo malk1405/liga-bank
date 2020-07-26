@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Step from './step';
 import StepOne from './step-one';
 
 function Calculator() {
@@ -9,10 +10,10 @@ function Calculator() {
 
   return (
     <section className="section" id="calculator">
-
       <h2>Кредитный калькулятор</h2>
-
-      <StepOne id={id} onChange={onChange}></StepOne>
+      <Step num={1} title="Цель кредита">
+        <StepOne id={id} onChange={onChange}></StepOne>
+      </Step>
     </section>
   );
 }

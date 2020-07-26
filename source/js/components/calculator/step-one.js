@@ -22,28 +22,23 @@ function StepOne({onChange, id}) {
     setIsVisible(false);
   }, [id]);
 
-  return (
-    <div>
-      <h3>Шаг 1. Цель кредита</h3>
-      <div>
-        {!creditTypes[id] ? (
-          <React.Fragment>
-            <button onClick={handleVisibilty}>Выберите цель кредита</button>
-            {isVisible && (
-              <ul>
-                {creditTypes.map(({title}, i) => (
-                  <li key={i}>
-                    <button onClick={handleClick} data-id={i}>{title}</button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </React.Fragment>
-        ) : (
-          <button onClick={handleClick}>{creditTypes[id].title}</button>
-        )}
-      </div>
-    </div>
+  return !creditTypes[id] ? (
+    <React.Fragment>
+      <button onClick={handleVisibilty}>Выберите цель кредита</button>
+      {isVisible && (
+        <ul>
+          {creditTypes.map(({title}, i) => (
+            <li key={i}>
+              <button onClick={handleClick} data-id={i}>
+                {title}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </React.Fragment>
+  ) : (
+    <button onClick={handleClick}>{creditTypes[id].title}</button>
   );
 }
 
