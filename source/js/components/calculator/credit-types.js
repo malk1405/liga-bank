@@ -126,6 +126,14 @@ const creditTypes = [
       }
     },
   },
-].map((el, i) => ({...el, id: i}));
+];
+
+creditTypes.forEach((el, i) => {
+  el.id = i;
+  el.price.validate = function validate(val) {
+    return val >= this.min && val <= this.max;
+  };
+  el.period.validate = el.price.validate;
+});
 
 export default creditTypes;

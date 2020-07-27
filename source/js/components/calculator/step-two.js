@@ -10,14 +10,35 @@ import formatNumber from '../../utils/format-number';
 
 function StepTwo({id}) {
   const [price, setPrice] = useState(null);
+  const [priceError, setPriceError] = useState(false);
+
   const [firstPayPercent, setFirstPayPercent] = useState(null);
+
   const [period, setPeriod] = useState(null);
+  const [periodError, setPeriodError] = useState(false);
+
   const [checkboxes, setCheckboxes] = useState({});
 
   const config = creditTypes[id];
 
+  const mountedRef = useRef(false);
+
+  useEffect(() => {
+    mountedRef.current = true;
+  }, []);
+
   const priceRef = useRef(price);
   priceRef.current = price;
+
+  const handlePriceChange = (value) => {
+    setPrice(value);
+    setPriceError(!config.price.validate(value));
+  };
+
+  const handlePeriodChange = (value) => {
+    setPeriod(value);
+    setPeriodError(!config.period.validate(value));
+  };
 
   const setFirstPay = useCallback(
       (value) => {
@@ -31,14 +52,16 @@ function StepTwo({id}) {
   };
 
   const handlePeriodBlur = () => {
-    setPeriod((prev) => {
-      const {min, max} = config.period;
-      if (prev < min) {
-        return min;
-      }
+    handlePeriodChange(
+        (function () {
+          const {min, max} = config.period;
+          if (period < min) {
+            return min;
+          }
 
-      return Math.min(max, prev);
-    });
+          return Math.min(max, period);
+        })()
+    );
   };
 
   if (!config) {
@@ -46,13 +69,13 @@ function StepTwo({id}) {
   }
 
   useEffect(() => {
-    setPrice(config.price.min);
+    handlePriceChange(config.price.min);
 
     if (config.firstPay) {
       setFirstPayPercent(config.firstPay.minPercentage);
     }
 
-    setPeriod(config.period.min);
+    handlePeriodChange(config.period.min);
   }, [id]);
 
   const firstPay = Math.round((price * firstPayPercent) / 100);
@@ -62,11 +85,12 @@ function StepTwo({id}) {
       <NumberField
         value={price}
         title={config.priceTitle}
-        onChange={setPrice}
+        onChange={handlePriceChange}
         units={rubles}
         min={config.price.min}
         max={config.price.max}
         step={config.price.step}
+        hasError={priceError}
       />
 
       {Boolean(config.firstPay) && (
@@ -96,8 +120,9 @@ function StepTwo({id}) {
         units={years}
         min={config.period.min}
         max={config.period.max}
-        onChange={setPeriod}
+        onChange={handlePeriodChange}
         onBlur={handlePeriodBlur}
+        hasError={periodError}
       />
       <Range
         min={config.period.min}
