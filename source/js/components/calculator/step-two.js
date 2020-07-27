@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 
 import creditTypes from './credit-types';
 import NumberField from '../number/number-field';
-import {rubles, years} from '../../utils/conjugate';
+import conjugate, {rubles, years} from '../../utils/conjugate';
 import Range from '../range/range';
+import Offer from './offer';
+import formatNumber from '../../utils/format-number';
 
 function StepTwo({id}) {
   const [price, setPrice] = useState(null);
@@ -96,8 +98,22 @@ function StepTwo({id}) {
           {title}
         </label>
       ))}
+
+      <Offer
+        config={[
+          {
+            title: config.sumTitle,
+            value: `${formatNumber(1300000)} ${conjugate(1300000, rubles)}`,
+          },
+        ]}
+        errorText=""
+      />
     </form>
   );
 }
+
+StepTwo.propTypes = {
+  id: PropTypes.number.isRequired
+};
 
 export default StepTwo;

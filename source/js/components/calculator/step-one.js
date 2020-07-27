@@ -46,4 +46,9 @@ function StepOne({onChange, id}) {
   );
 }
 
+StepOne.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  id: PropTypes.number,
+};
+
 export default StepOne;

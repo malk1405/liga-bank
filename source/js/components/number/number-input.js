@@ -2,13 +2,8 @@ import React, {useState, useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import getClasses from '../../utils/getClasses';
 import noop from '../../utils/noop';
+import formatNumber from '../../utils/format-number';
 
-function modifyValue(num) {
-  if (num === null) {
-    return ``;
-  }
-  return String(num).replace(/\B(?=(\d{3})+(?!\d))/g, ` `);
-}
 
 const block = `number-input`;
 function NumberInput({value, onChange, onBlur}) {
@@ -31,7 +26,7 @@ function NumberInput({value, onChange, onBlur}) {
         setPosition(cursorPosition + isDelRef.current);
       } else {
         const addedSymbols =
-          modifyValue(val).length - modifyValue(value).length;
+          formatNumber(val).length - formatNumber(value).length;
         const newPos = cursorPosition + addedSymbols - Math.sign(addedSymbols);
         setPosition(newPos < 0 ? 0 : newPos);
         onChange(val);
@@ -48,7 +43,7 @@ function NumberInput({value, onChange, onBlur}) {
     }
   }, [position]);
 
-  const modifiedValue = modifyValue(value);
+  const modifiedValue = formatNumber(value);
 
   return (
     <input
@@ -70,7 +65,7 @@ NumberInput.defaultProps = {
 };
 
 NumberInput.propTypes = {
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number,
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func,
 };

@@ -24,7 +24,7 @@ function NumberField({
 
   const handleChange = (newValue) => {
     if (newValue) {
-      onChange(Math.min(newValue, max));
+      onChange(Math.min(newValue, +String(max).replace(/\d/g, `9`)));
     } else {
       onChange(newValue);
     }
@@ -62,8 +62,19 @@ function NumberField({
 }
 
 NumberField.defaultProps = {
-  increment: {},
-  slider: {},
+  min: 0,
+  max: Infinity,
+};
+
+NumberField.propTypes = {
+  value: PropTypes.number,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  title: PropTypes.string.isRequired,
+  step: PropTypes.number,
+  onChange: PropTypes.func.isRequired,
+  hasAutoCorrection: PropTypes.bool,
+  units: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default NumberField;
