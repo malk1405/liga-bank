@@ -26,6 +26,21 @@ function StepTwo({id}) {
       [priceRef, setFirstPayPercent]
   );
 
+  const handlePayBlur = () => {
+    setFirstPayPercent((prev) => Math.max(config.firstPay.minPercentage, prev));
+  };
+
+  const handlePeriodBlur = () => {
+    setPeriod((prev) => {
+      const {min, max} = config.period;
+      if (prev < min) {
+        return min;
+      }
+
+      return Math.min(max, prev);
+    });
+  };
+
   if (!config) {
     return `Ошибка`;
   }
@@ -63,7 +78,7 @@ function StepTwo({id}) {
             min={(price * config.firstPay.minPercentage) / 100}
             max={price}
             onChange={setFirstPay}
-            hasAutoCorrection
+            onBlur={handlePayBlur}
           />
           <Range
             min={config.firstPay.minPercentage}
@@ -76,13 +91,13 @@ function StepTwo({id}) {
       )}
 
       <NumberField
-        value={period}
         title="Срок кредитования"
-        onChange={setPeriod}
+        value={period}
         units={years}
         min={config.period.min}
         max={config.period.max}
-        hasAutoCorrection
+        onChange={setPeriod}
+        onBlur={handlePeriodBlur}
       />
       <Range
         min={config.period.min}

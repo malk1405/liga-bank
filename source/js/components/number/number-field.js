@@ -2,26 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NumberInput from './number-input';
 import conjugate from '../../utils/conjugate';
+import noop from '../../utils/noop';
+import getClasses from '../../utils/getClasses';
+
+const block = `number`;
 
 function NumberField({
   value,
   min,
   max,
   title,
+  units,
   step,
   onChange,
+  onBlur,
   hasError,
-  hasAutoCorrection,
-  units,
 }) {
-  const handleBlur = () => {
-    if (hasAutoCorrection) {
-      if (value < min) {
-        onChange(min);
-      }
-    }
-  };
-
   const handleChange = (newValue) => {
     if (newValue) {
       onChange(Math.min(newValue, +String(max).replace(/\d/g, `9`)));
@@ -38,25 +34,29 @@ function NumberField({
     onChange(Math.min(max, value + step));
   };
 
+  const modifiers = hasError ? [`error`] : [];
+
   return (
-    <div>
+    <div className={block}>
       <label>{title}</label>
-      {step && (
-        <button type="button" onClick={decrement}>
-          -
-        </button>
-      )}
-      <NumberInput
-        value={value}
-        onChange={handleChange}
-        onBlur={handleBlur}
-      ></NumberInput>
-      {conjugate(value, units)}
-      {step && (
-        <button type="button" onClick={increment}>
-          +
-        </button>
-      )}
+      <div className={getClasses({block, element: `field`, modifiers})}>
+        {step && (
+          <button type="button" onClick={decrement}>
+            -
+          </button>
+        )}
+        <NumberInput
+          value={value}
+          onChange={handleChange}
+          onBlur={onBlur}
+        ></NumberInput>
+        {conjugate(value, units)}
+        {step && (
+          <button type="button" onClick={increment}>
+            +
+          </button>
+        )}
+      </div>
     </div>
   );
 }
@@ -64,6 +64,7 @@ function NumberField({
 NumberField.defaultProps = {
   min: 0,
   max: Infinity,
+  onBlur: noop,
 };
 
 NumberField.propTypes = {
@@ -71,10 +72,11 @@ NumberField.propTypes = {
   min: PropTypes.number,
   max: PropTypes.number,
   title: PropTypes.string.isRequired,
+  units: PropTypes.arrayOf(PropTypes.string),
   step: PropTypes.number,
   onChange: PropTypes.func.isRequired,
-  hasAutoCorrection: PropTypes.bool,
-  units: PropTypes.arrayOf(PropTypes.string),
+  onBlur: PropTypes.func,
+  hasError: PropTypes.bool,
 };
 
 export default NumberField;
