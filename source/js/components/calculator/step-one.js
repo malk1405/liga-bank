@@ -1,15 +1,16 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import creditTypes from './credit-types';
 
 function StepOne({onChange, id}) {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const handleVisibilty = () => {
     setIsVisible((v) => !v);
   };
 
   const handleClick = (e) => {
     const {id: newId} = e.target.dataset;
+    setIsVisible(false);
 
     if (!newId) {
       onChange(null);
@@ -18,31 +19,30 @@ function StepOne({onChange, id}) {
     }
   };
 
-  useEffect(() => {
-    setIsVisible(false);
-  }, [id]);
-
-  return !creditTypes[id] ? (
+  return (
     <React.Fragment>
       <button type="button" onClick={handleVisibilty}>
-        Выберите цель кредита
+        {!creditTypes[id] ? `Выберите цель кредита` : creditTypes[id].title}
       </button>
+      {creditTypes[id] && isVisible && (
+        <button type="button" onClick={handleClick}>
+          Очистить
+        </button>
+      )}
       {isVisible && (
         <ul>
-          {creditTypes.map(({title}, i) => (
-            <li key={i}>
-              <button type="button" onClick={handleClick} data-id={i}>
-                {title}
-              </button>
-            </li>
-          ))}
+          {creditTypes
+            .filter(({id: i}) => i !== id)
+            .map(({title, id: i}) => (
+              <li key={i}>
+                <button type="button" onClick={handleClick} data-id={i}>
+                  {title}
+                </button>
+              </li>
+            ))}
         </ul>
       )}
     </React.Fragment>
-  ) : (
-    <button type="button" onClick={handleClick}>
-      {creditTypes[id].title}
-    </button>
   );
 }
 

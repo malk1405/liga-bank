@@ -126,6 +126,6 @@ const creditTypes = [
       }
     },
   },
-];
+].map((el, i) => ({...el, id: i}));
 
 export default creditTypes;

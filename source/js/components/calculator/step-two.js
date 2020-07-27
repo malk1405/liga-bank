@@ -105,6 +105,18 @@ function StepTwo({id}) {
             title: config.sumTitle,
             value: `${formatNumber(1300000)} ${conjugate(1300000, rubles)}`,
           },
+          {
+            title: `Процентная ставка`,
+            value: `9,40%`,
+          },
+          {
+            title: `Ежемесячный платеж`,
+            value: `${formatNumber(27868)} ${conjugate(27868, rubles)}`,
+          },
+          {
+            title: `Необходимый доход`,
+            value: `${formatNumber(61929)} ${conjugate(61929, rubles)}`,
+          },
         ]}
         errorText=""
       />
@@ -113,7 +125,7 @@ function StepTwo({id}) {
 }
 
 StepTwo.propTypes = {
-  id: PropTypes.number.isRequired
+  id: PropTypes.number.isRequired,
 };
 
 export default StepTwo;
