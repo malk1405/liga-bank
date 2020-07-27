@@ -26,7 +26,7 @@ function NumberInput({value, onChange, onBlur}) {
         setPosition(cursorPosition + isDelRef.current);
       } else {
         const addedSymbols =
-          formatNumber(val).length - formatNumber(value).length;
+          formatNumber(val).length - formatNumber(newValue).length;
         const newPos = cursorPosition + addedSymbols - Math.sign(addedSymbols);
         setPosition(newPos < 0 ? 0 : newPos);
         onChange(val);
