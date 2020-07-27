@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import creditTypes from './credit-types';
 import NumberField from '../number/number-field';
-import conjugate, {rubles, years} from '../../utils/conjugate';
+import {rubles, years} from '../../utils/conjugate';
 import Range from '../range/range';
-import Offer from './offer';
-import formatNumber from '../../utils/format-number';
+import getClasses from '../../utils/getClasses';
+import {block} from './calculator';
 
 function StepTwo({id}) {
   const [price, setPrice] = useState(null);
@@ -81,7 +81,7 @@ function StepTwo({id}) {
   const firstPay = Math.round((price * firstPayPercent) / 100);
 
   return (
-    <form>
+    <div className={getClasses({block, element: ``})}>
       <NumberField
         value={price}
         title={config.priceTitle}
@@ -138,29 +138,7 @@ function StepTwo({id}) {
           {title}
         </label>
       ))}
-
-      <Offer
-        config={[
-          {
-            title: config.sumTitle,
-            value: `${formatNumber(1300000)} ${conjugate(1300000, rubles)}`,
-          },
-          {
-            title: `Процентная ставка`,
-            value: `9,40%`,
-          },
-          {
-            title: `Ежемесячный платеж`,
-            value: `${formatNumber(27868)} ${conjugate(27868, rubles)}`,
-          },
-          {
-            title: `Необходимый доход`,
-            value: `${formatNumber(61929)} ${conjugate(61929, rubles)}`,
-          },
-        ]}
-        errorText=""
-      />
-    </form>
+    </div>
   );
 }
 

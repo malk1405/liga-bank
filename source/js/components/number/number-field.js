@@ -4,8 +4,7 @@ import NumberInput from './number-input';
 import conjugate from '../../utils/conjugate';
 import noop from '../../utils/noop';
 import getClasses from '../../utils/getClasses';
-
-const block = `number`;
+import {block} from '../calculator/calculator';
 
 function NumberField({
   value,
@@ -37,7 +36,7 @@ function NumberField({
   const modifiers = hasError ? [`error`] : [];
 
   return (
-    <div className={block}>
+    <div>
       <label>{title}</label>
       <div className={getClasses({block, element: `field`, modifiers})}>
         {step && (

@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import getClasses from '../../utils/getClasses';
 import noop from '../../utils/noop';
 import formatNumber from '../../utils/format-number';
+import {block} from '../calculator/calculator';
 
-
-const block = `number-input`;
 function NumberInput({value, onChange, onBlur}) {
   const [position, setPosition] = useState(null);
   const inputRef = useRef(null);
@@ -52,7 +51,7 @@ function NumberInput({value, onChange, onBlur}) {
       inputMode="numeric"
       value={modifiedValue}
       size={modifiedValue.length || 1}
-      className={getClasses({block, element: `field`})}
+      className={getClasses({block, element: `input`})}
       onChange={handleChange}
       onBlur={onBlur}
       onKeyDown={handleKeyDown}
