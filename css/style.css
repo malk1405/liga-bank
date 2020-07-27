@@ -1473,6 +1473,9 @@ section:focus {
     width: 290px;
     margin-bottom: 0; } }
 
+.number__field--error {
+  background-color: rgba(255, 0, 0, 0.2); }
+
 .map {
   max-width: 100%;
   overflow: hidden; }
