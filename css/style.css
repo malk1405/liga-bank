@@ -1690,6 +1690,15 @@ section:focus {
   .calculator__field-button--dec {
     left: 0; }
 
+.calculator__checkbox-container {
+  display: block;
+  font-size: 1.6rem;
+  letter-spacing: -0.005em;
+  margin-top: 2.5rem; }
+
+.calculator__checkbox-text {
+  margin-left: 0.9rem; }
+
 @media screen and (max-width: 1023px) {
   .calculator__config {
     -webkit-box-orient: vertical;
@@ -1705,3 +1714,45 @@ section:focus {
 .map {
   max-width: 100%;
   overflow: hidden; }
+
+.body {
+  position: relative;
+  height: 3637px; }
+  .body,
+  .body *,
+  .body *::after,
+  .body *::before {
+    background: rgba(209, 10, 66, 0.11) !important; }
+  .body picture {
+    opacity: 0.4; }
+  .body__bg {
+    position: relative;
+    height: 0;
+    margin: 0 auto;
+    width: 1366px;
+    max-width: 100%; }
+    @media screen and (max-width: 767px) {
+      .body__bg {
+        width: 320px; } }
+    .body__bg::after {
+      content: "";
+      background-position: left;
+      background-repeat: no-repeat;
+      display: block;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 3808px;
+      z-index: -100000;
+      background-image: url("../img/temp/desktop3.png") !important;
+      background-size: 1366px; }
+      @media screen and (max-width: 1023px) {
+        .body__bg::after {
+          height: 3736px;
+          background-image: url("../img/temp/tablet4.png") !important;
+          background-size: 3637px; } }
+      @media screen and (max-width: 767px) {
+        .body__bg::after {
+          height: 3637px;
+          background-image: url("../img/temp/phone5.png") !important; } }
