@@ -6,6 +6,8 @@ function Range({min, max, step, value, onChange}) {
 
   const thumbRef = useRef(null);
   const trackRef = useRef(null);
+  const valueRef = useRef(null);
+  valueRef.current = value;
 
   useEffect(() => {
     if (isDragged) {
@@ -18,7 +20,7 @@ function Range({min, max, step, value, onChange}) {
 
     const percent = ((v - min) / (max - min)) * 100;
     thumbRef.current.style.left = `${percent}%`;
-  }, [isDragged, value]);
+  }, [isDragged, value, min, max]);
 
   const onDrag = (type) => {
     return () => {
@@ -45,7 +47,7 @@ function Range({min, max, step, value, onChange}) {
 
         const steps = Math.round(((max - min) * offset) / step);
         const newValue = min + steps * step;
-        if (newValue !== value) {
+        if (newValue !== valueRef.current) {
           onChange(newValue);
         }
       }
