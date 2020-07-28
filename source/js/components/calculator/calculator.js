@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import Step from './step';
 import StepOne from './step-one';
@@ -12,9 +12,26 @@ const block = `calculator`;
 
 function Calculator() {
   const [id, setId] = useState(null);
-  const onChange = (newId) => {
+  const [error, setError] = useState(false);
+  const [params, setParams] = useState(null);
+  const [isReady, setIsReady] = useState(false);
+
+  const handleIdChange = (newId) => {
     setId(newId);
   };
+
+  const handleError = () => {
+    setError(true);
+  };
+
+  const handleParamsChange = (p) => {
+    setParams(p);
+    setError(false);
+  };
+
+  useEffect(() => {
+    setIsReady(false);
+  }, [error, params]);
 
   return (
     <section className={`section container ${block}`} id="calculator">
@@ -22,12 +39,16 @@ function Calculator() {
       <div className={getClasses({block, element: `config`})}>
         <div className={getClasses({block, element: `params`})}>
           <Step num={1} title="Цель кредита">
-            <StepOne id={id} onChange={onChange}></StepOne>
+            <StepOne id={id} onChange={handleIdChange}></StepOne>
           </Step>
 
           {typeof id === `number` && (
             <Step num={2} title="Введите параметры кредита">
-              <StepTwo id={id}></StepTwo>
+              <StepTwo
+                id={id}
+                onError={handleError}
+                onChange={handleParamsChange}
+              ></StepTwo>
             </Step>
           )}
         </div>

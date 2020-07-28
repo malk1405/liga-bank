@@ -17,7 +17,7 @@ import formatNumber from '../../utils/format-number';
 import NumberContainer from './number/container';
 import Checkbox from '../checkbox/checkbox';
 
-function StepTwo({id}) {
+function StepTwo({id, onError, onChange}) {
   const [price, setPrice] = useState(null);
   const [firstPayPercent, setFirstPayPercent] = useState(null);
   const [period, setPeriod] = useState(null);
@@ -91,6 +91,8 @@ function StepTwo({id}) {
 
     if (config.firstPay) {
       setFirstPayPercent(config.firstPay.minPercentage);
+    } else {
+      setFirstPayPercent(0);
     }
 
     handlePeriodChange(config.period.min);
@@ -105,7 +107,8 @@ function StepTwo({id}) {
 
   const firstPay = Math.round((price * firstPayPercent) / 100) || 0;
   const maxFirstPay =
-    (config.firstPay && config.firstPay.getMax({price, checkboxes})) || 0;
+    (config.firstPay && config.firstPay.getMax({price, checkboxes})) ||
+    Infinity;
 
   const percentageStep = 5;
 
@@ -126,7 +129,56 @@ function StepTwo({id}) {
   const maxPercentError =
     firstPay > maxFirstPay && !priceError && mountedRef.current;
 
-  const periodError = !config.period.validate(period);
+  const periodError = !config.period.validate(period) && mountedRef.current;
+  const error = priceError || minPercentError || periodError;
+
+  useEffect(() => {
+    if (!mountedRef.current) {
+      return;
+    }
+
+    if (error) {
+      onError();
+      return;
+    }
+
+    const creditSum = config.getCredit({price, firstPay, checkboxes});
+    const interestRate = config.getInterestRate({
+      price,
+      checkboxes,
+      firstPay,
+    });
+
+    const monthly = Math.round(
+        (creditSum * interestRate) /
+        12 /
+        (1 - Math.pow(1 + interestRate / 12, -period * 12))
+    );
+
+    const minIncome = Math.round(0.45 * monthly);
+
+    onChange({
+      price,
+      firstPay,
+      period,
+      creditTitle: config.sumTitle,
+      creditSum,
+      minCredit: config.minCredit,
+      interestRate,
+      monthly,
+      minIncome,
+    });
+  }, [
+    error,
+    price,
+    firstPay,
+    checkboxes,
+    firstPayPercent,
+    mountedRef,
+    maxPercentError,
+    period,
+    config,
+  ]);
 
   return (
     <React.Fragment>
@@ -221,6 +273,8 @@ function StepTwo({id}) {
 
 StepTwo.propTypes = {
   id: PropTypes.number.isRequired,
+  onError: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default StepTwo;

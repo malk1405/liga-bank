@@ -14,13 +14,24 @@ function Offer({config, errorText}) {
       ) : (
         <React.Fragment>
           <h3>Наше предложение</h3>
-          {config.map(({value, title}, i) => (
-            <div key={i}>
-              <p>{value}</p>
-              <p>{title}</p>
-            </div>
-          ))}
-          <button type="submit">Оформить заявку</button>
+          <dl>
+
+            {config.map(({value, title}, i) => (
+              <div key={i}>
+                <dt>{title}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
+          <button
+            className={`${getClasses({
+              block: `button`,
+              modifiers: [`main`],
+            })}`}
+            type="submit"
+          >
+            Оформить заявку
+          </button>
         </React.Fragment>
       )}
     </div>
