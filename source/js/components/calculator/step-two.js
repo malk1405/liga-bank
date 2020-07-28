@@ -1,4 +1,10 @@
-import React, {useEffect, useState, useCallback, useRef} from 'react';
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  useRef,
+  useMemo,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import creditTypes from './credit-types';
@@ -41,6 +47,15 @@ function StepTwo({id}) {
   const handlePeriodChange = (value) => {
     setPeriod(value);
     setPeriodError(!config.period.validate(value));
+  };
+
+  const handlePercentChange = (value) => {
+    setFirstPayPercent(
+        Math.min(
+            (config.firstPay.getMax({price, checkboxes}) / price) * 100,
+            value
+        )
+    );
   };
 
   const setFirstPay = useCallback(
@@ -89,6 +104,20 @@ function StepTwo({id}) {
   }, [id]);
 
   const firstPay = Math.round((price * firstPayPercent) / 100);
+  const percentageStep = 5;
+  const maxFirstPayPercentage = useMemo(() => {
+    if (!config.firstPay) {
+      return null;
+    }
+
+    return Math.max(
+        Math.ceil(
+            ((config.firstPay.getMax({price, checkboxes}) / price) * 100) /
+          percentageStep
+        ) * 5,
+        config.firstPay.minPercentage
+    );
+  }, [config, price, checkboxes, percentageStep]);
 
   return (
     <React.Fragment>
@@ -125,10 +154,10 @@ function StepTwo({id}) {
           />
           <Range
             min={config.firstPay.minPercentage}
-            max={100}
+            max={maxFirstPayPercentage}
             step={5}
             value={firstPayPercent}
-            onChange={setFirstPayPercent}
+            onChange={handlePercentChange}
           />
           <div className={getClasses({block, element: `limits`})}>
             <span>{formatNumber(config.firstPay.minPercentage)}%</span>

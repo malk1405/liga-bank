@@ -1,3 +1,5 @@
+const motherSum = 470000;
+
 const creditTypes = [
   {
     title: `Ипотечное кредитование`,
@@ -27,7 +29,7 @@ const creditTypes = [
     checkboxes: [{name: `mother`, title: `Материнский капитал`}],
 
     getCredit({price, firstPay, checkboxes: {mother}}) {
-      return price - firstPay - (mother ? 470000 : 0);
+      return price - firstPay - (mother ? motherSum : 0);
     },
 
     getInterestRate({firstPay, price}) {
@@ -130,6 +132,12 @@ const creditTypes = [
 
 creditTypes.forEach((el, i) => {
   el.id = i;
+
+  if (el.firstPay) {
+    el.firstPay.getMax = function getMax({price, checkboxes: {mother}}) {
+      return price - el.minCredit - (mother ? motherSum : 0);
+    };
+  }
   el.price.validate = function validate(val) {
     return val >= this.min && val <= this.max;
   };
