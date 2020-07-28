@@ -19,13 +19,8 @@ import Checkbox from '../checkbox/checkbox';
 
 function StepTwo({id}) {
   const [price, setPrice] = useState(null);
-  const [priceError, setPriceError] = useState(false);
-
   const [firstPayPercent, setFirstPayPercent] = useState(null);
-
   const [period, setPeriod] = useState(null);
-  const [periodError, setPeriodError] = useState(false);
-
   const [checkboxes, setCheckboxes] = useState({});
 
   const config = creditTypes[id];
@@ -41,12 +36,10 @@ function StepTwo({id}) {
 
   const handlePriceChange = (value) => {
     setPrice(value);
-    setPriceError(!config.price.validate(value));
   };
 
   const handlePeriodChange = (value) => {
     setPeriod(value);
-    setPeriodError(!config.period.validate(value));
   };
 
   const handlePercentChange = (value) => {
@@ -103,8 +96,19 @@ function StepTwo({id}) {
     handlePeriodChange(config.period.min);
   }, [id]);
 
+  const priceError = !config.price.validate(price) && mountedRef.current;
+
+  const minPercentError =
+    config.firstPay &&
+    config.firstPay.minPercentage > firstPayPercent &&
+    mountedRef.current;
+
   const firstPay = Math.round((price * firstPayPercent) / 100) || 0;
+  const maxFirstPay =
+    (config.firstPay && config.firstPay.getMax({price, checkboxes})) || 0;
+
   const percentageStep = 5;
+
   const maxFirstPayPercentage = useMemo(() => {
     if (!config.firstPay) {
       return null;
@@ -118,6 +122,11 @@ function StepTwo({id}) {
         config.firstPay.minPercentage
     );
   }, [config, price, checkboxes, percentageStep]);
+
+  const maxPercentError =
+    firstPay > maxFirstPay && !priceError && mountedRef.current;
+
+  const periodError = !config.period.validate(period);
 
   return (
     <React.Fragment>
@@ -151,6 +160,7 @@ function StepTwo({id}) {
             max={price}
             onChange={setFirstPay}
             onBlur={handlePayBlur}
+            hasError={minPercentError || maxPercentError}
           />
           <Range
             min={config.firstPay.minPercentage}
