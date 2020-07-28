@@ -1,11 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import getClasses from '../../utils/getClasses';
-import {block} from './calculator';
+import {block as outerBlock} from './calculator';
+
+const block = `offer`;
 
 function Offer({config, errorText}) {
   return (
-    <div className={getClasses({block, element: `offer`})}>
+    <div
+      className={`${getClasses({
+        block: outerBlock,
+        element: block,
+      })} ${block}`}
+    >
       {errorText ? (
         <React.Fragment>
           <p>{errorText}</p>
@@ -14,12 +21,15 @@ function Offer({config, errorText}) {
       ) : (
         <React.Fragment>
           <h3>Наше предложение</h3>
-          <dl>
-
+          <dl className={getClasses({block, element: `list`})}>
             {config.map(({value, title}, i) => (
-              <div key={i}>
-                <dt>{title}</dt>
-                <dd>{value}</dd>
+              <div key={i} className={getClasses({block, element: `item`})}>
+                <dt className={getClasses({block, element: `title`})}>
+                  {title}
+                </dt>
+                <dd className={getClasses({block, element: `description`})}>
+                  {value}
+                </dd>
               </div>
             ))}
           </dl>
@@ -27,8 +37,8 @@ function Offer({config, errorText}) {
             className={`${getClasses({
               block: `button`,
               modifiers: [`main`],
-            })}`}
-            type="submit"
+            })} ${getClasses({block, element: `button`})}`}
+            type="button"
           >
             Оформить заявку
           </button>
