@@ -579,6 +579,19 @@ section:focus {
   margin: 0;
   margin-bottom: 5.5rem; }
 
+.checkbox-clone {
+  color: transparent;
+  fill: none;
+  stroke: #2c36f2;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+
+.checkbox:checked + .checkbox-clone {
+  fill: #2c36f2;
+  color: #f6f7ff; }
+
 :root {
   font-size: 62.5%; }
 
