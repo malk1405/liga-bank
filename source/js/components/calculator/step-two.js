@@ -8,6 +8,7 @@ import Range from '../range/range';
 import getClasses from '../../utils/getClasses';
 import {block} from './calculator';
 import formatNumber from '../../utils/format-number';
+import NumberContainer from './number/container';
 
 function StepTwo({id}) {
   const [price, setPrice] = useState(null);
@@ -82,29 +83,29 @@ function StepTwo({id}) {
   const firstPay = Math.round((price * firstPayPercent) / 100);
 
   return (
-    <div className={getClasses({block, element: ``})}>
-      <NumberField
-        value={price}
-        title={config.priceTitle}
-        onChange={handlePriceChange}
-        units={rubles}
-        min={config.price.min}
-        max={config.price.max}
-        step={config.price.step}
-        hasError={priceError}
-      />
-      <div className={getClasses({block, element: `limits`})}>
-        <span>
-          От {formatNumber(config.price.min)}
-          {` `}
-          {conjugate(config.price.min, rubles)} до{` `}
-          {formatNumber(config.price.max)}
-          {` `}
-          {conjugate(config.price.max, rubles)}
-        </span>
-      </div>
+    <React.Fragment>
+      <NumberContainer>
+        <NumberField
+          value={price}
+          title={config.priceTitle}
+          onChange={handlePriceChange}
+          units={rubles}
+          min={config.price.min}
+          max={config.price.max}
+          step={config.price.step}
+          hasError={priceError}
+        />
+        <div className={getClasses({block, element: `limits`})}>
+          <span>
+            От {formatNumber(config.price.min)} до{` `}
+            {formatNumber(config.price.max)}
+            {` `}
+            {conjugate(config.price.max, rubles)}
+          </span>
+        </div>
+      </NumberContainer>
       {Boolean(config.firstPay) && (
-        <React.Fragment>
+        <NumberContainer>
           <NumberField
             title="Первоначальный взнос"
             value={firstPay}
@@ -124,44 +125,46 @@ function StepTwo({id}) {
           <div className={getClasses({block, element: `limits`})}>
             <span>{formatNumber(config.firstPay.minPercentage)}%</span>
           </div>
-        </React.Fragment>
+        </NumberContainer>
       )}
-      <NumberField
-        title="Срок кредитования"
-        value={period}
-        units={years}
-        min={config.period.min}
-        max={config.period.max}
-        onChange={handlePeriodChange}
-        onBlur={handlePeriodBlur}
-        hasError={periodError}
-      />
-      <Range
-        min={config.period.min}
-        max={config.period.max}
-        step={1}
-        value={period}
-        onChange={setPeriod}
-      />
-      <div className={getClasses({block, element: `limits`})}>
-        <span>
-          {formatNumber(config.period.min)}
-          {` `}
-          {conjugate(config.period.min, years)}
-        </span>
-        <span>
-          {formatNumber(config.period.max)}
-          {` `}
-          {conjugate(config.period.max, years)}
-        </span>
-      </div>
+      <NumberContainer>
+        <NumberField
+          title="Срок кредитования"
+          value={period}
+          units={years}
+          min={config.period.min}
+          max={config.period.max}
+          onChange={handlePeriodChange}
+          onBlur={handlePeriodBlur}
+          hasError={periodError}
+        />
+        <Range
+          min={config.period.min}
+          max={config.period.max}
+          step={1}
+          value={period}
+          onChange={setPeriod}
+        />
+        <div className={getClasses({block, element: `limits`})}>
+          <span>
+            {formatNumber(config.period.min)}
+            {` `}
+            {conjugate(config.period.min, years)}
+          </span>
+          <span>
+            {formatNumber(config.period.max)}
+            {` `}
+            {conjugate(config.period.max, years)}
+          </span>
+        </div>
+      </NumberContainer>
       {config.checkboxes.map(({name, title}) => (
         <label key={name}>
           <input type="checkbox" name={name} />
           {title}
         </label>
       ))}
-    </div>
+    </React.Fragment>
   );
 }
 

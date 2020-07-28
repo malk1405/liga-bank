@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import creditTypes from './credit-types';
 import getClasses from '../../utils/getClasses';
 import {block} from './calculator';
+import NumberContainer from './number/container';
 
 function StepOne({onChange, id}) {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,7 +23,7 @@ function StepOne({onChange, id}) {
   };
 
   return (
-    <React.Fragment>
+    <NumberContainer>
       <button
         type="button"
         className={getClasses({
@@ -34,6 +35,7 @@ function StepOne({onChange, id}) {
       >
         {!creditTypes[id] ? `Выберите цель кредита` : creditTypes[id].title}
       </button>
+
       {isVisible && (
         <ul className={`list ${getClasses({block, element: `options`})}`}>
           {creditTypes
@@ -62,7 +64,7 @@ function StepOne({onChange, id}) {
             })}
         </ul>
       )}
-    </React.Fragment>
+    </NumberContainer>
   );
 }
 

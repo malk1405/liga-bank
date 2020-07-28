@@ -1,9 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import getClasses from '../../utils/getClasses';
+import {block} from './calculator';
 
 function Step({children, num, title}) {
   return (
-    <div>
+    <div
+      className={getClasses({
+        block,
+        element: `step`,
+        modifiers: [num],
+      })}
+    >
       <h3>
         Шаг {num}. {title}
       </h3>

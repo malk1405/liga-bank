@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import PropTypes from 'prop-types';
 import NumberInput from './input';
 import conjugate from '../../../utils/conjugate';
@@ -17,6 +17,7 @@ function NumberField({
   onBlur,
   hasError,
 }) {
+  const inputRef = useRef(null);
   const handleChange = (newValue) => {
     if (newValue) {
       onChange(Math.min(newValue, +String(max).replace(/\d/g, `9`)));
@@ -33,30 +34,52 @@ function NumberField({
     onChange(Math.min(max, value + step));
   };
 
-  const modifiers = hasError ? [`error`] : [];
+  const modifiers = [`input`];
+  if (hasError) {
+    modifiers.push(`error`);
+  }
 
   return (
-    <div>
+    <React.Fragment>
       <label className={getClasses({block, element: `label`})}>{title}</label>
       <div className={getClasses({block, element: `field`, modifiers})}>
         {step && (
-          <button type="button" onClick={decrement}>
-            -
+          <button
+            title="Уменьшить"
+            type="button"
+            onClick={decrement}
+            className={`button ${getClasses({
+              block,
+              element: `field-button`,
+              modifiers: [`dec`],
+            })}`}
+          >
+            <span className="visually-hidden">Увеличить</span>
           </button>
         )}
         <NumberInput
           value={value}
           onChange={handleChange}
           onBlur={onBlur}
+          inputRef={inputRef}
         ></NumberInput>
         <span>{conjugate(value, units)}</span>
         {step && (
-          <button type="button" onClick={increment}>
-            +
+          <button
+            title="Увеличить"
+            type="button"
+            onClick={increment}
+            className={`button ${getClasses({
+              block,
+              element: `field-button`,
+              modifiers: [`inc`],
+            })}`}
+          >
+            <span className="visually-hidden">Уменьшить</span>
           </button>
         )}
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 

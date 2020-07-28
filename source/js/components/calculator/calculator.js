@@ -31,27 +31,29 @@ function Calculator() {
             </Step>
           )}
         </div>
-        <Offer
-          config={[
-            {
-              title: `Сумма`,
-              value: `${formatNumber(1300000)} ${conjugate(1300000, rubles)}`,
-            },
-            {
-              title: `Процентная ставка`,
-              value: `9,40%`,
-            },
-            {
-              title: `Ежемесячный платеж`,
-              value: `${formatNumber(27868)} ${conjugate(27868, rubles)}`,
-            },
-            {
-              title: `Необходимый доход`,
-              value: `${formatNumber(61929)} ${conjugate(61929, rubles)}`,
-            },
-          ]}
-          errorText=""
-        />
+        {typeof id === `number` && (
+          <Offer
+            config={[
+              {
+                title: `Сумма`,
+                value: `${formatNumber(1300000)} ${conjugate(1300000, rubles)}`,
+              },
+              {
+                title: `Процентная ставка`,
+                value: `9,40%`,
+              },
+              {
+                title: `Ежемесячный платеж`,
+                value: `${formatNumber(27868)} ${conjugate(27868, rubles)}`,
+              },
+              {
+                title: `Необходимый доход`,
+                value: `${formatNumber(61929)} ${conjugate(61929, rubles)}`,
+              },
+            ]}
+            errorText=""
+          />
+        )}
       </div>
     </section>
   );

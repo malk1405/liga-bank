@@ -5,10 +5,10 @@ import noop from '../../../utils/noop';
 import formatNumber from '../../../utils/format-number';
 import {block} from '../calculator';
 
-function NumberInput({value, onChange, onBlur}) {
+function NumberInput({value, onChange, onBlur, inputRef}) {
   const [position, setPosition] = useState(null);
-  const inputRef = useRef(null);
   const isDelRef = useRef(null);
+  const valueRef = useRef(null);
 
   const handleKeyDown = (e) => {
     isDelRef.current = e.keyCode === 46;
@@ -41,20 +41,33 @@ function NumberInput({value, onChange, onBlur}) {
     }
   }, [position]);
 
+  useEffect(() => {
+    inputRef.current.style.width = `${
+      valueRef.current.getBoundingClientRect().width || 10
+    }px`;
+  }, [value, inputRef, valueRef]);
+
   const modifiedValue = formatNumber(value);
 
   return (
-    <input
-      ref={inputRef}
-      type="text"
-      inputMode="numeric"
-      value={modifiedValue}
-      size={modifiedValue.length || 1}
-      className={getClasses({block, element: `input`})}
-      onChange={handleChange}
-      onBlur={onBlur}
-      onKeyDown={handleKeyDown}
-    ></input>
+    <React.Fragment>
+      <span
+        ref={valueRef}
+        className={getClasses({block, element: `input-clone`})}
+      >
+        <pre>{modifiedValue + ` `}</pre>
+      </span>
+      <input
+        ref={inputRef}
+        type="text"
+        inputMode="numeric"
+        value={modifiedValue}
+        className={getClasses({block, element: `input`})}
+        onChange={handleChange}
+        onBlur={onBlur}
+        onKeyDown={handleKeyDown}
+      ></input>
+    </React.Fragment>
   );
 }
 
@@ -66,6 +79,8 @@ NumberInput.propTypes = {
   value: PropTypes.number,
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func,
+  inputRef: PropTypes.shape({current: PropTypes.instanceOf(Element)})
+    .isRequired,
 };
 
 export default NumberInput;
