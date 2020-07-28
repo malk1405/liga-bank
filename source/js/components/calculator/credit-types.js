@@ -113,7 +113,7 @@ const creditTypes = [
     },
 
     getInterestRate({price, checkboxes: {participant}}) {
-      return getRate(price) - (participant ? 0.5 : 0);
+      return getRate(price) - (participant ? 0.005 : 0);
 
       function getRate(p) {
         if (p < 750000) {

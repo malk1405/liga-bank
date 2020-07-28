@@ -12,26 +12,27 @@ const block = `calculator`;
 
 function Calculator() {
   const [id, setId] = useState(null);
-  const [error, setError] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const [params, setParams] = useState(null);
   const [isReady, setIsReady] = useState(false);
 
   const handleIdChange = (newId) => {
     setId(newId);
+    setParams(null);
   };
 
   const handleError = () => {
-    setError(true);
+    setHasError(true);
   };
 
   const handleParamsChange = (p) => {
     setParams(p);
-    setError(false);
+    setHasError(false);
   };
 
   useEffect(() => {
     setIsReady(false);
-  }, [error, params]);
+  }, [hasError, params]);
 
   return (
     <section className={`section container ${block}`} id="calculator">
@@ -52,27 +53,38 @@ function Calculator() {
             </Step>
           )}
         </div>
-        {typeof id === `number` && (
+        {params && (
           <Offer
             config={[
               {
-                title: `Сумма`,
-                value: `${formatNumber(1300000)} ${conjugate(1300000, rubles)}`,
+                title: params.creditTitle,
+                value: `${formatNumber(params.creditSum)} ${conjugate(
+                    params.creditSum,
+                    rubles
+                )}`,
               },
               {
                 title: `Процентная ставка`,
-                value: `9,40%`,
+                value: `${String(
+                    (params.interestRate * 100).toFixed(2)
+                ).replace(`.`, `,`)}%`,
               },
               {
                 title: `Ежемесячный платеж`,
-                value: `${formatNumber(27868)} ${conjugate(27868, rubles)}`,
+                value: `${formatNumber(params.monthly)} ${conjugate(
+                    params.monthly,
+                    rubles
+                )}`,
               },
               {
                 title: `Необходимый доход`,
-                value: `${formatNumber(61929)} ${conjugate(61929, rubles)}`,
+                value: `${formatNumber(params.minIncome)} ${conjugate(
+                    params.minIncome,
+                    rubles
+                )}`,
               },
             ]}
-            errorText=""
+            hasError={hasError}
           />
         )}
       </div>

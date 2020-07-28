@@ -5,7 +5,7 @@ import {block as outerBlock} from './calculator';
 
 const block = `offer`;
 
-function Offer({config, errorText}) {
+function Offer({config, hasError}) {
   return (
     <div
       className={`${getClasses({
@@ -13,37 +13,31 @@ function Offer({config, errorText}) {
         element: block,
       })} ${block}`}
     >
-      {errorText ? (
-        <React.Fragment>
-          <p>{errorText}</p>
-          <p>Попробуйте использовать другие параметры для расчёта.</p>
-        </React.Fragment>
-      ) : (
-        <React.Fragment>
-          <h3>Наше предложение</h3>
-          <dl className={getClasses({block, element: `list`})}>
-            {config.map(({value, title}, i) => (
-              <div key={i} className={getClasses({block, element: `item`})}>
-                <dt className={getClasses({block, element: `title`})}>
-                  {title}
-                </dt>
-                <dd className={getClasses({block, element: `description`})}>
-                  {value}
-                </dd>
-              </div>
-            ))}
-          </dl>
-          <button
-            className={`${getClasses({
-              block: `button`,
-              modifiers: [`main`],
-            })} ${getClasses({block, element: `button`})}`}
-            type="button"
-          >
-            Оформить заявку
-          </button>
-        </React.Fragment>
-      )}
+      <React.Fragment>
+        <h3>Наше предложение</h3>
+        <dl className={getClasses({block, element: `list`})}>
+          {config.map(({value, title}, i) => (
+            <div key={i} className={getClasses({block, element: `item`})}>
+              <dt className={getClasses({block, element: `title`})}>
+                {title}
+              </dt>
+              <dd className={getClasses({block, element: `description`})}>
+                {value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+        <button
+          className={`${getClasses({
+            block: `button`,
+            modifiers: [`main`],
+          })} ${getClasses({block, element: `button`})}`}
+          type="button"
+          disabled={hasError}
+        >
+          Оформить заявку
+        </button>
+      </React.Fragment>
     </div>
   );
 }
@@ -55,7 +49,7 @@ Offer.propTypes = {
         value: PropTypes.string,
       })
   ).isRequired,
-  errorText: PropTypes.string.isRequired,
+  hasError: PropTypes.bool.isRequired,
 };
 
 export default Offer;
