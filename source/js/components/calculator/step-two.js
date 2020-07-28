@@ -103,7 +103,7 @@ function StepTwo({id}) {
     handlePeriodChange(config.period.min);
   }, [id]);
 
-  const firstPay = Math.round((price * firstPayPercent) / 100);
+  const firstPay = Math.round((price * firstPayPercent) / 100) || 0;
   const percentageStep = 5;
   const maxFirstPayPercentage = useMemo(() => {
     if (!config.firstPay) {
