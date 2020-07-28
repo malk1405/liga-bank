@@ -1,7 +1,10 @@
 import React, {useRef, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
+import getClasses from '../../utils/getClasses';
 
-function Range({min, max, step, value, onChange}) {
+const block = `range`;
+
+function Range({min, max, step, value, onChange, modifiers}) {
   const [isDragged, setIsDragged] = useState(false);
 
   const thumbRef = useRef(null);
@@ -66,7 +69,7 @@ function Range({min, max, step, value, onChange}) {
   };
 
   return (
-    <div className="range" ref={trackRef}>
+    <div className={getClasses({block, modifiers})} ref={trackRef}>
       <div
         className="range__thumb"
         onTouchStart={onDrag(`touch`)}
@@ -77,12 +80,17 @@ function Range({min, max, step, value, onChange}) {
   );
 }
 
+Range.defaultProps = {
+  modifiers: []
+};
+
 Range.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,
   value: PropTypes.number,
   onChange: PropTypes.func.isRequired,
+  modifiers: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default Range;

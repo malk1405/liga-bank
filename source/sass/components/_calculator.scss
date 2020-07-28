@@ -165,6 +165,17 @@
   }
 }
 
+.calculator__checkbox-container {
+  display: block;
+  font-size: 1.6rem;
+  letter-spacing: -0.005em;
+  margin-top: 2.5rem;
+}
+
+.calculator__checkbox-text {
+  margin-left: 0.9rem;
+}
+
 @include mq(tablet) {
   .calculator__config {
     flex-direction: column;

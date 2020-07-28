@@ -167,6 +167,7 @@ function StepTwo({id, onError, onChange}) {
       interestRate,
       monthly,
       minIncome,
+      checkboxes,
     });
   }, [
     error,
@@ -243,6 +244,7 @@ function StepTwo({id, onError, onChange}) {
           step={1}
           value={period}
           onChange={setPeriod}
+          modifiers={[`years`]}
         />
         <div className={getClasses({block, element: `limits`})}>
           <span>
@@ -258,13 +260,18 @@ function StepTwo({id, onError, onChange}) {
         </div>
       </NumberContainer>
       {config.checkboxes.map(({name, title}) => (
-        <label key={name}>
+        <label
+          className={getClasses({block, element: `checkbox-container`})}
+          key={name}
+        >
           <Checkbox
             name={name}
             checked={checkboxes[name]}
             onChange={handleChecboxChange}
           />
-          {title}
+          <span className={getClasses({block, element: `checkbox-text`})}>
+            {title}
+          </span>
         </label>
       ))}
     </React.Fragment>

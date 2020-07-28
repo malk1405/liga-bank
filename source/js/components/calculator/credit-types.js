@@ -26,7 +26,7 @@ const creditTypes = [
 
     minCredit: 500000,
 
-    checkboxes: [{name: `mother`, title: `Материнский капитал`}],
+    checkboxes: [{name: `mother`, title: `Использовать материнский капитал`}],
 
     getCredit({price, firstPay, checkboxes: {mother}}) {
       return price - firstPay - (mother ? motherSum : 0);
