@@ -103,12 +103,9 @@
 
 .calculator__input-clone {
   color: transparent;
+  font: inherit;
   position: absolute;
   z-index: -1000;
-
-  pre {
-    font: inherit;
-  }
 }
 
 .calculator__limits {

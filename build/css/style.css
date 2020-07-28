@@ -1589,10 +1589,9 @@ section:focus {
 
 .calculator__input-clone {
   color: transparent;
+  font: inherit;
   position: absolute;
   z-index: -1000; }
-  .calculator__input-clone pre {
-    font: inherit; }
 
 .calculator__limits {
   display: -webkit-box;

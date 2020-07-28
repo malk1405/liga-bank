@@ -51,12 +51,12 @@ function NumberInput({value, onChange, onBlur, inputRef}) {
 
   return (
     <React.Fragment>
-      <span
+      <pre
         ref={valueRef}
         className={getClasses({block, element: `input-clone`})}
       >
-        <pre>{modifiedValue + ` `}</pre>
-      </span>
+        {modifiedValue + ` `}
+      </pre>
       <input
         ref={inputRef}
         type="text"
