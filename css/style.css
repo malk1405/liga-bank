@@ -408,6 +408,9 @@ section:focus {
   .button--main:hover {
     opacity: 0.8;
     color: #f6f7ff; }
+  .button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed; }
 
 .input,
 .button--main {
