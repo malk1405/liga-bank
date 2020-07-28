@@ -9,6 +9,7 @@ import getClasses from '../../utils/getClasses';
 import {block} from './calculator';
 import formatNumber from '../../utils/format-number';
 import NumberContainer from './number/container';
+import Checkbox from '../checkbox/checkbox';
 
 function StepTwo({id}) {
   const [price, setPrice] = useState(null);
@@ -64,6 +65,13 @@ function StepTwo({id}) {
           return Math.min(max, period);
         })()
     );
+  };
+
+  const handleChecboxChange = ({target: {name, checked}}) => {
+    setCheckboxes((prev) => ({
+      ...prev,
+      [name]: checked,
+    }));
   };
 
   if (!config) {
@@ -160,7 +168,11 @@ function StepTwo({id}) {
       </NumberContainer>
       {config.checkboxes.map(({name, title}) => (
         <label key={name}>
-          <input type="checkbox" name={name} />
+          <Checkbox
+            name={name}
+            checked={checkboxes[name]}
+            onChange={handleChecboxChange}
+          />
           {title}
         </label>
       ))}

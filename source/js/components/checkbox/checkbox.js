@@ -11,7 +11,7 @@ function Checkbox({onChange, checked, name, id}) {
         name={name}
         data-id={id}
         onChange={onChange}
-        checked={checked}
+        checked={checked || false}
       />
       <SVG className="checkbox-clone"></SVG>
     </React.Fragment>

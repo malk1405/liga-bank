@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Checkbox from '../../checkbox/checkbox';
 
 function CheckBoxes({config, onChange}) {
   return (
-    <ul>
+    <ul className="list">
       {config.map(({name, text, checked, id}) => (
         <li key={name}>
           <label>
-            <input
-              type="checkbox"
-              name="name"
+            <Checkbox
+              name={name}
               onChange={onChange}
               checked={checked}
-              data-id={id}
+              id={id}
             />
             {text}
           </label>
