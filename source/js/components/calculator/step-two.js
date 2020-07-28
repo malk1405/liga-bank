@@ -2,11 +2,12 @@ import React, {useEffect, useState, useCallback, useRef} from 'react';
 import PropTypes from 'prop-types';
 
 import creditTypes from './credit-types';
-import NumberField from '../number/number-field';
-import {rubles, years} from '../../utils/conjugate';
+import NumberField from './number/field';
+import conjugate, {rubles, years} from '../../utils/conjugate';
 import Range from '../range/range';
 import getClasses from '../../utils/getClasses';
 import {block} from './calculator';
+import formatNumber from '../../utils/format-number';
 
 function StepTwo({id}) {
   const [price, setPrice] = useState(null);
@@ -92,7 +93,16 @@ function StepTwo({id}) {
         step={config.price.step}
         hasError={priceError}
       />
-
+      <div className={getClasses({block, element: `limits`})}>
+        <span>
+          От {formatNumber(config.price.min)}
+          {` `}
+          {conjugate(config.price.min, rubles)} до{` `}
+          {formatNumber(config.price.max)}
+          {` `}
+          {conjugate(config.price.max, rubles)}
+        </span>
+      </div>
       {Boolean(config.firstPay) && (
         <React.Fragment>
           <NumberField
@@ -111,9 +121,11 @@ function StepTwo({id}) {
             value={firstPayPercent}
             onChange={setFirstPayPercent}
           />
+          <div className={getClasses({block, element: `limits`})}>
+            <span>{formatNumber(config.firstPay.minPercentage)}%</span>
+          </div>
         </React.Fragment>
       )}
-
       <NumberField
         title="Срок кредитования"
         value={period}
@@ -131,7 +143,18 @@ function StepTwo({id}) {
         value={period}
         onChange={setPeriod}
       />
-
+      <div className={getClasses({block, element: `limits`})}>
+        <span>
+          {formatNumber(config.period.min)}
+          {` `}
+          {conjugate(config.period.min, years)}
+        </span>
+        <span>
+          {formatNumber(config.period.max)}
+          {` `}
+          {conjugate(config.period.max, years)}
+        </span>
+      </div>
       {config.checkboxes.map(({name, title}) => (
         <label key={name}>
           <input type="checkbox" name={name} />

@@ -1,9 +1,9 @@
 import React, {useState, useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import getClasses from '../../utils/getClasses';
-import noop from '../../utils/noop';
-import formatNumber from '../../utils/format-number';
-import {block} from '../calculator/calculator';
+import getClasses from '../../../utils/getClasses';
+import noop from '../../../utils/noop';
+import formatNumber from '../../../utils/format-number';
+import {block} from '../calculator';
 
 function NumberInput({value, onChange, onBlur}) {
   const [position, setPosition] = useState(null);
@@ -24,9 +24,8 @@ function NumberInput({value, onChange, onBlur}) {
       if (val === value) {
         setPosition(cursorPosition + isDelRef.current);
       } else {
-        const addedSymbols =
-          formatNumber(val).length - formatNumber(newValue).length;
-        const newPos = cursorPosition + addedSymbols - Math.sign(addedSymbols);
+        const addedSymbols = formatNumber(val).length - newValue.length;
+        const newPos = cursorPosition + addedSymbols;
         setPosition(newPos < 0 ? 0 : newPos);
         onChange(val);
       }

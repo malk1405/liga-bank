@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import getClasses from '../../utils/getClasses';
+import {block} from './calculator';
 
 function Offer({config, errorText}) {
   return (
-    <div>
+    <div className={getClasses({block, element: `offer`})}>
       {errorText ? (
         <React.Fragment>
           <p>{errorText}</p>

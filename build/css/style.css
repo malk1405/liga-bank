@@ -1487,10 +1487,15 @@ section:focus {
 
 .calculator h3 {
   font-size: 2.2rem;
-  line-height: 3.1rem;
   font-weight: bold;
+  line-height: 1;
   margin-bottom: 2.2rem;
-  margin-top: 3.3rem; }
+  margin-top: 0; }
+
+.calculator__config {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
 
 .calculator__params {
   position: relative;
@@ -1513,6 +1518,7 @@ section:focus {
   font-size: 1.6rem;
   font-weight: 500;
   height: 6rem;
+  line-height: 2;
   padding: 0 24px;
   width: 100%; }
   .calculator__field--option {
@@ -1537,11 +1543,27 @@ section:focus {
   margin: 0 -5px;
   border: none;
   font: inherit;
-  height: 100%;
+  height: auto;
   text-align: center;
-  padding: 0; }
+  padding: 10px 0; }
   .calculator__input::-ms-clear {
     display: none; }
+
+.calculator__limits {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.calculator__offer {
+  background-color: #f6f7ff;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  margin-left: 70px;
+  padding: 60px 58px;
+  width: 500px; }
 
 .map {
   max-width: 100%;

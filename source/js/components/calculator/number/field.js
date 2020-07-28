@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import NumberInput from './number-input';
-import conjugate from '../../utils/conjugate';
-import noop from '../../utils/noop';
-import getClasses from '../../utils/getClasses';
-import {block} from '../calculator/calculator';
+import NumberInput from './input';
+import conjugate from '../../../utils/conjugate';
+import noop from '../../../utils/noop';
+import getClasses from '../../../utils/getClasses';
+import {block} from '../calculator';
 
 function NumberField({
   value,
@@ -37,7 +37,7 @@ function NumberField({
 
   return (
     <div>
-      <label>{title}</label>
+      <label className={getClasses({block, element: `label`})}>{title}</label>
       <div className={getClasses({block, element: `field`, modifiers})}>
         {step && (
           <button type="button" onClick={decrement}>
@@ -49,7 +49,7 @@ function NumberField({
           onChange={handleChange}
           onBlur={onBlur}
         ></NumberInput>
-        {conjugate(value, units)}
+        <span>{conjugate(value, units)}</span>
         {step && (
           <button type="button" onClick={increment}>
             +
