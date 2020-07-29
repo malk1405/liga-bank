@@ -1,10 +1,11 @@
 import React, {useEffect, useRef, useCallback} from 'react';
 import {createPortal} from 'react-dom';
 
+import SVG from '../../../img/svg/inline/close.svg';
+
 function Modal({children, onClose}) {
   const body = document.body;
   const closeButton = useRef(null);
-
 
   const resetFocus = useCallback(() => {
     closeButton.current.focus();
@@ -40,8 +41,8 @@ function Modal({children, onClose}) {
       function getBodyScrollTop() {
         return (
           window.pageYOffset ||
-                    (document.documentElement && document.documentElement.ScrollTop) ||
-                    (body && body.scrollTop)
+          (document.documentElement && document.documentElement.ScrollTop) ||
+          (body && body.scrollTop)
         );
       }
     }
@@ -54,7 +55,6 @@ function Modal({children, onClose}) {
     }
   }, []);
 
-
   return createPortal(
       <section className="section modal" tabIndex="0" onFocus={onFocus}>
         <div className="modal-wrapper">
@@ -66,13 +66,18 @@ function Modal({children, onClose}) {
               className="button modal__close-btn"
               onClick={onClose}
             >
-                        Закрыть
+              <SVG />
             </button>
             <h2 className="visually-hidden">Модальное окно</h2>
             {children}
           </div>
         </div>
-        <div className="modal__backdrop" onClick={onClose} onFocus={onFocus} tabIndex="0"></div>
+        <div
+          className="modal__backdrop"
+          onClick={onClose}
+          onFocus={onFocus}
+          tabIndex="0"
+        ></div>
       </section>,
       body
   );
