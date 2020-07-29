@@ -5,7 +5,7 @@ import noop from '../../../utils/noop';
 import formatNumber from '../../../utils/format-number';
 import {block} from '../calculator';
 
-function NumberInput({value, onChange, onBlur, inputRef}) {
+function NumberInput({value, onChange, onFocus, onBlur, inputRef}) {
   const [position, setPosition] = useState(null);
   const isDelRef = useRef(null);
   const valueRef = useRef(null);
@@ -64,6 +64,7 @@ function NumberInput({value, onChange, onBlur, inputRef}) {
         value={modifiedValue}
         className={getClasses({block, element: `input`})}
         onChange={handleChange}
+        onFocus={onFocus}
         onBlur={onBlur}
         onKeyDown={handleKeyDown}
       ></input>
@@ -78,6 +79,7 @@ NumberInput.defaultProps = {
 NumberInput.propTypes = {
   value: PropTypes.number,
   onChange: PropTypes.func.isRequired,
+  onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   inputRef: PropTypes.shape({current: PropTypes.instanceOf(Element)})
     .isRequired,

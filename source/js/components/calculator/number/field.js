@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import NumberInput from './input';
 import conjugate from '../../../utils/conjugate';
@@ -18,6 +18,17 @@ function NumberField({
   hasError,
 }) {
   const inputRef = useRef(null);
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    onBlur();
+    setIsFocused(false);
+  };
+
   const handleChange = (newValue) => {
     if (newValue) {
       onChange(Math.min(newValue, +String(max).replace(/\d/g, `9`)));
@@ -43,6 +54,10 @@ function NumberField({
   const modifiers = [`input`];
   if (hasError) {
     modifiers.push(`error`);
+  }
+
+  if (isFocused) {
+    modifiers.push(`focused`);
   }
 
   return (
@@ -74,7 +89,8 @@ function NumberField({
         <NumberInput
           value={value}
           onChange={handleChange}
-          onBlur={onBlur}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           inputRef={inputRef}
         ></NumberInput>
         <span>{conjugate(value, units)}</span>
