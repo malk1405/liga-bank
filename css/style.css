@@ -521,6 +521,9 @@ section:focus {
     width: 500px; }
 
 .modal__close-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: absolute;
   right: 60px;
   top: 60px; }
