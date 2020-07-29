@@ -159,6 +159,7 @@ function StepTwo({id, onError, onChange}) {
 
     onChange({
       price,
+      priceTitle: config.priceTitle,
       firstPay,
       period,
       creditTitle: config.sumTitle,
@@ -167,6 +168,7 @@ function StepTwo({id, onError, onChange}) {
       monthly,
       minIncome,
       checkboxes,
+      purpose: config.purpose,
       error: maxPercentError
         ? {
           minCredit: config.minCredit,

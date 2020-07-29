@@ -6,7 +6,7 @@ import formatNumber from '../../utils/format-number';
 
 const block = `offer`;
 
-function Offer({config, hasError, error, onClick}) {
+function Offer({config, disabled, error, onClick}) {
   return (
     <div
       className={`${getClasses({
@@ -14,7 +14,7 @@ function Offer({config, hasError, error, onClick}) {
         element: block,
       })} ${block}`}
     >
-      {error && !hasError ? (
+      {error && !disabled ? (
         <div className={getClasses({block, element: `reject`})}>
           <p>{`Наш банк не выдаёт ${error.errorTitle} меньше ${formatNumber(
               error.minCredit
@@ -45,7 +45,7 @@ function Offer({config, hasError, error, onClick}) {
             })} ${getClasses({block, element: `button`})}`}
             type="button"
             onClick={onClick}
-            disabled={hasError}
+            disabled={disabled}
           >
             Оформить заявку
           </button>
@@ -62,7 +62,7 @@ Offer.propTypes = {
         value: PropTypes.string,
       })
   ).isRequired,
-  hasError: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool.isRequired,
   error: PropTypes.shape({
     minCredit: PropTypes.number,
     errorTitle: PropTypes.string,

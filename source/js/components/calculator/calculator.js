@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 
 import Step from './step';
 import StepOne from './step-one';
 import StepTwo from './step-two';
 import Offer from './offer';
 import formatNumber from '../../utils/format-number';
-import conjugate, {rubles} from '../../utils/conjugate';
+import conjugate, {rubles, years} from '../../utils/conjugate';
 import getClasses from '../../utils/getClasses';
 import Request from './request';
 
@@ -36,15 +36,60 @@ function Calculator() {
     setHasError(false);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    handleIdChange(null);
-  };
-
   useEffect(() => {
     setIsReady(false);
   }, [hasError, params]);
 
+  const {requestNum, requestItems} = useMemo(() => {
+    function pad(n) {
+      const z = `0`;
+      n = String(n);
+      return n.length >= 3 ? n : new Array(3 - n.length + 1).join(z) + n;
+    }
+
+    const reqNum = Number(localStorage.getItem(`last`)) + 1 || 1;
+
+    return {
+      requestNum: reqNum,
+      requestItems: isReady
+        ? [
+          {title: `Номер заявки`, value: `№${pad(reqNum)}`},
+          {title: `Цель кредита`, value: params.purpose},
+          {
+            title: params.priceTitle,
+            value: `${formatNumber(params.price)} ${conjugate(
+                params.price,
+                rubles
+            )}`,
+          },
+          {
+            title: `Первоначальный взнос`,
+            value: `${formatNumber(params.firstPay)} ${conjugate(
+                params.firstPay,
+                rubles
+            )}`,
+          },
+          {
+            title: `Срок кредитования`,
+            value: `${formatNumber(params.period)} ${conjugate(
+                params.period,
+                years
+            )}`,
+          },
+        ]
+        : null,
+    };
+  }, [isReady]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleIdChange(null);
+    localStorage.setItem(`last`, requestNum);
+    localStorage.setItem(
+        `req ${requestNum}`,
+        JSON.stringify({params, user: null})
+    );
+  };
 
   return (
     <section className={`section container ${block}`} id="calculator">
@@ -97,14 +142,16 @@ function Calculator() {
               },
             ]}
             error={params.error}
-            hasError={hasError}
+            disabled={hasError}
             onClick={handleClick}
           />
         )}
       </div>
-      {isReady && <Step num={3} title="Оформление заявки">
-        <Request items={[]} onSubmit={handleSubmit}></Request>
-      </Step>}
+      {requestItems && (
+        <Step num={3} title="Оформление заявки">
+          <Request items={requestItems} onSubmit={handleSubmit}></Request>
+        </Step>
+      )}
     </section>
   );
 }
