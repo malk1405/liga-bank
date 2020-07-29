@@ -9,6 +9,7 @@ import conjugate, {rubles, years} from '../../utils/conjugate';
 import getClasses from '../../utils/getClasses';
 import Request from './request';
 import {submitableFields} from './credit-types';
+import Modal from '../modal/modal';
 
 const block = `calculator`;
 
@@ -17,6 +18,7 @@ function Calculator() {
   const [hasError, setHasError] = useState(false);
   const [params, setParams] = useState(null);
   const [isReady, setIsReady] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleIdChange = (newId) => {
     setId(newId);
@@ -88,7 +90,6 @@ function Calculator() {
   }, [isReady]);
 
   const handleSubmit = (client) => {
-    handleIdChange(null);
     const data = {};
     submitableFields.forEach((el) => {
       if (params[el]) {
@@ -96,12 +97,17 @@ function Calculator() {
       }
     });
 
-
     localStorage.setItem(`last`, requestNum);
     localStorage.setItem(
         `req ${requestNum}`,
         JSON.stringify({params: data, client})
     );
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    handleIdChange(null);
   };
 
   return (
@@ -169,6 +175,8 @@ function Calculator() {
           ></Request>
         </Step>
       )}
+
+      {modalIsOpen && <Modal onClose={closeModal}>модальное окно</Modal>}
     </section>
   );
 }
