@@ -26,12 +26,18 @@ function NumberField({
     }
   };
 
-  const decrement = () => {
+  const decrement = (e) => {
+    e.stopPropagation();
     onChange(Math.max(min, value - step));
   };
 
-  const increment = () => {
+  const increment = (e) => {
+    e.stopPropagation();
     onChange(Math.min(max, value + step));
+  };
+
+  const handleClick = () => {
+    inputRef.current.focus();
   };
 
   const modifiers = [`input`];
@@ -41,8 +47,16 @@ function NumberField({
 
   return (
     <React.Fragment>
-      <label className={getClasses({block, element: `label`})}>{title}</label>
-      <div className={getClasses({block, element: `field`, modifiers})}>
+      <label
+        className={getClasses({block, element: `label`})}
+        onClick={handleClick}
+      >
+        {title}
+      </label>
+      <div
+        className={getClasses({block, element: `field`, modifiers})}
+        onClick={handleClick}
+      >
         {step && (
           <button
             title="Уменьшить"
