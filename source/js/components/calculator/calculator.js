@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo} from 'react';
+import React, {useState, useEffect, useMemo, useRef} from 'react';
 
 import Step from './step';
 import StepOne from './step-one';
@@ -23,8 +23,13 @@ function Calculator() {
     setIsReady(false);
   };
 
+  const inputRef = useRef(null);
+
   const handleClick = () => {
     setIsReady(true);
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   };
 
   const handleError = () => {
@@ -149,7 +154,11 @@ function Calculator() {
       </div>
       {requestItems && (
         <Step num={3} title="Оформление заявки">
-          <Request items={requestItems} onSubmit={handleSubmit}></Request>
+          <Request
+            items={requestItems}
+            onSubmit={handleSubmit}
+            inputRef={inputRef}
+          ></Request>
         </Step>
       )}
     </section>

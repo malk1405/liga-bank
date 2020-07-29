@@ -273,7 +273,7 @@ function StepTwo({id, onError, onChange}) {
         >
           <Checkbox
             name={name}
-            checked={checkboxes[name]}
+            checked={checkboxes[name] || false}
             onChange={handleChecboxChange}
           />
           <span className={getClasses({block, element: `checkbox-text`})}>

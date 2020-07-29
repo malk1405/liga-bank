@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import getClasses from '../../utils/getClasses';
 
 const block = `request`;
 
-function Request({items, onSubmit}) {
+function Request({items, onSubmit, inputRef}) {
+  useEffect(() => {
+    inputRef.current.focus();
+    return () => {
+    };
+  }, []);
+
   return (
     <div className={block}>
       <dl>
@@ -16,7 +22,12 @@ function Request({items, onSubmit}) {
         ))}
       </dl>
       <form onSubmit={onSubmit}>
-        <input id="request__name" name="name" placeholder="ФИО" />
+        <input
+          ref={inputRef}
+          id="request__name"
+          name="name"
+          placeholder="ФИО"
+        />
         <label className="visually-hidden">ФИО</label>
         <input id="request__phone" name="phone" placeholder="Телефон" />
         <label className="visually-hidden">Телефон</label>
@@ -32,8 +43,9 @@ Request.propTypes = {
   items: PropTypes.arrayOf(
       PropTypes.shape({title: PropTypes.string, value: PropTypes.string})
   ).isRequired,
-  data: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  inputRef: PropTypes.shape({current: PropTypes.instanceOf(Element)})
+    .isRequired,
 };
 
 export default Request;
