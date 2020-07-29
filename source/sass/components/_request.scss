@@ -1,0 +1,93 @@
+@keyframes error_animation {
+  from {
+    background-color: rgba(red, 0.2);
+  }
+
+  50% {
+    background-color: $bg-color-primary;
+  }
+
+  to {
+    background-color: rgba(red, 0.2);
+  }
+}
+
+.request {
+  background-color: $bg-color-primary;
+  margin: 0 auto;
+  margin-top: 6.5rem;
+  max-width: 770px;
+  padding: 70px;
+  padding-top: 69px;
+
+  &--error {
+    animation: error_animation 0.3s 2;
+  }
+}
+
+.request h3 {
+  text-align: center;
+}
+
+.request__list {
+  margin-bottom: 0;
+  margin-top: 2.8rem;
+}
+
+.request__item {
+  align-items: center;
+  border-bottom: 1px solid #c4c4c4;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.9rem;
+  padding-bottom: 0.5rem;
+}
+
+.request__title,
+.request__description {
+  line-height: 4rem;
+}
+
+.request__title {
+  color: $text-color-calculator;
+  font-size: 1.6rem;
+}
+
+.request__fields {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -30px;
+}
+
+.request__label {
+  display: block;
+  margin-top: 3rem;
+  margin-right: 30px;
+  flex-grow: 1;
+
+  &:first-child {
+    width: 100%;
+  }
+}
+
+.request__field {
+  background-color: transparent;
+  font-size: 1.8rem;
+
+  &:focus {
+    box-shadow: $focus-shadow;
+  }
+}
+
+.request__field::placeholder {
+  color: #707c87;
+}
+
+.request .button {
+  display: block;
+  font-size: 1.6rem;
+  margin: 0 auto;
+  margin-top: 4rem;
+  min-height: 51px;
+  min-width: 198px;
+}

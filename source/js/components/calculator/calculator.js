@@ -167,13 +167,11 @@ function Calculator() {
         )}
       </div>
       {requestItems && (
-        <Step num={3} title="Оформление заявки">
-          <Request
-            items={requestItems}
-            onSubmit={handleSubmit}
-            inputRef={inputRef}
-          ></Request>
-        </Step>
+        <Request
+          items={requestItems}
+          onSubmit={handleSubmit}
+          inputRef={inputRef}
+        ></Request>
       )}
 
       {modalIsOpen && <Modal onClose={closeModal}>модальное окно</Modal>}
