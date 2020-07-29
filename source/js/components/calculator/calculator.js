@@ -52,7 +52,7 @@ function Calculator() {
     function pad(n) {
       const z = `0`;
       n = String(n);
-      return n.length >= 3 ? n : new Array(3 - n.length + 1).join(z) + n;
+      return n.length >= 4 ? n : new Array(4 - n.length + 1).join(z) + n;
     }
 
     const reqNum = Number(localStorage.getItem(`last`)) + 1 || 1;
