@@ -104,6 +104,16 @@
   }
 }
 
+.calculator__menu {
+  position: absolute;
+  right: 22px;
+  top: 24px;
+
+  &--visible {
+    transform: scaleY(-1);
+  }
+}
+
 .calculator__input {
   appearance: none;
   background-color: transparent;

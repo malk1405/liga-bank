@@ -5,6 +5,7 @@ import getClasses from '../../utils/getClasses';
 import {block} from './calculator';
 import NumberContainer from './number/container';
 import noop from '../../utils/noop';
+import SVG from '../../../img/svg/inline/menu.svg';
 
 function StepOne({onChange, id}) {
   const [isVisible, setIsVisible] = useState(false);
@@ -43,6 +44,13 @@ function StepOne({onChange, id}) {
         onClick={handleVisibilty}
       >
         {!creditTypes[id] ? `Выберите цель кредита` : creditTypes[id].title}
+        <SVG
+          className={getClasses({
+            block,
+            element: `menu`,
+            modifiers: isVisible ? [`visible`] : [],
+          })}
+        />
       </button>
 
       {isVisible && (
