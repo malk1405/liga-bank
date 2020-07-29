@@ -96,6 +96,7 @@ function StepTwo({id, onError, onChange}) {
     }
 
     handlePeriodChange(config.period.min);
+    setCheckboxes({});
   }, [id]);
 
   const priceError = !config.price.validate(price) && mountedRef.current;
