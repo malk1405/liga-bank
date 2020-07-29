@@ -1655,6 +1655,14 @@ section:focus {
   .calculator__field--error.calculator__field {
     background-color: rgba(255, 0, 0, 0.2); }
 
+.calculator__menu {
+  position: absolute;
+  right: 22px;
+  top: 24px; }
+  .calculator__menu--visible {
+    -webkit-transform: scaleY(-1);
+            transform: scaleY(-1); }
+
 .calculator__input {
   -webkit-appearance: none;
      -moz-appearance: none;
