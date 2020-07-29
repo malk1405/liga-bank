@@ -6,16 +6,26 @@ const block = `request`;
 
 function Request({items, onSubmit, inputRef}) {
   const [fields, setFields] = useState({});
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     inputRef.current.focus();
     return () => {};
   }, []);
 
+  const handleInvalid = () => {
+    setError(true);
+  };
+
   const onChange = ({target: {name, value}}) => {
+    setError(false);
     setFields((prev) => {
       if (name === `phone` && /\D/.test(value)) {
         return prev;
+      }
+
+      if (name === `phone`) {
+        value = value.substr(0, 11);
       }
 
       if (name === `name` && /\d/.test(value)) {
@@ -32,8 +42,10 @@ function Request({items, onSubmit, inputRef}) {
     onSubmit(fields);
   };
 
+  const blockModifiers = error ? [`error`] : [];
+
   return (
-    <div className={block}>
+    <div className={getClasses({block, modifiers: blockModifiers})}>
       <dl>
         {items.map(({title, value}, i) => (
           <div className={getClasses({block, element: `item`})} key={i}>
@@ -42,43 +54,60 @@ function Request({items, onSubmit, inputRef}) {
           </div>
         ))}
       </dl>
-      <form onSubmit={handleSubmit}>
-        <input
-          ref={inputRef}
-          id="request__name"
-          type="text"
-          name="name"
-          placeholder="ФИО"
-          value={fields.name || ``}
-          required
-          onChange={onChange}
-          minLength={3}
-          maxLength={40}
-        />
-        <label className="visually-hidden">ФИО</label>
-        <input
-          id="request__phone"
-          type="tel"
-          name="phone"
-          placeholder="Телефон"
-          onChange={onChange}
-          value={fields.phone || ``}
-          required
-          minLength={10}
-          maxLength={10}
-        />
-        <label className="visually-hidden">Телефон</label>
-        <input
-          id="request__mail"
-          type="email"
-          name="mail"
-          required
-          onChange={onChange}
-          placeholder="E-mail"
-          value={fields.mail || ``}
-        />
-        <label className="visually-hidden">E-mail</label>
-        <button type="submit">Отправить</button>
+      <form onSubmit={handleSubmit} onInvalid={handleInvalid}>
+        <label className={getClasses({block, element: `label`})}>
+          <input
+            className={getClasses({block: `calculator`, element: `field`})}
+            ref={inputRef}
+            type="text"
+            name="name"
+            placeholder="ФИО"
+            value={fields.name || ``}
+            required
+            onChange={onChange}
+            minLength={3}
+            maxLength={40}
+          />
+          <span className="visually-hidden">ФИО</span>
+        </label>
+        <label
+          className={getClasses({
+            block,
+            element: `label`,
+            modifiers: [`phone`],
+          })}
+        >
+          <input
+            className={getClasses({block: `calculator`, element: `field`})}
+            type="tel"
+            name="phone"
+            placeholder="Телефон"
+            onChange={onChange}
+            value={fields.phone || ``}
+            required
+            pattern="8[0-9]{10}"
+            title="8XXXXXXXXXX"
+          />
+          <span className="visually-hidden">Телефон</span>
+        </label>
+        <label className={getClasses({block, element: `label`})}>
+          <input
+            className={getClasses({block: `calculator`, element: `field`})}
+            type="email"
+            name="mail"
+            required
+            onChange={onChange}
+            placeholder="E-mail"
+            value={fields.mail || ``}
+          />
+          <span className="visually-hidden">E-mail</span>
+        </label>
+        <button
+          type="submit"
+          className={getClasses({block: `button`, modifiers: [`main`]})}
+        >
+          Отправить
+        </button>
       </form>
     </div>
   );
