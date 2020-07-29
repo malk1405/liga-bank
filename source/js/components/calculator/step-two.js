@@ -231,7 +231,9 @@ function StepTwo({id, onError, onChange}) {
             onChange={handlePercentChange}
           />
           <div className={getClasses({block, element: `limits`})}>
-            <span>{formatNumber(config.firstPay.minPercentage)}%</span>
+            <span>
+              {firstPayPercent > 100 ? `>100` : Math.round(firstPayPercent)}%
+            </span>
           </div>
         </NumberContainer>
       )}
