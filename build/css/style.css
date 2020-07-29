@@ -595,6 +595,10 @@ section:focus {
   fill: #2c36f2;
   color: #f6f7ff; }
 
+.checkbox:focus + .checkbox-clone {
+  -webkit-box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5);
+          box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5); }
+
 :root {
   font-size: 62.5%; }
 

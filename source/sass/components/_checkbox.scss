@@ -9,3 +9,7 @@
   fill: $blue-color-main;
   color: $bg-color-primary;
 }
+
+.checkbox:focus + .checkbox-clone {
+  box-shadow: $focus-shadow;
+}
