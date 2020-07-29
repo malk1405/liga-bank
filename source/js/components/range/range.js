@@ -49,7 +49,7 @@ function Range({min, max, step, value, onChange, modifiers}) {
         thumbRef.current.style.left = `${offset * 100}%`;
 
         const steps = Math.round(((max - min) * offset) / step);
-        const newValue = min + steps * step;
+        const newValue = offset * 100 > 99 ? max : min + steps * step;
         if (newValue !== valueRef.current) {
           onChange(newValue);
         }
@@ -81,7 +81,7 @@ function Range({min, max, step, value, onChange, modifiers}) {
 }
 
 Range.defaultProps = {
-  modifiers: []
+  modifiers: [],
 };
 
 Range.propTypes = {
@@ -90,7 +90,7 @@ Range.propTypes = {
   step: PropTypes.number.isRequired,
   value: PropTypes.number,
   onChange: PropTypes.func.isRequired,
-  modifiers: PropTypes.arrayOf(PropTypes.string)
+  modifiers: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default Range;
