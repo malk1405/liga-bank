@@ -1736,6 +1736,110 @@ section:focus {
     max-width: 700px;
     width: 100%; } }
 
+@-webkit-keyframes error_animation {
+  from {
+    background-color: rgba(255, 0, 0, 0.2); }
+  50% {
+    background-color: #f6f7ff; }
+  to {
+    background-color: rgba(255, 0, 0, 0.2); } }
+
+@keyframes error_animation {
+  from {
+    background-color: rgba(255, 0, 0, 0.2); }
+  50% {
+    background-color: #f6f7ff; }
+  to {
+    background-color: rgba(255, 0, 0, 0.2); } }
+
+.request {
+  background-color: #f6f7ff;
+  margin: 0 auto;
+  margin-top: 6.5rem;
+  max-width: 770px;
+  padding: 70px;
+  padding-top: 69px; }
+  .request--error {
+    -webkit-animation: error_animation 0.3s 2;
+            animation: error_animation 0.3s 2; }
+
+.request h3 {
+  text-align: center; }
+
+.request__list {
+  margin-bottom: 0;
+  margin-top: 2.8rem; }
+
+.request__item {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #c4c4c4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 0.9rem;
+  padding-bottom: 0.5rem; }
+
+.request__title,
+.request__description {
+  line-height: 4rem; }
+
+.request__title {
+  color: #394959;
+  font-size: 1.6rem; }
+
+.request__fields {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-right: -30px; }
+
+.request__label {
+  display: block;
+  margin-top: 3rem;
+  margin-right: 30px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
+  .request__label:first-child {
+    width: 100%; }
+
+.request__field {
+  background-color: transparent;
+  font-size: 1.8rem; }
+  .request__field:focus {
+    -webkit-box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5);
+            box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5); }
+
+.request__field::-webkit-input-placeholder {
+  color: #707c87; }
+
+.request__field::-moz-placeholder {
+  color: #707c87; }
+
+.request__field:-ms-input-placeholder {
+  color: #707c87; }
+
+.request__field::-ms-input-placeholder {
+  color: #707c87; }
+
+.request__field::placeholder {
+  color: #707c87; }
+
+.request .button {
+  display: block;
+  font-size: 1.6rem;
+  margin: 0 auto;
+  margin-top: 4rem;
+  min-height: 51px;
+  min-width: 198px; }
+
 .map {
   max-width: 100%;
   overflow: hidden; }
