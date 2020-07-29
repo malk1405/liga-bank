@@ -61,7 +61,7 @@ function Calculator() {
       requestNum: reqNum,
       requestItems: isReady
         ? [
-          {title: `Номер заявки`, value: `№${pad(reqNum)}`},
+          {title: `Номер заявки`, value: `№ ${pad(reqNum)}`},
           {title: `Цель кредита`, value: params.purpose},
           {
             title: params.priceTitle,
@@ -72,10 +72,12 @@ function Calculator() {
           },
           {
             title: `Первоначальный взнос`,
-            value: `${formatNumber(params.firstPay)} ${conjugate(
-                params.firstPay,
-                rubles
-            )}`,
+            value: params.firstPay
+              ? `${formatNumber(params.firstPay)} ${conjugate(
+                  params.firstPay,
+                  rubles
+              )}`
+              : ``,
           },
           {
             title: `Срок кредитования`,

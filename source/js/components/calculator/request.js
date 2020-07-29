@@ -20,7 +20,7 @@ function Request({items, onSubmit, inputRef}) {
 
   useEffect(() => {
     if (!error) {
-      return;
+      return () => {};
     }
     const timeout = setTimeout(() => {
       setError(false);
@@ -60,16 +60,18 @@ function Request({items, onSubmit, inputRef}) {
     <div className={getClasses({block, modifiers: blockModifiers})}>
       <Step num={3} title="Оформление заявки">
         <dl className={getClasses({block, element: `list`})}>
-          {items.map(({title, value}, i) => (
-            <div className={getClasses({block, element: `item`})} key={i}>
-              <dt className={getClasses({block, element: `title`})}>
-                {title}
-              </dt>
-              <dd className={getClasses({block, element: `value`})}>
-                {value}
-              </dd>
-            </div>
-          ))}
+          {items.map(({title, value}, i) =>
+            value ? (
+              <div className={getClasses({block, element: `item`})} key={i}>
+                <dt className={getClasses({block, element: `title`})}>
+                  {title}
+                </dt>
+                <dd className={getClasses({block, element: `value`})}>
+                  {value}
+                </dd>
+              </div>
+            ) : null
+          )}
         </dl>
         <form onSubmit={handleSubmit} onInvalid={handleInvalid}>
           <div className={getClasses({block, element: `fields`})}>
