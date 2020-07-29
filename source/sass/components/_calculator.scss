@@ -202,6 +202,27 @@
   margin-left: 0.9rem;
 }
 
+.calculator__modal {
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+
+  & > p {
+    margin-top: -0.7rem;
+  }
+}
+
+.calculator__manager {
+  color: #394959;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  margin: 0 auto;
+  margin-top: 1.2rem;
+  width: 300px;
+}
+
 @include mq(tablet) {
   .calculator__config {
     flex-direction: column;

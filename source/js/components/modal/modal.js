@@ -1,9 +1,13 @@
 import React, {useEffect, useRef, useCallback} from 'react';
 import {createPortal} from 'react-dom';
+import PropTypes from 'prop-types';
 
 import SVG from '../../../img/svg/inline/close.svg';
+import getClasses from '../../utils/getClasses';
 
-function Modal({children, onClose}) {
+const block = `modal`;
+
+function Modal({children, onClose, modifiers}) {
   const body = document.body;
   const closeButton = useRef(null);
 
@@ -56,14 +60,18 @@ function Modal({children, onClose}) {
   }, []);
 
   return createPortal(
-      <section className="section modal" tabIndex="0" onFocus={onFocus}>
+      <section className="modal" tabIndex="0" onFocus={onFocus}>
         <div className="modal-wrapper">
-          <div className="modal__body">
+          <div className={getClasses({block, element: `body`, modifiers})}>
             <button
               type="button"
               title="Закрыть"
               ref={closeButton}
-              className="button modal__close-btn"
+              className={`button ${getClasses({
+                block,
+                element: `close-btn`,
+                modifiers,
+              })}`}
               onClick={onClose}
             >
               <SVG />
@@ -73,7 +81,7 @@ function Modal({children, onClose}) {
           </div>
         </div>
         <div
-          className="modal__backdrop"
+          className={getClasses({block, element: `backdrop`})}
           onClick={onClose}
           onFocus={onFocus}
           tabIndex="0"
@@ -82,5 +90,15 @@ function Modal({children, onClose}) {
       body
   );
 }
+
+Modal.defaultProps = {
+  modifiers: [],
+};
+
+Modal.propTypes = {
+  children: PropTypes.node.isRequired,
+  onClose: PropTypes.func.isRequired,
+  modifiers: PropTypes.arrayOf(PropTypes.string),
+};
 
 export default Modal;

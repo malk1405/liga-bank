@@ -501,8 +501,7 @@ section:focus {
   display: -ms-flexbox;
   display: flex;
   max-height: 100vh;
-  overflow-y: auto;
-  border-radius: 8px; }
+  overflow-y: auto; }
 
 .modal__backdrop {
   background-color: #ebebeb;
@@ -514,15 +513,20 @@ section:focus {
   z-index: -1; }
 
 .modal__body {
-  background-color: white;
-  min-height: 521px;
+  background-color: #f6f7ff;
+  padding: 60px;
   position: relative;
-  width: 480px; }
+  width: 544px; }
+  .modal__body--sm {
+    width: 500px; }
 
 .modal__close-btn {
   position: absolute;
-  right: 32px;
-  top: 32px; }
+  right: 60px;
+  top: 60px; }
+  .modal__close-btn--sm {
+    right: 24px;
+    top: 24px; }
   .modal__close-btn svg {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1744,6 +1748,21 @@ section:focus {
 
 .calculator__checkbox-text {
   margin-left: 0.9rem; }
+
+.calculator__modal {
+  text-align: center; }
+  .calculator__modal p {
+    margin: 0; }
+  .calculator__modal > p {
+    margin-top: -0.7rem; }
+
+.calculator__manager {
+  color: #394959;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  margin: 0 auto;
+  margin-top: 1.2rem;
+  width: 300px; }
 
 @media screen and (max-width: 1023px) {
   .calculator__config {

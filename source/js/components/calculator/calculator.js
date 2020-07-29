@@ -176,7 +176,19 @@ function Calculator() {
         ></Request>
       )}
 
-      {modalIsOpen && <Modal onClose={closeModal}>модальное окно</Modal>}
+      {modalIsOpen && (
+        <Modal onClose={closeModal} modifiers={[`sm`]}>
+          <div className={getClasses({block, element: `modal`})}>
+            <p>Спасибо за обращение в наш банк.</p>
+            <div className={getClasses({block, element: `manager`})}>
+              <p>
+                Наш менеджер скоро свяжется с вами по указанному номеру
+                телефона.
+              </p>
+            </div>
+          </div>
+        </Modal>
+      )}
     </section>
   );
 }

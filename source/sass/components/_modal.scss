@@ -18,7 +18,6 @@
   display: flex;
   max-height: 100vh;
   overflow-y: auto;
-  border-radius: 8px;
 }
 
 .modal__backdrop {
@@ -32,16 +31,25 @@
 }
 
 .modal__body {
-  background-color: white;
-  min-height: 521px;
+  background-color: $bg-color-primary;
+  padding: 60px;
   position: relative;
-  width: 480px;
+  width: 544px;
+
+  &--sm {
+    width: 500px;
+  }
 }
 
 .modal__close-btn {
   position: absolute;
-  right: 32px;
-  top: 32px;
+  right: 60px;
+  top: 60px;
+
+  &--sm {
+    right: 24px;
+    top: 24px;
+  }
 
   svg {
     display: flex;
