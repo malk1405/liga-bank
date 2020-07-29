@@ -1,5 +1,13 @@
 const motherSum = 470000;
 
+const submitableFields = [
+  `purpose`,
+  `price`,
+  `firstPay`,
+  `checkboxes`,
+  `period`,
+];
+
 const creditTypes = [
   {
     title: `Ипотечное кредитование`,
@@ -83,7 +91,7 @@ const creditTypes = [
   },
   {
     title: `Потребительский кредит`,
-    purpose: `Автокредит`,
+    purpose: `Потребительский кредит`,
     sumTitle: `Сумма кредита`,
     priceTitle: `Сумма потребительского кредита`,
     errorTitle: `потребительские кредиты`,
@@ -143,5 +151,7 @@ creditTypes.forEach((el, i) => {
   };
   el.period.validate = el.price.validate;
 });
+
+export {submitableFields};
 
 export default creditTypes;

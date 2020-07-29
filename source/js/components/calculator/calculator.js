@@ -8,6 +8,7 @@ import formatNumber from '../../utils/format-number';
 import conjugate, {rubles, years} from '../../utils/conjugate';
 import getClasses from '../../utils/getClasses';
 import Request from './request';
+import {submitableFields} from './credit-types';
 
 const block = `calculator`;
 
@@ -86,13 +87,20 @@ function Calculator() {
     };
   }, [isReady]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (client) => {
     handleIdChange(null);
+    const data = {};
+    submitableFields.forEach((el) => {
+      if (params[el]) {
+        data[el] = params[el];
+      }
+    });
+
+
     localStorage.setItem(`last`, requestNum);
     localStorage.setItem(
         `req ${requestNum}`,
-        JSON.stringify({params, user: null})
+        JSON.stringify({params: data, client})
     );
   };
 
