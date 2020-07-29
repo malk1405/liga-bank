@@ -27,6 +27,7 @@
 .calculator__options {
   position: absolute;
   width: 100%;
+  z-index: 1;
 }
 
 .calculator__field-container {

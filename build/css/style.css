@@ -1583,7 +1583,8 @@ section:focus {
 
 .calculator__options {
   position: absolute;
-  width: 100%; }
+  width: 100%;
+  z-index: 1; }
 
 .calculator__field-container {
   margin-top: 3rem; }
