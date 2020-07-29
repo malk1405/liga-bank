@@ -132,6 +132,15 @@ function StepTwo({id, onError, onChange}) {
   const periodError = !config.period.validate(period) && mountedRef.current;
   const error = priceError || minPercentError || periodError;
 
+  let percentText = `${Math.round(firstPayPercent)}`;
+  if (minPercentError) {
+    percentText = `<${config.firstPay.minPercentage}`;
+  }
+  if (maxPercentError) {
+    percentText = `>${Math.round(maxFirstPayPercentage)}`;
+  }
+  percentText += `%`;
+
   useEffect(() => {
     if (!mountedRef.current) {
       return;
@@ -230,9 +239,7 @@ function StepTwo({id, onError, onChange}) {
             onChange={handlePercentChange}
           />
           <div className={getClasses({block, element: `limits`})}>
-            <span>
-              {firstPayPercent > 100 ? `>100` : Math.round(firstPayPercent)}%
-            </span>
+            <span>{percentText}</span>
           </div>
         </NumberContainer>
       )}
