@@ -1505,7 +1505,8 @@ section:focus {
   font-size: 2.2rem;
   font-weight: 500;
   line-height: 3.1rem;
-  padding: 60px 58px; }
+  padding: 60px;
+  padding-left: 58px; }
 
 .offer__list {
   display: -webkit-box;
@@ -1523,9 +1524,14 @@ section:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-top: 2.7rem; }
+  margin-top: 2.7rem;
+  width: 156px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
   .offer__item:nth-child(2n + 1) {
-    margin-right: 27px;
+    margin-right: 26px;
+    max-width: 200px;
     width: 200px; }
 
 .offer__title,
@@ -1548,6 +1554,7 @@ section:focus {
 .offer__button {
   font-size: 1.6rem;
   margin-top: 1.3rem;
+  min-height: 51px;
   width: 100%; }
 
 .offer__reject {
