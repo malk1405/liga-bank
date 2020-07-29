@@ -155,7 +155,7 @@ function StepTwo({id, onError, onChange}) {
         (1 - Math.pow(1 + interestRate / 12, -period * 12))
     );
 
-    const minIncome = Math.round(0.45 * monthly);
+    const minIncome = Math.round(monthly / 0.45);
 
     onChange({
       price,
