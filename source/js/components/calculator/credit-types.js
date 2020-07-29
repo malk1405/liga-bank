@@ -7,7 +7,7 @@ const creditTypes = [
     purpose: `Ипотека`,
     sumTitle: `Сумма ипотеки`,
     priceTitle: `Стоимость недвижимости`,
-    errorTitle: `ипотечние кредиты`,
+    errorTitle: `ипотечные кредиты`,
 
     price: {
       min: 1200000,

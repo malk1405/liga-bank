@@ -84,6 +84,7 @@ function Calculator() {
                 )}`,
               },
             ]}
+            error={params.error}
             hasError={hasError}
           />
         )}

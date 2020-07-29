@@ -163,11 +163,16 @@ function StepTwo({id, onError, onChange}) {
       period,
       creditTitle: config.sumTitle,
       creditSum,
-      minCredit: config.minCredit,
       interestRate,
       monthly,
       minIncome,
       checkboxes,
+      error: maxPercentError
+        ? {
+          minCredit: config.minCredit,
+          errorTitle: config.errorTitle,
+        }
+        : null,
     });
   }, [
     error,
