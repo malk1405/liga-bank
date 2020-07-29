@@ -4,16 +4,25 @@ import creditTypes from './credit-types';
 import getClasses from '../../utils/getClasses';
 import {block} from './calculator';
 import NumberContainer from './number/container';
+import noop from '../../utils/noop';
 
 function StepOne({onChange, id}) {
   const [isVisible, setIsVisible] = useState(false);
-  const handleVisibilty = () => {
-    setIsVisible((v) => !v);
-  };
+
+  const handleVisibilty = !isVisible
+    ? () => {
+      setIsVisible(true);
+
+      function onClick() {
+        setIsVisible(false);
+        document.removeEventListener(`click`, onClick);
+      }
+      document.addEventListener(`click`, onClick);
+    }
+    : noop;
 
   const handleClick = (e) => {
     const {id: newId} = e.target.dataset;
-    setIsVisible(false);
 
     if (!newId) {
       onChange(null);
