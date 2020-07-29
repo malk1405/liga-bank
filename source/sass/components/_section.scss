@@ -8,3 +8,14 @@
   margin: 0;
   margin-bottom: 5.5rem;
 }
+
+@include mq(tablet) {
+  .section {
+    margin-top: 6.9rem;
+  }
+
+  .section h2 {
+    font-size: 3.2rem;
+    margin-bottom: 3.2rem;
+  }
+}

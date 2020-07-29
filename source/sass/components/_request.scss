@@ -95,3 +95,19 @@
   min-height: 51px;
   min-width: 198px;
 }
+
+@include mq(tablet) {
+  .request {
+    background-color: transparent;
+    margin-top: 5.8rem;
+    padding: 0;
+  }
+
+  .request__list {
+    margin-top: 4.2rem;
+  }
+
+  .request .button {
+    width: 100%;
+  }
+}

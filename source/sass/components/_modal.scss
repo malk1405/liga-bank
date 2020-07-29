@@ -56,6 +56,14 @@
   }
 }
 
+@include mq(tablet) {
+  .modal__body {
+    &--sm {
+      width: 678px;
+    }
+  }
+}
+
 @include mq(phone) {
   .modal-wrapper {
     border-radius: 0;
