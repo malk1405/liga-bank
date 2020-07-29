@@ -7,6 +7,7 @@ import Offer from './offer';
 import formatNumber from '../../utils/format-number';
 import conjugate, {rubles} from '../../utils/conjugate';
 import getClasses from '../../utils/getClasses';
+import Request from './request';
 
 const block = `calculator`;
 
@@ -19,6 +20,11 @@ function Calculator() {
   const handleIdChange = (newId) => {
     setId(newId);
     setParams(null);
+    setIsReady(false);
+  };
+
+  const handleClick = () => {
+    setIsReady(true);
   };
 
   const handleError = () => {
@@ -30,9 +36,15 @@ function Calculator() {
     setHasError(false);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleIdChange(null);
+  };
+
   useEffect(() => {
     setIsReady(false);
   }, [hasError, params]);
+
 
   return (
     <section className={`section container ${block}`} id="calculator">
@@ -86,9 +98,13 @@ function Calculator() {
             ]}
             error={params.error}
             hasError={hasError}
+            onClick={handleClick}
           />
         )}
       </div>
+      {isReady && <Step num={3} title="Оформление заявки">
+        <Request items={[]} onSubmit={handleSubmit}></Request>
+      </Step>}
     </section>
   );
 }
