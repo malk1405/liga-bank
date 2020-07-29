@@ -44,7 +44,7 @@
 }
 
 .request__title,
-.request__description {
+.request__value {
   line-height: 4rem;
 }
 
@@ -108,6 +108,57 @@
   }
 
   .request .button {
+    width: 100%;
+  }
+}
+
+@include mq(phone) {
+  .request {
+    margin-top: 4.5rem;
+  }
+
+  .request__list {
+    margin-top: 4.3rem;
+  }
+
+  .request__item {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 1.7rem;
+    padding-bottom: 1.3rem;
+  }
+
+  .request__title,
+  .request__value {
+    line-height: 2rem;
+  }
+
+  .request__title {
+    order: 1;
+    margin-top: 0.5rem;
+  }
+
+  .request__value {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+
+  .request__fields {
+    margin-top: 1rem;
+  }
+
+  .request__label {
+    margin-top: 2rem;
+  }
+
+  .request__field {
+    font-size: 1.6rem;
+    letter-spacing: 0.02em;
+  }
+
+  .request .button {
+    font-size: 1.4rem;
+    margin-top: 3rem;
     width: 100%;
   }
 }

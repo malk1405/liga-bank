@@ -65,17 +65,21 @@
 }
 
 @include mq(phone) {
-  .modal-wrapper {
-    border-radius: 0;
-  }
-
   .modal__body {
-    height: 100vh;
-    width: 100vw;
+    margin: 0 auto;
+    padding: 40px 26px;
+    width: calc(100% - 30px);
   }
 
   .modal__close-btn {
-    right: 24px;
-    top: 24px;
+    right: 14px;
+    top: 14px;
+    width: 14px;
+    height: 14px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
   }
 }

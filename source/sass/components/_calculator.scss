@@ -261,3 +261,55 @@
     margin-top: 3.7rem;
   }
 }
+
+@include mq(phone) {
+  .calculator__step h3 {
+    font-size: 1.6rem;
+  }
+
+  .calculator__step--2 {
+    margin-top: 2.8rem;
+  }
+
+  .calculator__field-container {
+    margin-top: 2.1rem;
+  }
+
+  .calculator__field {
+    padding: 0 14px;
+  }
+
+  .calculator__menu {
+    right: 14px;
+  }
+
+  .calculator__checkbox-container {
+    font-size: 1.4rem;
+    align-items: center;
+    margin-top: 2.1rem;
+  }
+
+  .calculator__offer {
+    margin-top: 3rem;
+  }
+  .calculator__modal {
+    p {
+      margin: 0;
+    }
+
+    & > p {
+      font-size: 1.8rem;
+      margin: 0 auto;
+      margin-top: -0.5rem;
+      width: 85%;
+      max-width: 400px;
+    }
+  }
+
+  .calculator__manager {
+    margin: 0 -1%;
+    margin-top: 1.4rem;
+    width: 102%;
+    max-width: 400px;
+  }
+}
