@@ -277,7 +277,10 @@ function StepTwo({id, onError, onChange}) {
       </NumberContainer>
       {config.checkboxes.map(({name, title}) => (
         <label
-          className={getClasses({block, element: `checkbox-container`})}
+          className={`${getClasses({
+            block,
+            element: `checkbox-container`,
+          })} checkbox-label`}
           key={name}
         >
           <Checkbox

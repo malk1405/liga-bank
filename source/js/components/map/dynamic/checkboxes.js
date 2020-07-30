@@ -7,7 +7,7 @@ function CheckBoxes({config, onChange}) {
     <ul className="list map__list">
       {config.map(({name, text, checked, id}) => (
         <li key={name} className={`map__item`}>
-          <label>
+          <label className="checkbox-label">
             <Checkbox
               name={name}
               onChange={onChange}

@@ -90,3 +90,26 @@
     background-color: rgba(red, 0.2);
   }
 }
+
+.checkbox-clone {
+  color: transparent;
+  fill: none;
+  stroke: $blue-color-main;
+  user-select: none;
+}
+
+.checkbox:checked + .checkbox-clone {
+  fill: $blue-color-main;
+  color: $bg-color-primary;
+}
+
+.checkbox:focus + .checkbox-clone {
+  box-shadow: $focus-shadow;
+}
+
+.checkbox-label {
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
