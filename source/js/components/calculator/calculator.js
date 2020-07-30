@@ -193,9 +193,14 @@ function Calculator() {
 
       {modalIsOpen && (
         <Modal onClose={closeModal} modifiers={[`sm`]}>
-          <div className={getClasses({block, element: `modal`})}>
+          <div className={`${block}-modal`}>
             <p>Спасибо за обращение в наш банк.</p>
-            <div className={getClasses({block, element: `manager`})}>
+            <div
+              className={getClasses({
+                block: `${block}-modal`,
+                element: `manager`,
+              })}
+            >
               <p>
                 Наш менеджер скоро свяжется с вами по указанному номеру
                 телефона.

@@ -1811,14 +1811,14 @@ section:focus {
 .calculator__checkbox-text {
   margin-left: 0.9rem; }
 
-.calculator__modal {
+.calculator-modal {
   text-align: center; }
-  .calculator__modal p {
+  .calculator-modal p {
     margin: 0; }
-  .calculator__modal > p {
+  .calculator-modal > p {
     margin-top: -0.7rem; }
 
-.calculator__manager {
+.calculator-modal__manager {
   color: #394959;
   font-size: 1.6rem;
   line-height: 2.2rem;
@@ -1869,15 +1869,15 @@ section:focus {
     margin-top: 2.1rem; }
   .calculator__offer {
     margin-top: 3rem; }
-  .calculator__modal p {
+  .calculator-modal p {
     margin: 0; }
-  .calculator__modal > p {
+  .calculator-modal > p {
     font-size: 1.8rem;
     margin: 0 auto;
     margin-top: -0.5rem;
     width: 85%;
     max-width: 400px; }
-  .calculator__manager {
+  .calculator-modal__manager {
     margin: 0 -1%;
     margin-top: 1.4rem;
     width: 102%;

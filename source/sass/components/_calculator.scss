@@ -203,7 +203,7 @@
   margin-left: 0.9rem;
 }
 
-.calculator__modal {
+.calculator-modal {
   text-align: center;
 
   p {
@@ -215,7 +215,7 @@
   }
 }
 
-.calculator__manager {
+.calculator-modal__manager {
   color: #394959;
   font-size: 1.6rem;
   line-height: 2.2rem;
@@ -292,7 +292,7 @@
   .calculator__offer {
     margin-top: 3rem;
   }
-  .calculator__modal {
+  .calculator-modal {
     p {
       margin: 0;
     }
@@ -306,7 +306,7 @@
     }
   }
 
-  .calculator__manager {
+  .calculator-modal__manager {
     margin: 0 -1%;
     margin-top: 1.4rem;
     width: 102%;
