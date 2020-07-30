@@ -41,8 +41,7 @@
   }
 
   &--login {
-    border: 4px solid $blue-color-main;
-    padding: 56px;
+    padding: 0;
   }
 }
 
@@ -65,14 +64,10 @@
 @include mq(tablet) {
   .modal__body {
     width: 678px;
-
-    &--login {
-      padding: 56px 84px;
-    }
   }
 
   .modal__close-btn--login {
-    right: 84px;
+    right: 87px;
   }
 }
 
@@ -84,7 +79,7 @@
     width: calc(100vw - 30px);
 
     &--login {
-      padding: 46px 16px;
+      padding: 0;
     }
   }
 
@@ -95,8 +90,8 @@
     height: 14px;
 
     &--login {
-      top: 46px;
-      right: 16px;
+      top: 50px;
+      right: 19px;
     }
 
     svg {

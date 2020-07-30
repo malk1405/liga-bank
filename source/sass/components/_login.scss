@@ -1,3 +1,9 @@
+.login {
+  // background-color: $bg-color-primary;
+  border: 4px solid $blue-color-main;
+  padding: 56px;
+}
+
 .login__form {
   display: flex;
   flex-direction: column;
@@ -45,7 +51,17 @@
   margin-top: 2.5rem;
 }
 
+@include mq(tablet) {
+  .login {
+    padding: 56px 84px;
+  }
+}
+
 @include mq(phone) {
+  .login {
+    padding: 46px 16px;
+  }
+
   .login__logo {
     transform: translateX(-5px);
   }
@@ -66,8 +82,8 @@
     order: 1;
     align-self: center;
     font-size: 1.4rem;
-    margin-bottom: -0.4rem;
-    margin-top: 1rem;
+    margin-bottom: -0.5rem;
+    margin-top: 1.1rem;
   }
 
   .login__button {
