@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 
 import SVG from '../../../img/svg/inline/close.svg';
 import getClasses from '../../utils/getClasses';
+import noop from '../../utils/noop';
 
 const block = `modal`;
 
-function Modal({children, onClose, modifiers}) {
+function Modal({children, onClose, onCreate, modifiers}) {
   const body = document.body;
   const closeButton = useRef(null);
 
@@ -26,6 +27,7 @@ function Modal({children, onClose, modifiers}) {
     resetFocus();
     document.addEventListener(`keydown`, onEscape);
 
+    onCreate();
     return () => {
       document.removeEventListener(`keydown`, onEscape);
       unlockBody();
@@ -93,10 +95,12 @@ function Modal({children, onClose, modifiers}) {
 
 Modal.defaultProps = {
   modifiers: [],
+  onCreate: noop
 };
 
 Modal.propTypes = {
   children: PropTypes.node.isRequired,
+  onCreate: PropTypes.func,
   onClose: PropTypes.func.isRequired,
   modifiers: PropTypes.arrayOf(PropTypes.string),
 };
