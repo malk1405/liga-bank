@@ -668,6 +668,9 @@ section:focus {
           flex-direction: column;
   margin-top: 0.3rem; }
 
+.login__label-container {
+  position: relative; }
+
 .login__label {
   display: block;
   margin-top: 1.9rem;
