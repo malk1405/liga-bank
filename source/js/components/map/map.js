@@ -17,7 +17,7 @@ function generateConfig() {
 
 function Map() {
   const [config, setConfig] = useState(generateConfig);
-  const [isDynamic, setIsDynamic] = useState(false);
+  const [isDynamic, setIsDynamic] = useState(true);
 
   const onChange = (e) => {
     const {id} = e.target.dataset;
