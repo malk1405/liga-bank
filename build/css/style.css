@@ -715,7 +715,7 @@ section:focus {
     -webkit-transform: translateX(-5px);
             transform: translateX(-5px); }
   .login__form {
-    margin-top: 0rem; }
+    margin-top: 0; }
   .login__label {
     margin-top: 1.3rem; }
   .login__icon {
@@ -1269,7 +1269,7 @@ section:focus {
     font-size: 1.8rem; }
   .features__panel .features__title {
     font-size: 4.6rem;
-    margin-bottom: 0rem; }
+    margin-bottom: 0; }
   .features__link {
     font-size: 1.6rem;
     margin-top: 2.6rem;
@@ -1283,25 +1283,25 @@ section:focus {
     background-image: none; }
   .features__tab {
     margin-left: 6px; }
-  .features__panel-wrapper--credits.features__panel-wrapper {
-    background: url("../img/main/cards@1x--sm.png") left calc(40% + 227px) top 45%/auto 190px no-repeat !important; } }
+  .features__panel-wrapper--credits {
+    background: url("../img/main/cards@1x--sm.png") left calc(40% + 227px) top 45%/auto 190px no-repeat; } }
   @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 767px) and (min-resolution: 144dpi), screen and (max-width: 767px) and (min-resolution: 1.5dppx) {
-    .features__panel-wrapper--credits.features__panel-wrapper {
-      background-image: url("../img/main/cards@2x--sm.png") !important; } }
+    .features__panel-wrapper--credits {
+      background-image: url("../img/main/cards@2x--sm.png"); } }
 
 @media screen and (max-width: 767px) {
-  .features__panel-wrapper--confidence.features__panel-wrapper {
-    background: url("../img/main/man@1x--sm.png") left calc(80% + 53px) center/auto 226px no-repeat !important; } }
+  .features__panel-wrapper--confidence {
+    background: url("../img/main/man@1x--sm.png") left calc(80% + 53px) center/auto 226px no-repeat; } }
   @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 767px) and (min-resolution: 144dpi), screen and (max-width: 767px) and (min-resolution: 1.5dppx) {
-    .features__panel-wrapper--confidence.features__panel-wrapper {
-      background-image: url("../img/main/man@2x--sm.png") !important; } }
+    .features__panel-wrapper--confidence {
+      background-image: url("../img/main/man@2x--sm.png"); } }
 
 @media screen and (max-width: 767px) {
-  .features__panel-wrapper--near.features__panel-wrapper {
-    background: url("../img/main/girl@1x--sm.png") left calc(80% + 58px) center/auto 226px no-repeat !important; } }
+  .features__panel-wrapper--near {
+    background: url("../img/main/girl@1x--sm.png") left calc(80% + 58px) center/auto 226px no-repeat; } }
   @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (max-width: 767px) and (min-resolution: 144dpi), screen and (max-width: 767px) and (min-resolution: 1.5dppx) {
-    .features__panel-wrapper--near.features__panel-wrapper {
-      background-image: url("../img/main/girl@2x--sm.png") !important; } }
+    .features__panel-wrapper--near {
+      background-image: url("../img/main/girl@2x--sm.png"); } }
 
 @media screen and (max-width: 767px) {
   .features__content-wrapper {
@@ -1955,6 +1955,7 @@ section:focus {
     width: 100%; }
   .calculator__offer {
     margin: 0 auto;
+    margin-top: 3.7rem;
     max-width: 700px;
     width: 100%; }
   .calculator__field-container {
@@ -1962,9 +1963,7 @@ section:focus {
   .calculator__field--input {
     font-size: 1.6rem; }
   .calculator__limits {
-    margin-bottom: -0.6rem; }
-  .calculator__offer {
-    margin-top: 3.7rem; } }
+    margin-bottom: -0.6rem; } }
 
 @media screen and (max-width: 767px) {
   .calculator__step h3 {

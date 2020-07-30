@@ -56,24 +56,15 @@
     background-repeat: no-repeat;
 
     color: #e0e1ea;
-
-    @include mret() {
-    }
   }
 
   &--confidence {
     background-color: #dee2ed;
     background-image: linear-gradient(to bottom right, #dee2ed, #f6fbff);
-
-    @include mret() {
-    }
   }
 
   &--near {
     background-color: #e7f1fd;
-
-    @include mret() {
-    }
   }
 
   &--sliding {
@@ -208,7 +199,7 @@
 
   .features__panel .features__title {
     font-size: 4.6rem;
-    margin-bottom: 0rem;
+    margin-bottom: 0;
   }
 
   .features__link {
@@ -217,6 +208,7 @@
     min-width: 206px;
   }
 }
+
 @include mq(phone) {
   .features__tabs {
     bottom: 10px;
@@ -232,29 +224,30 @@
   }
 
   .features__panel-wrapper {
-    &--credits#{&} {
+    &--credits {
       background: url("../img/main/cards@1x--sm.png") left calc(40% + 227px) top
-        45% / auto 190px no-repeat !important;
+        45% / auto 190px no-repeat;
+
       @include mret() {
-        background-image: url("../img/main/cards@2x--sm.png") !important;
+        background-image: url("../img/main/cards@2x--sm.png");
       }
     }
 
-    &--confidence#{&} {
+    &--confidence {
       background: url("../img/main/man@1x--sm.png") left calc(80% + 53px)
-        center/ auto 226px no-repeat !important;
+        center/ auto 226px no-repeat;
 
       @include mret() {
-        background-image: url("../img/main/man@2x--sm.png") !important;
+        background-image: url("../img/main/man@2x--sm.png");
       }
     }
 
-    &--near#{&} {
+    &--near {
       background: url("../img/main/girl@1x--sm.png") left calc(80% + 58px)
-        center/ auto 226px no-repeat !important;
+        center/ auto 226px no-repeat;
 
       @include mret() {
-        background-image: url("../img/main/girl@2x--sm.png") !important;
+        background-image: url("../img/main/girl@2x--sm.png");
       }
     }
   }

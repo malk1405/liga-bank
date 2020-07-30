@@ -3,6 +3,7 @@
 .button {
   background-color: transparent;
   padding: 0;
+
   &:hover {
     cursor: pointer;
   }
@@ -109,6 +110,7 @@
 
 .checkbox-label {
   cursor: pointer;
+
   &:hover {
     opacity: 0.8;
   }

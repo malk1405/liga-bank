@@ -250,6 +250,7 @@
 
   .calculator__offer {
     margin: 0 auto;
+    margin-top: 3.7rem;
     max-width: 700px;
     width: 100%;
   }
@@ -263,12 +264,9 @@
       font-size: 1.6rem;
     }
   }
+
   .calculator__limits {
     margin-bottom: -0.6rem;
-  }
-
-  .calculator__offer {
-    margin-top: 3.7rem;
   }
 }
 
@@ -302,6 +300,7 @@
   .calculator__offer {
     margin-top: 3rem;
   }
+
   .calculator-modal {
     p {
       margin: 0;
