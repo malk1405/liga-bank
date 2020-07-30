@@ -66,3 +66,27 @@
 .button--main {
   border-radius: 4px;
 }
+
+.input {
+  border: 1px solid $text-color-primary;
+  font-size: 1.6rem;
+  font-weight: 500;
+  height: 6rem;
+  padding: 0 24px;
+  position: relative;
+  width: 100%;
+
+  &:hover {
+    background-color: rgba($blue-color-main, 0.05);
+  }
+
+  &:focus,
+  &--focused {
+    box-shadow: $focus-shadow;
+    z-index: 2;
+  }
+
+  &--error#{&} {
+    background-color: rgba(red, 0.2);
+  }
+}

@@ -44,10 +44,7 @@ function LoginForm({onSubmit, inputRef}) {
             Логин
           </span>
           <input
-            className={`${getClasses({
-              block: `calculator`,
-              element: `field`,
-            })} ${getClasses({block, element: `field`})}`}
+            className={`input ${getClasses({block, element: `field`})}`}
             ref={inputRef}
             type="text"
             name="login"
@@ -70,10 +67,7 @@ function LoginForm({onSubmit, inputRef}) {
               Пароль
             </span>
             <input
-              className={`${getClasses({
-                block: `calculator`,
-                element: `field`,
-              })} ${getClasses({block, element: `field`})}`}
+              className={`input ${getClasses({block, element: `field`})}`}
               type={isShown ? `text` : `password`}
               name="password"
               onChange={onChange}
@@ -98,6 +92,7 @@ function LoginForm({onSubmit, inputRef}) {
       >
         Войти
       </button>
+      <a href="#" className="link">Забыли пароль?</a>
     </form>
   );
 }
