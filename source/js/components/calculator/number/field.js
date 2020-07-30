@@ -16,6 +16,7 @@ function NumberField({
   onChange,
   onBlur,
   hasError,
+  errorText,
 }) {
   const inputRef = useRef(null);
   const [isFocused, setIsFocused] = useState(false);
@@ -108,6 +109,11 @@ function NumberField({
             <span className="visually-hidden">Уменьшить</span>
           </button>
         )}
+        {hasError && errorText && (
+          <div className={getClasses({block, element: `field-error`})}>
+            {errorText}
+          </div>
+        )}
       </div>
     </React.Fragment>
   );
@@ -129,6 +135,7 @@ NumberField.propTypes = {
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func,
   hasError: PropTypes.bool,
+  errorText: PropTypes.string,
 };
 
 export default NumberField;

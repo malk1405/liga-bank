@@ -209,6 +209,7 @@ function StepTwo({id, onError, onChange}) {
           max={config.price.max}
           step={config.price.step}
           hasError={priceError}
+          errorText="Некорректное значение"
         />
         <div className={getClasses({block, element: `limits`})}>
           <span>
