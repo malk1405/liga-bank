@@ -40,7 +40,7 @@ function LoginForm({onSubmit, inputRef}) {
 
   return (
     <div className={block}>
-      <Logo />
+      <Logo className={getClasses({block, element: `logo`})} />
       <form onSubmit={handleSubmit}>
         <div className={getClasses({block, element: `form`})}>
           <div className={getClasses({block, element: `fields`})}>
@@ -84,7 +84,7 @@ function LoginForm({onSubmit, inputRef}) {
                 <button
                   type="button"
                   title="Показать пароль"
-                  className="button"
+                  className={`button ${getClasses({block, element: `icon`})}`}
                   onKeyDown={showPassword}
                   onKeyUp={hidePassword}
                   onBlur={hidePassword}
@@ -92,7 +92,7 @@ function LoginForm({onSubmit, inputRef}) {
                   onMouseLeave={hidePassword}
                   onMouseUp={hidePassword}
                 >
-                  <Icon className={getClasses({block, element: `icon`})} />
+                  <Icon />
                 </button>
               </label>
             </div>

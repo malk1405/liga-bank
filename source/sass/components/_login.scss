@@ -20,9 +20,12 @@
 }
 
 .login__icon {
+  display: flex;
   bottom: 25px;
+  height: 12px;
   right: 25px;
   position: absolute;
+  width: 22px;
 }
 
 .login__link {
@@ -35,4 +38,36 @@
 .login__button {
   height: 6rem;
   margin-top: 2.5rem;
+}
+
+@include mq(phone) {
+  .login__logo {
+    transform: translateX(-5px);
+  }
+
+  .login__form {
+    margin-top: 0rem;
+  }
+
+  .login__label {
+    margin-top: 1.3rem;
+  }
+
+  .login__icon {
+    right: 15px;
+  }
+
+  .login__link {
+    order: 1;
+    align-self: center;
+    font-size: 1.4rem;
+    margin-bottom: -0.4rem;
+    margin-top: 1rem;
+  }
+
+  .login__button {
+    font-size: 1.4rem;
+    height: 5.1rem;
+    margin-top: 3rem;
+  }
 }

@@ -43,7 +43,6 @@
   &--login {
     border: 4px solid $blue-color-main;
     padding: 56px;
-    // background-image: url("../img/temp/Login.png");
   }
 }
 
@@ -64,17 +63,28 @@
 
 @include mq(tablet) {
   .modal__body {
-    &--sm {
-      width: 678px;
+    width: 678px;
+
+    &--login {
+      padding: 56px 84px;
     }
+  }
+
+  .modal__close-btn--login {
+    right: 84px;
   }
 }
 
 @include mq(phone) {
   .modal__body {
     margin: 0 auto;
+    max-width: 500px;
     padding: 40px 26px;
-    width: calc(100% - 30px);
+    width: calc(100vw - 30px);
+
+    &--login {
+      padding: 46px 16px;
+    }
   }
 
   .modal__close-btn {
@@ -82,6 +92,11 @@
     top: 14px;
     width: 14px;
     height: 14px;
+
+    &--login {
+      top: 46px;
+      right: 16px;
+    }
 
     svg {
       width: 100%;
