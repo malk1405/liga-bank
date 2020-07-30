@@ -433,6 +433,28 @@ section:focus {
   .input--error.input {
     background-color: rgba(255, 0, 0, 0.2); }
 
+.checkbox-clone {
+  color: transparent;
+  fill: none;
+  stroke: #2c36f2;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+
+.checkbox:checked + .checkbox-clone {
+  fill: #2c36f2;
+  color: #f6f7ff; }
+
+.checkbox:focus + .checkbox-clone {
+  -webkit-box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5);
+          box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5); }
+
+.checkbox-label {
+  cursor: pointer; }
+  .checkbox-label:hover {
+    opacity: 0.8; }
+
 .logo a,
 .logo svg {
   display: -webkit-box;
@@ -640,23 +662,6 @@ section:focus {
   .section h2 {
     font-size: 2.2rem;
     margin-bottom: 2.5rem; } }
-
-.checkbox-clone {
-  color: transparent;
-  fill: none;
-  stroke: #2c36f2;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none; }
-
-.checkbox:checked + .checkbox-clone {
-  fill: #2c36f2;
-  color: #f6f7ff; }
-
-.checkbox:focus + .checkbox-clone {
-  -webkit-box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5);
-          box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5); }
 
 .login__form {
   display: -webkit-box;
