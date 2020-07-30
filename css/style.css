@@ -661,6 +661,7 @@ section:focus {
     margin-bottom: 2.5rem; } }
 
 .login {
+  background-color: #f6f7ff;
   border: 4px solid #2c36f2;
   padding: 56px; }
 
