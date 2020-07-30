@@ -60,12 +60,16 @@ function LoginForm({onSubmit, inputRef}) {
                 maxLength={40}
               />
             </label>
-            <div>
+            <div
+              className={getClasses({
+                block,
+                element: `label-container`,
+              })}
+            >
               <label
                 className={getClasses({
                   block,
                   element: `label`,
-                  modifiers: [`phone`],
                 })}
               >
                 <span className={getClasses({block, element: `label-text`})}>
@@ -81,20 +85,20 @@ function LoginForm({onSubmit, inputRef}) {
                   minLength={6}
                   maxLength={40}
                 />
-                <button
-                  type="button"
-                  title="Показать пароль"
-                  className={`button ${getClasses({block, element: `icon`})}`}
-                  onKeyDown={showPassword}
-                  onKeyUp={hidePassword}
-                  onBlur={hidePassword}
-                  onMouseDown={showPassword}
-                  onMouseLeave={hidePassword}
-                  onMouseUp={hidePassword}
-                >
-                  <Icon />
-                </button>
               </label>
+              <button
+                type="button"
+                title="Показать пароль"
+                className={`button ${getClasses({block, element: `icon`})}`}
+                onKeyDown={showPassword}
+                onKeyUp={hidePassword}
+                onBlur={hidePassword}
+                onMouseDown={showPassword}
+                onMouseLeave={hidePassword}
+                onMouseUp={hidePassword}
+              >
+                <Icon />
+              </button>
             </div>
           </div>
           <a
