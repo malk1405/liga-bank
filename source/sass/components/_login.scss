@@ -1,0 +1,38 @@
+.login__form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.3rem;
+}
+
+.login__label {
+  display: block;
+  margin-top: 1.9rem;
+  position: relative;
+}
+
+.login__label-text {
+  color: #394959;
+  font-size: 1.6rem;
+}
+
+.login__field {
+  margin-top: 0.2rem;
+}
+
+.login__icon {
+  bottom: 25px;
+  right: 25px;
+  position: absolute;
+}
+
+.login__link {
+  align-self: flex-end;
+  color: #707c87;
+  font-size: 1.2rem;
+  margin-top: 0.8rem;
+}
+
+.login__button {
+  height: 6rem;
+  margin-top: 2.5rem;
+}

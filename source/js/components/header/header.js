@@ -33,7 +33,7 @@ function Header() {
         <Nav></Nav>
         <Login loginRef={loginRef} onClick={openModal}></Login>
         {modalIsOpen && (
-          <Modal onCreate={handleCreateModal} onClose={closeModal}>
+          <Modal onCreate={handleCreateModal} onClose={closeModal} modifiers={[`login`]}>
             <LoginForm inputRef={inputRef} onSubmit={closeModal}></LoginForm>
           </Modal>
         )}

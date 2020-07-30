@@ -39,70 +39,80 @@ function LoginForm({onSubmit, inputRef}) {
   };
 
   return (
-    <div>
+    <div className={block}>
       <Logo />
       <form onSubmit={handleSubmit}>
-        <div className={getClasses({block, element: `fields`})}>
-          <label className={getClasses({block, element: `label`})}>
-            <span className={getClasses({block, element: `label-text`})}>
-              Логин
-            </span>
-            <input
-              className={`input ${getClasses({block, element: `field`})}`}
-              ref={inputRef}
-              type="text"
-              name="login"
-              value={fields.login || ``}
-              required
-              onChange={onChange}
-              minLength={3}
-              maxLength={40}
-            />
-          </label>
-          <div>
-            <label
-              className={getClasses({
-                block,
-                element: `label`,
-                modifiers: [`phone`],
-              })}
-            >
+        <div className={getClasses({block, element: `form`})}>
+          <div className={getClasses({block, element: `fields`})}>
+            <label className={getClasses({block, element: `label`})}>
               <span className={getClasses({block, element: `label-text`})}>
-                Пароль
+                Логин
               </span>
               <input
                 className={`input ${getClasses({block, element: `field`})}`}
-                type={isShown ? `text` : `password`}
-                name="password"
-                onChange={onChange}
-                value={fields.password || ``}
+                ref={inputRef}
+                type="text"
+                name="login"
+                value={fields.login || ``}
                 required
-                minLength={6}
+                onChange={onChange}
+                minLength={3}
                 maxLength={40}
               />
-              <button
-                type="button"
-                title="Показать пароль"
-                className="button"
-                onKeyDown={showPassword}
-                onKeyUp={hidePassword}
-                onBlur={hidePassword}
-                onMouseDown={showPassword}
-                onMouseLeave={hidePassword}
-                onMouseUp={hidePassword}
-              ><Icon /></button>
             </label>
+            <div>
+              <label
+                className={getClasses({
+                  block,
+                  element: `label`,
+                  modifiers: [`phone`],
+                })}
+              >
+                <span className={getClasses({block, element: `label-text`})}>
+                  Пароль
+                </span>
+                <input
+                  className={`input ${getClasses({block, element: `field`})}`}
+                  type={isShown ? `text` : `password`}
+                  name="password"
+                  onChange={onChange}
+                  value={fields.password || ``}
+                  required
+                  minLength={6}
+                  maxLength={40}
+                />
+                <button
+                  type="button"
+                  title="Показать пароль"
+                  className="button"
+                  onKeyDown={showPassword}
+                  onKeyUp={hidePassword}
+                  onBlur={hidePassword}
+                  onMouseDown={showPassword}
+                  onMouseLeave={hidePassword}
+                  onMouseUp={hidePassword}
+                >
+                  <Icon className={getClasses({block, element: `icon`})} />
+                </button>
+              </label>
+            </div>
           </div>
+          <a
+            href="#"
+            className={`link ${getClasses({block, element: `link`})}`}
+          >
+            Забыли пароль?
+          </a>
+          <button
+            type="submit"
+            className={`${getClasses({
+              block: `button`,
+              modifiers: [`main`],
+            })} ${getClasses({block: `login`, element: `button`})}`}
+          >
+            Войти
+          </button>
         </div>
-        <button
-          type="submit"
-          className={getClasses({block: `button`, modifiers: [`main`]})}
-        >
-          Войти
-        </button>
-        <a href="#" className="link">
-          Забыли пароль?
-        </a>
       </form>
     </div>
   );
