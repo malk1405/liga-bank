@@ -1,5 +1,5 @@
 .logo a,
-.logo svg {
+.logo__svg {
   display: flex;
   width: 150px;
   height: 27px;
@@ -7,7 +7,7 @@
 
 @include mq(tablet) {
   .logo a,
-  .logo svg {
+  .logo__svg {
     width: 133px;
     height: 25px;
   }
@@ -15,8 +15,13 @@
 
 @include mq(phone) {
   .logo a,
-  .logo svg {
+  .logo__svg {
     width: 120px;
     height: 24px;
+  }
+
+  .logo__icon {
+    transform: scale(0.8) translateX(8px);
+    transform-origin: bottom left;
   }
 }

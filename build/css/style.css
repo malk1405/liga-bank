@@ -456,7 +456,7 @@ section:focus {
     opacity: 0.8; }
 
 .logo a,
-.logo svg {
+.logo__svg {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -465,15 +465,20 @@ section:focus {
 
 @media screen and (max-width: 1023px) {
   .logo a,
-  .logo svg {
+  .logo__svg {
     width: 133px;
     height: 25px; } }
 
 @media screen and (max-width: 767px) {
   .logo a,
-  .logo svg {
+  .logo__svg {
     width: 120px;
-    height: 24px; } }
+    height: 24px; }
+  .logo__icon {
+    -webkit-transform: scale(0.8) translateX(8px);
+            transform: scale(0.8) translateX(8px);
+    -webkit-transform-origin: bottom left;
+            transform-origin: bottom left; } }
 
 .list {
   list-style: none;
@@ -926,7 +931,7 @@ section:focus {
     padding-bottom: 1.2rem;
     padding-top: 1.2rem; }
   .header__logo {
-    margin-left: 1.1rem;
+    margin-left: 0.9rem;
     -webkit-transform: translateY(-0.5rem);
             transform: translateY(-0.5rem); }
   .header__login {
