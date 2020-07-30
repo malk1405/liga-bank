@@ -696,7 +696,8 @@ section:focus {
   height: 12px;
   right: 25px;
   position: absolute;
-  width: 22px; }
+  width: 22px;
+  z-index: 10; }
 
 .login__link {
   -ms-flex-item-align: end;
