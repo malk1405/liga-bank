@@ -1,4 +1,89 @@
 .map {
-  max-width: 100%;
+  margin-bottom: 11.1rem;
+}
+
+.map__controls {
+  background-color: $bg-color-primary;
+  min-height: 82px;
+  padding: 31px 0 23px;
+  position: relative;
+
+  .button {
+    border-radius: 0;
+    height: 100%;
+    left: 0;
+    line-height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+  }
+}
+
+.map__list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 1.4rem;
+}
+
+.map__item {
+  margin: 5px 15px;
+
+  label {
+    align-items: center;
+    display: flex;
+  }
+
+  svg {
+    display: block;
+    margin-right: 1rem;
+  }
+}
+
+.map-container {
+  height: 462px;
+}
+
+.map-container picture {
+  width: 100%;
+  height: 100%;
+  position: relative;
   overflow: hidden;
+}
+
+.map-container img {
+  height: 100%;
+  position: absolute;
+  width: auto;
+}
+
+@include mq(tablet) {
+  .map {
+    margin-bottom: 8.1rem;
+  }
+
+  .map__controls {
+    padding: 28px 0 26px;
+  }
+}
+
+@include mq(phone) {
+  .map {
+    padding: 0;
+    margin-bottom: 5rem;
+  }
+
+  .map-container {
+    height: 381px;
+  }
+
+  .map__controls {
+    min-height: 56px;
+    padding: 15px 0 10px;
+  }
+
+  .map__item {
+    margin: 5px 10px;
+  }
 }

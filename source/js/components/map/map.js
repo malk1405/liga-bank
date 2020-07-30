@@ -39,21 +39,18 @@ function Map() {
     return acc;
   }, []);
 
-
   return (
-    <div className="map">
-      <div>
+    <div className="map container">
+      <div className="map__controls">
         {isDynamic ? (
           <CheckBoxes config={config} onChange={onChange} />
         ) : (
           <Toggle onClick={toggleDynamic} />
         )}
       </div>
-      {isDynamic ? (
-        <DynamicMap locations={locations} />
-      ) : (
-        <StaticMap />
-      )}
+      <div className="map-container">
+        {isDynamic ? <DynamicMap locations={locations} /> : <StaticMap />}
+      </div>
     </div>
   );
 }

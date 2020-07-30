@@ -26,27 +26,26 @@ function DynamicMap({locations}) {
 
   return (
     <YMaps>
-      <div>
-        <YandexMap
-          defaultState={{
-            center: [55.751574, 37.573856],
-            zoom: 3,
-          }}
-        >
-          {locations.map(({geometry}) => (
-            <Placemark
-              key={JSON.stringify(geometry)}
-              geometry={geometry}
-              options={{
-                iconLayout: `default#image`,
-                iconImageHref: svg,
-                iconImageSize: size,
-                iconImageOffset: offset
-              }}
-            />
-          ))}
-        </YandexMap>
-      </div>
+      <YandexMap
+        defaultState={{
+          center: [55.751574, 50.573856],
+          zoom: 5,
+        }}
+        style ={{width: `100%`, height: `100%`}}
+      >
+        {locations.map(({geometry}) => (
+          <Placemark
+            key={JSON.stringify(geometry)}
+            geometry={geometry}
+            options={{
+              iconLayout: `default#image`,
+              iconImageHref: svg,
+              iconImageSize: size,
+              iconImageOffset: offset
+            }}
+          />
+        ))}
+      </YandexMap>
     </YMaps>
   );
 }

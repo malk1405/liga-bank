@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Toggle({onClick}) {
   return (
-    <button type="button" onClick={onClick}>
+    <button type="button" className={`button button--main`} onClick={onClick}>
       Загрузить Яндекс.Карты
     </button>
   );

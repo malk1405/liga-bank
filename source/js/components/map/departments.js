@@ -7,8 +7,6 @@ const departments = {
       {city: `Saratov`, geometry: [51.533333, 46.016667]},
       {city: `Kirov`, geometry: [58.6, 49.683333]},
       {city: `Tyumen`, geometry: [57.15, 65.533333]},
-      {city: `Surgut`, geometry: [61.25, 73.433333]},
-      {city: `Novosibirsk`, geometry: [55.05, 82.95]},
       {city: `Omsk`, geometry: [54.983333, 73.366667]},
     ],
   },

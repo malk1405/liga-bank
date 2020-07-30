@@ -4,9 +4,9 @@ import Checkbox from '../../checkbox/checkbox';
 
 function CheckBoxes({config, onChange}) {
   return (
-    <ul className="list">
+    <ul className="list map__list">
       {config.map(({name, text, checked, id}) => (
-        <li key={name}>
+        <li key={name} className={`map__item`}>
           <label>
             <Checkbox
               name={name}
