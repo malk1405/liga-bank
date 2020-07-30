@@ -214,6 +214,8 @@
 }
 
 .calculator-modal {
+  background-color: $bg-color-primary;
+  padding: 60px;
   text-align: center;
 
   p {
@@ -228,6 +230,7 @@
 .calculator-modal__manager {
   color: #394959;
   font-size: 1.6rem;
+  letter-spacing: -0.005em;
   line-height: 2.2rem;
   margin: 0 auto;
   margin-bottom: -0.6rem;
@@ -302,6 +305,8 @@
   }
 
   .calculator-modal {
+    padding: 40px 26px;
+
     p {
       margin: 0;
     }

@@ -553,13 +553,10 @@ section:focus {
 
 .modal__body {
   background-color: #f6f7ff;
-  padding: 60px;
   position: relative;
   width: 544px; }
   .modal__body--sm {
     width: 500px; }
-  .modal__body--login {
-    padding: 0; }
 
 .modal__close-btn {
   display: -webkit-box;
@@ -586,10 +583,7 @@ section:focus {
   .modal__body {
     margin: 0 auto;
     max-width: 500px;
-    padding: 40px 26px;
     width: calc(100vw - 30px); }
-    .modal__body--login {
-      padding: 0; }
   .modal__close-btn {
     right: 14px;
     top: 14px;
@@ -1936,6 +1930,8 @@ section:focus {
   margin-left: 0.9rem; }
 
 .calculator-modal {
+  background-color: #f6f7ff;
+  padding: 60px;
   text-align: center; }
   .calculator-modal p {
     margin: 0; }
@@ -1945,6 +1941,7 @@ section:focus {
 .calculator-modal__manager {
   color: #394959;
   font-size: 1.6rem;
+  letter-spacing: -0.005em;
   line-height: 2.2rem;
   margin: 0 auto;
   margin-bottom: -0.6rem;
@@ -1992,14 +1989,16 @@ section:focus {
     margin-top: 2.1rem; }
   .calculator__offer {
     margin-top: 3rem; }
-  .calculator-modal p {
-    margin: 0; }
-  .calculator-modal > p {
-    font-size: 1.8rem;
-    margin: 0 auto;
-    margin-top: -0.5rem;
-    width: 85%;
-    max-width: 400px; }
+  .calculator-modal {
+    padding: 40px 26px; }
+    .calculator-modal p {
+      margin: 0; }
+    .calculator-modal > p {
+      font-size: 1.8rem;
+      margin: 0 auto;
+      margin-top: -0.5rem;
+      width: 85%;
+      max-width: 400px; }
   .calculator-modal__manager {
     margin: 0 -1%;
     margin-top: 1.4rem;
