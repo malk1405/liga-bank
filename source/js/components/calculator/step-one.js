@@ -7,7 +7,7 @@ import NumberContainer from './number/container';
 import noop from '../../utils/noop';
 import SVG from '../../../img/svg/inline/menu.svg';
 
-function StepOne({onChange, id}) {
+function StepOne({onChange, id, buttonRef}) {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleVisibilty = !isVisible
@@ -36,6 +36,7 @@ function StepOne({onChange, id}) {
     <NumberContainer>
       <button
         type="button"
+        ref={buttonRef}
         className={getClasses({
           block,
           element: `field`,
@@ -88,6 +89,7 @@ function StepOne({onChange, id}) {
 StepOne.propTypes = {
   onChange: PropTypes.func.isRequired,
   id: PropTypes.number,
+  buttonRef: PropTypes.shape({current: PropTypes.instanceOf(Element)}),
 };
 
 export default StepOne;

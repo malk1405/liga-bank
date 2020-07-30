@@ -27,6 +27,7 @@ function Calculator() {
   };
 
   const inputRef = useRef(null);
+  const buttonRef = useRef(null);
 
   const handleClick = () => {
     setIsReady(true);
@@ -112,13 +113,25 @@ function Calculator() {
     handleIdChange(null);
   };
 
+  useEffect(() => {
+    if (modalIsOpen) {
+      return () => {
+        buttonRef.current.focus();
+      };
+    }
+  }, [modalIsOpen]);
+
   return (
     <section className={`section container ${block}`} id="calculator">
       <h2>Кредитный калькулятор</h2>
       <div className={getClasses({block, element: `config`})}>
         <div className={getClasses({block, element: `params`})}>
           <Step num={1} title="Цель кредита">
-            <StepOne id={id} onChange={handleIdChange}></StepOne>
+            <StepOne
+              id={id}
+              onChange={handleIdChange}
+              buttonRef={buttonRef}
+            ></StepOne>
           </Step>
 
           {typeof id === `number` && (
