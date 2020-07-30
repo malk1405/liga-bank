@@ -10,6 +10,7 @@ import getClasses from '../../utils/getClasses';
 import Request from './request';
 import {submitableFields} from './credit-types';
 import Modal from '../modal/modal';
+import noop from '../../utils/noop';
 
 const block = `calculator`;
 
@@ -119,6 +120,7 @@ function Calculator() {
         buttonRef.current.focus();
       };
     }
+    return noop;
   }, [modalIsOpen]);
 
   return (
