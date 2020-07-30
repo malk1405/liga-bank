@@ -559,8 +559,7 @@ section:focus {
   .modal__body--sm {
     width: 500px; }
   .modal__body--login {
-    border: 4px solid #2c36f2;
-    padding: 56px; }
+    padding: 0; }
 
 .modal__close-btn {
   display: -webkit-box;
@@ -580,10 +579,8 @@ section:focus {
 @media screen and (max-width: 1023px) {
   .modal__body {
     width: 678px; }
-    .modal__body--login {
-      padding: 56px 84px; }
   .modal__close-btn--login {
-    right: 84px; } }
+    right: 87px; } }
 
 @media screen and (max-width: 767px) {
   .modal__body {
@@ -592,15 +589,15 @@ section:focus {
     padding: 40px 26px;
     width: calc(100vw - 30px); }
     .modal__body--login {
-      padding: 46px 16px; }
+      padding: 0; }
   .modal__close-btn {
     right: 14px;
     top: 14px;
     width: 14px;
     height: 14px; }
     .modal__close-btn--login {
-      top: 46px;
-      right: 16px; }
+      top: 50px;
+      right: 19px; }
     .modal__close-btn svg {
       width: 100%;
       height: 100%; } }
@@ -663,6 +660,10 @@ section:focus {
     font-size: 2.2rem;
     margin-bottom: 2.5rem; } }
 
+.login {
+  border: 4px solid #2c36f2;
+  padding: 56px; }
+
 .login__form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -710,7 +711,13 @@ section:focus {
   height: 6rem;
   margin-top: 2.5rem; }
 
+@media screen and (max-width: 1023px) {
+  .login {
+    padding: 56px 84px; } }
+
 @media screen and (max-width: 767px) {
+  .login {
+    padding: 46px 16px; }
   .login__logo {
     -webkit-transform: translateX(-5px);
             transform: translateX(-5px); }
@@ -727,8 +734,8 @@ section:focus {
     -ms-flex-item-align: center;
         align-self: center;
     font-size: 1.4rem;
-    margin-bottom: -0.4rem;
-    margin-top: 1rem; }
+    margin-bottom: -0.5rem;
+    margin-top: 1.1rem; }
   .login__button {
     font-size: 1.4rem;
     height: 5.1rem;
