@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 
 import Logo from '../logo/logo';
 import Nav from '../nav/nav';
@@ -8,12 +8,14 @@ import Modal from '../modal/modal';
 function Header() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  const loginRef = useRef(null);
   const openModal = () => {
     setModalIsOpen(true);
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
+    loginRef.current.focus();
   };
 
   return (
@@ -21,7 +23,7 @@ function Header() {
       <div className="container header__container">
         <Logo classes="header__logo"></Logo>
         <Nav></Nav>
-        <Login onClick={openModal}></Login>
+        <Login loginRef={loginRef} onClick={openModal}></Login>
         {modalIsOpen && <Modal onClose={closeModal}>модальное окно</Modal>}
       </div>
     </header>

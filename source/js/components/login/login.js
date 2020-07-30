@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 
 import LoginImg from '../../../img/svg/inline/login.svg';
 
-function Login({onClick}) {
+function Login({onClick, loginRef}) {
   return (
     <button
+      ref={loginRef}
       title="Войти в Интернет-банк"
       onClick={onClick}
       className="header__login button"
@@ -17,6 +18,8 @@ function Login({onClick}) {
 }
 
 Login.propTypes = {
+  loginRef: PropTypes.shape({current: PropTypes.instanceOf(Element)})
+    .isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
