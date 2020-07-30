@@ -11,42 +11,46 @@ const icons = {
   phone: {
     svg: SvgUrlSm,
     size: [31, 35],
-    offset: [-15, -35]
+    offset: [-15, -35],
   },
   desktop: {
     svg: SvgUrlLg,
     size: [37, 42],
-    offset: [-18, -42]
+    offset: [-18, -42],
   },
 };
+
+const style = {width: `100%`, height: `100%`};
 
 function DynamicMap({locations}) {
   const {isPhone} = useContext(MediaContext);
   const {svg, size, offset} = isPhone ? icons.phone : icons.desktop;
 
   return (
-    <YMaps>
-      <YandexMap
-        defaultState={{
-          center: [55.751574, 50.573856],
-          zoom: 5,
-        }}
-        style ={{width: `100%`, height: `100%`}}
-      >
-        {locations.map(({geometry}) => (
-          <Placemark
-            key={JSON.stringify(geometry)}
-            geometry={geometry}
-            options={{
-              iconLayout: `default#image`,
-              iconImageHref: svg,
-              iconImageSize: size,
-              iconImageOffset: offset
-            }}
-          />
-        ))}
-      </YandexMap>
-    </YMaps>
+    <div className="map-container">
+      <YMaps>
+        <YandexMap
+          defaultState={{
+            center: [55.751574, 50.573856],
+            zoom: 5,
+          }}
+          style={style}
+        >
+          {locations.map(({geometry}) => (
+            <Placemark
+              key={JSON.stringify(geometry)}
+              geometry={geometry}
+              options={{
+                iconLayout: `default#image`,
+                iconImageHref: svg,
+                iconImageSize: size,
+                iconImageOffset: offset,
+              }}
+            />
+          ))}
+        </YandexMap>
+      </YMaps>
+    </div>
   );
 }
 
