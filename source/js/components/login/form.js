@@ -91,6 +91,8 @@ function LoginForm({onSubmit, inputRef}) {
                 title="Показать пароль"
                 className={`button ${getClasses({block, element: `icon`})}`}
                 onKeyDown={showPassword}
+                onTouchStart={showPassword}
+                onTouchEnd={hidePassword}
                 onKeyUp={hidePassword}
                 onBlur={hidePassword}
                 onMouseDown={showPassword}
