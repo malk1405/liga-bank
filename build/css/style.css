@@ -1888,6 +1888,7 @@ section:focus {
   width: 500px; }
 
 .calculator__field-button {
+  color: #1f1e25;
   height: 16px;
   margin: 0 24px;
   position: absolute;
@@ -1903,7 +1904,7 @@ section:focus {
   .calculator__field-button::before {
     display: block;
     width: 100%;
-    height: 1px;
+    height: 2px;
     top: 50%;
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); }
@@ -1916,7 +1917,7 @@ section:focus {
       top: 0;
       -webkit-transform: translateX(-50%);
               transform: translateX(-50%);
-      width: 1px; }
+      width: 2px; }
   .calculator__field-button--dec {
     left: 0; }
 
