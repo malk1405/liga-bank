@@ -148,7 +148,7 @@
   margin-top: 0.9rem;
 }
 
-.calculator__offer {
+.calculator__offer-container {
   align-self: flex-start;
   margin-left: 70px;
   width: 500px;
@@ -267,13 +267,13 @@
     margin-bottom: -0.6rem;
   }
 
-  .calculator__offer,
+  .calculator__offer-container,
   .calculator__request {
     max-width: 678px;
     width: 100%;
   }
 
-  .calculator__offer {
+  .calculator__offer-container {
     margin: 0 auto;
     margin-top: 3.7rem;
   }
@@ -306,12 +306,12 @@
     margin-top: 2.1rem;
   }
 
-  .calculator__offer,
+  .calculator__offer-container,
   .calculator__request {
     max-width: 450px;
   }
 
-  .calculator__offer {
+  .calculator__offer-container {
     margin-top: 3rem;
   }
 

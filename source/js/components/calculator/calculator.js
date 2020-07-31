@@ -146,42 +146,44 @@ function Calculator() {
             </Step>
           )}
         </div>
-        {params && (
-          <Offer
-            config={[
-              {
-                title: params.creditTitle,
-                value: `${formatNumber(params.creditSum)} ${conjugate(
-                    params.creditSum,
-                    rubles
-                )}`,
-              },
-              {
-                title: `Процентная ставка`,
-                value: `${String(
-                    (params.interestRate * 100).toFixed(2)
-                ).replace(`.`, `,`)}%`,
-              },
-              {
-                title: `Ежемесячный платеж`,
-                value: `${formatNumber(params.monthly)} ${conjugate(
-                    params.monthly,
-                    rubles
-                )}`,
-              },
-              {
-                title: `Необходимый доход`,
-                value: `${formatNumber(params.minIncome)} ${conjugate(
-                    params.minIncome,
-                    rubles
-                )}`,
-              },
-            ]}
-            error={params.error}
-            disabled={hasError}
-            onClick={handleClick}
-          />
-        )}
+        <div className={getClasses({block, element: `offer-container`})}>
+          {params && (
+            <Offer
+              config={[
+                {
+                  title: params.creditTitle,
+                  value: `${formatNumber(params.creditSum)} ${conjugate(
+                      params.creditSum,
+                      rubles
+                  )}`,
+                },
+                {
+                  title: `Процентная ставка`,
+                  value: `${String(
+                      (params.interestRate * 100).toFixed(2)
+                  ).replace(`.`, `,`)}%`,
+                },
+                {
+                  title: `Ежемесячный платеж`,
+                  value: `${formatNumber(params.monthly)} ${conjugate(
+                      params.monthly,
+                      rubles
+                  )}`,
+                },
+                {
+                  title: `Необходимый доход`,
+                  value: `${formatNumber(params.minIncome)} ${conjugate(
+                      params.minIncome,
+                      rubles
+                  )}`,
+                },
+              ]}
+              error={params.error}
+              disabled={hasError}
+              onClick={handleClick}
+            />
+          )}
+        </div>
       </div>
       {requestItems && (
         <Request

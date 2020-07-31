@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import getClasses from '../../utils/getClasses';
-import {block as outerBlock} from './calculator';
 import formatNumber from '../../utils/format-number';
 
 const block = `offer`;
@@ -9,10 +8,7 @@ const block = `offer`;
 function Offer({config, disabled, error, onClick}) {
   return (
     <div
-      className={`${getClasses({
-        block: outerBlock,
-        element: block,
-      })} ${block}`}
+      className={block}
     >
       {error && !disabled ? (
         <div className={getClasses({block, element: `reject`})}>
