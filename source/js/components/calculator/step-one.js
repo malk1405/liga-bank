@@ -1,35 +1,46 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import creditTypes from './credit-types';
 import getClasses from '../../utils/getClasses';
 import {block} from './calculator';
 import NumberContainer from './number/container';
-import noop from '../../utils/noop';
 import SVG from '../../../img/svg/inline/menu.svg';
 
 function StepOne({onChange, id, buttonRef}) {
   const [isVisible, setIsVisible] = useState(false);
+  const blurTimeout = useRef(null);
 
-  const handleVisibilty = !isVisible
-    ? () => {
-      setIsVisible(true);
+  useEffect(() => {
+    return () => {
+      clearInterval(blurTimeout.current);
+    };
+  }, [blurTimeout]);
 
-      function onClick() {
-        setIsVisible(false);
-        document.removeEventListener(`click`, onClick);
-      }
-      document.addEventListener(`click`, onClick);
-    }
-    : noop;
+  const handleVisibilty = () => {
+    setIsVisible((v) => !v);
+  };
 
   const handleClick = (e) => {
     const {id: newId} = e.target.dataset;
+    setIsVisible(false);
 
-    if (!newId) {
-      onChange(null);
-    } else {
-      onChange(Number(newId));
-    }
+    onChange(Number(newId));
+    buttonRef.current.focus();
+  };
+
+  const onBlur = () => {
+    blurTimeout.current = setTimeout(() => {
+      setIsVisible(false);
+    }, 0);
+  };
+
+  const clearBlurTimeout = () => {
+    clearTimeout(blurTimeout.current);
+  };
+
+  const onFocus = () => {
+    clearBlurTimeout();
+    setIsVisible(true);
   };
 
   return (
@@ -43,6 +54,8 @@ function StepOne({onChange, id, buttonRef}) {
           modifiers: isVisible ? [`first`] : [],
         })}
         onClick={handleVisibilty}
+        onBlur={onBlur}
+        onFocus={clearBlurTimeout}
       >
         {!creditTypes[id] ? `Выберите цель кредита` : creditTypes[id].title}
         <SVG
@@ -73,6 +86,8 @@ function StepOne({onChange, id, buttonRef}) {
                       modifiers,
                     })}
                     onClick={handleClick}
+                    onBlur={onBlur}
+                    onFocus={onFocus}
                     data-id={i}
                   >
                     {title}
