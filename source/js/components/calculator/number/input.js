@@ -49,6 +49,11 @@ function NumberInput({value, onChange, onFocus, onBlur, inputRef}) {
 
   const modifiedValue = formatNumber(value);
 
+  const handleFocus = () => {
+    inputRef.current.setSelectionRange(modifiedValue.length, modifiedValue.length);
+    onFocus();
+  };
+
   return (
     <React.Fragment>
       <pre
@@ -64,7 +69,7 @@ function NumberInput({value, onChange, onFocus, onBlur, inputRef}) {
         value={modifiedValue}
         className={getClasses({block, element: `input`})}
         onChange={handleChange}
-        onFocus={onFocus}
+        onFocus={handleFocus}
         onBlur={onBlur}
         onKeyDown={handleKeyDown}
       ></input>

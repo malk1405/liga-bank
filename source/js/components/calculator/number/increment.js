@@ -1,18 +1,32 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import getClasses from '../../../utils/getClasses';
 import {block} from '../calculator';
 
 function Increment({onDestroy, children, onClick, modifiers}) {
+  const isFocused = useRef(false);
+
   useEffect(() => {
-    return onDestroy;
+    if (isFocused.current) {
+      return onDestroy;
+    }
   }, [onDestroy]);
+
+  const onFocus = () => {
+    isFocused.current = true;
+  };
+
+  const onBlur = () => {
+    isFocused.current = false;
+  };
 
   return (
     <button
       title={children}
       type="button"
       onClick={onClick}
+      onFocus={onFocus}
+      onBlur={onBlur}
       className={`button ${getClasses({
         block,
         element: `field-button`,

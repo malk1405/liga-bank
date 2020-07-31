@@ -34,10 +34,6 @@ function NumberField({
   const inputRef = useRef(null);
   const [isFocused, setIsFocused] = useState(false);
 
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
-
   const handleBlur = () => {
     onBlur();
     setIsFocused(false);
@@ -61,15 +57,13 @@ function NumberField({
     onChange(clamp(value + step, min, max));
   };
 
-  const onIncrementDestroy = useCallback(() => {
+  const setFocus = useCallback(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
-  }, [inputRef]);
 
-  const handleClick = () => {
-    inputRef.current.focus();
-  };
+    setIsFocused(true);
+  }, []);
 
   const modifiers = [`input`];
   if (hasError) {
@@ -84,19 +78,19 @@ function NumberField({
     <React.Fragment>
       <label
         className={getClasses({block, element: `label`})}
-        onClick={handleClick}
+        onClick={setFocus}
       >
         {title}
       </label>
       <div
         className={getClasses({block, element: `field`, modifiers})}
-        onClick={handleClick}
+        onClick={setFocus}
       >
         {step && value > min && (
           <Increment
             onClick={decrement}
             modifiers={[`dec`]}
-            onDestroy={onIncrementDestroy}
+            onDestroy={setFocus}
           >
             Уменьшить
           </Increment>
@@ -104,7 +98,7 @@ function NumberField({
         <NumberInput
           value={value}
           onChange={handleChange}
-          onFocus={handleFocus}
+          onFocus={setFocus}
           onBlur={handleBlur}
           inputRef={inputRef}
         ></NumberInput>
@@ -113,7 +107,7 @@ function NumberField({
           <Increment
             onClick={increment}
             modifiers={[`inc`]}
-            onDestroy={onIncrementDestroy}
+            onDestroy={setFocus}
           >
             Увеличить
           </Increment>
