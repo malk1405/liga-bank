@@ -47,14 +47,22 @@ function NumberField({
     }
   };
 
-  const decrement = (e) => {
+  const updateValue = (e, st) => {
     e.stopPropagation();
-    onChange(clamp(value - step, min, max));
+    const newValue = clamp(value + st, min, max);
+    onChange(newValue);
+
+    if (newValue === min || newValue === max) {
+      setFocus();
+    }
+  };
+
+  const decrement = (e) => {
+    updateValue(e, -step);
   };
 
   const increment = (e) => {
-    e.stopPropagation();
-    onChange(clamp(value + step, min, max));
+    updateValue(e, step);
   };
 
   const setFocus = useCallback(() => {
@@ -87,11 +95,7 @@ function NumberField({
         onClick={setFocus}
       >
         {step && value > min && (
-          <Increment
-            onClick={decrement}
-            modifiers={[`dec`]}
-            onDestroy={setFocus}
-          >
+          <Increment onClick={decrement} modifiers={[`dec`]}>
             Уменьшить
           </Increment>
         )}
@@ -104,11 +108,7 @@ function NumberField({
         ></NumberInput>
         <span>{conjugate(value, units)}</span>
         {step && value < max && (
-          <Increment
-            onClick={increment}
-            modifiers={[`inc`]}
-            onDestroy={setFocus}
-          >
+          <Increment onClick={increment} modifiers={[`inc`]}>
             Увеличить
           </Increment>
         )}
