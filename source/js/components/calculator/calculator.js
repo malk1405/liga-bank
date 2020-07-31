@@ -23,7 +23,6 @@ function Calculator() {
 
   const handleIdChange = (newId) => {
     setId(newId);
-    setParams(null);
     setIsReady(false);
   };
 
@@ -147,7 +146,7 @@ function Calculator() {
           )}
         </div>
         <div className={getClasses({block, element: `offer-container`})}>
-          {params && (
+          {typeof id === `number` && params && (
             <Offer
               config={[
                 {
