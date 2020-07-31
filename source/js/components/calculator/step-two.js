@@ -18,12 +18,12 @@ import NumberContainer from './number/container';
 import Checkbox from '../checkbox/checkbox';
 
 function StepTwo({id, onError, onChange}) {
+  const [config, setConfig] = useState(creditTypes[0]);
+
   const [price, setPrice] = useState(null);
   const [firstPayPercent, setFirstPayPercent] = useState(null);
   const [period, setPeriod] = useState(null);
   const [checkboxes, setCheckboxes] = useState({});
-
-  const config = creditTypes[id];
 
   const mountedRef = useRef(false);
 
@@ -87,16 +87,20 @@ function StepTwo({id, onError, onChange}) {
   }
 
   useEffect(() => {
-    handlePriceChange(config.price.min);
+    const newConfig = creditTypes[id];
 
-    if (config.firstPay) {
-      setFirstPayPercent(config.firstPay.minPercentage);
+    handlePriceChange(newConfig.price.min);
+
+    if (newConfig.firstPay) {
+      setFirstPayPercent(newConfig.firstPay.minPercentage);
     } else {
       setFirstPayPercent(0);
     }
 
-    handlePeriodChange(config.period.min);
+    handlePeriodChange(newConfig.period.min);
     setCheckboxes({});
+
+    setConfig(creditTypes[id]);
   }, [id]);
 
   const priceError = !config.price.validate(price) && mountedRef.current;
