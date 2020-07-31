@@ -8,13 +8,6 @@ import SVG from '../../../img/svg/inline/menu.svg';
 
 function StepOne({onChange, id, buttonRef}) {
   const [isVisible, setIsVisible] = useState(false);
-  const blurTimeout = useRef(null);
-
-  useEffect(() => {
-    return () => {
-      clearInterval(blurTimeout.current);
-    };
-  }, [blurTimeout]);
 
   const handleVisibilty = () => {
     setIsVisible((v) => !v);
@@ -28,14 +21,22 @@ function StepOne({onChange, id, buttonRef}) {
     buttonRef.current.focus();
   };
 
+  const blurTimeout = useRef(null);
+
+  const clearBlurTimeout = () => {
+    clearTimeout(blurTimeout.current);
+  };
+
+  useEffect(() => {
+    return () => {
+      clearBlurTimeout();
+    };
+  }, [blurTimeout]);
+
   const onBlur = () => {
     blurTimeout.current = setTimeout(() => {
       setIsVisible(false);
     }, 0);
-  };
-
-  const clearBlurTimeout = () => {
-    clearTimeout(blurTimeout.current);
   };
 
   const onFocus = () => {
