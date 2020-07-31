@@ -5,9 +5,7 @@ import {block} from '../calculator';
 
 function Increment({onDestroy, children, onClick, modifiers}) {
   useEffect(() => {
-    return () => {
-      onDestroy();
-    };
+    return onDestroy;
   }, [onDestroy]);
 
   return (
