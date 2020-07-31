@@ -45,7 +45,12 @@ function LoginForm({onSubmit, inputRef}) {
         <div className={getClasses({block, element: `form`})}>
           <div className={getClasses({block, element: `fields`})}>
             <label className={getClasses({block, element: `label`})}>
-              <span className={getClasses({block, element: `label-text`})}>
+              <span
+                className={`input-label ${getClasses({
+                  block,
+                  element: `label-text`,
+                })}`}
+              >
                 Логин
               </span>
               <input
@@ -72,7 +77,12 @@ function LoginForm({onSubmit, inputRef}) {
                   element: `label`,
                 })}
               >
-                <span className={getClasses({block, element: `label-text`})}>
+                <span
+                  className={`input-label ${getClasses({
+                    block,
+                    element: `label-text`,
+                  })}`}
+                >
                   Пароль
                 </span>
                 <input
