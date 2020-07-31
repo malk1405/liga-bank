@@ -91,7 +91,11 @@ function NumberField({
         {title}
       </label>
       <div
-        className={getClasses({block, element: `field`, modifiers})}
+        className={`input ${getClasses({
+          block,
+          element: `field`,
+          modifiers,
+        })}`}
         onClick={setFocus}
       >
         {step && value > min && (

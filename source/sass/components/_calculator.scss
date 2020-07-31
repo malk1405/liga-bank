@@ -54,22 +54,17 @@
 .calculator__field {
   align-items: center;
   background-color: white;
-  border: 1px solid $text-color-primary;
-  border-radius: 4px;
-  cursor: pointer;
   display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  height: 6rem;
-  line-height: 2;
-  padding: 0 24px;
   position: relative;
-  width: 100%;
 
   &--input {
-    cursor: text;
     font-size: 1.8rem;
     justify-content: center;
+  }
+
+  &--select,
+  &--option {
+    cursor: pointer;
   }
 
   &--option {
@@ -285,10 +280,6 @@
 
   .calculator__field-container {
     margin-top: 2.1rem;
-  }
-
-  .calculator__field {
-    padding: 0 14px;
   }
 
   .calculator__menu {

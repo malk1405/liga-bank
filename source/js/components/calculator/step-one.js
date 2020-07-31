@@ -49,11 +49,11 @@ function StepOne({onChange, id, buttonRef}) {
       <button
         type="button"
         ref={buttonRef}
-        className={getClasses({
+        className={`input ${getClasses({
           block,
           element: `field`,
-          modifiers: isVisible ? [`first`] : [],
-        })}
+          modifiers: isVisible ? [`select`, `first`] : [`select`],
+        })}`}
         onClick={handleVisibilty}
         onBlur={onBlur}
         onFocus={clearBlurTimeout}
@@ -81,11 +81,11 @@ function StepOne({onChange, id, buttonRef}) {
                 <li key={i}>
                   <button
                     type="button"
-                    className={getClasses({
+                    className={`input ${getClasses({
                       block,
                       element: `field`,
                       modifiers,
-                    })}
+                    })}`}
                     onClick={handleClick}
                     onBlur={onBlur}
                     onFocus={onFocus}
