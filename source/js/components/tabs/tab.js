@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import getClasses from '../../utils/getClasses';
 
 function Tab({block, mod, isSelected, children, onChange, id, title}) {
   const [isFocused, setIsFocused] = useState(false);
+
+  const inputRef = useRef(null);
 
   const onFocus = () => {
     setIsFocused(true);
@@ -12,6 +14,12 @@ function Tab({block, mod, isSelected, children, onChange, id, title}) {
   const onBlur = () => {
     setIsFocused(false);
   };
+
+  useEffect(() => {
+    if (!isSelected) {
+      inputRef.current.blur();
+    }
+  }, [isSelected]);
 
   const labelMod = [];
   const cloneMod = [...mod];
@@ -32,6 +40,7 @@ function Tab({block, mod, isSelected, children, onChange, id, title}) {
       title={title}
     >
       <input
+        ref={inputRef}
         type="radio"
         name={`tab-${block}`}
         className="visually-hidden"
@@ -64,7 +73,7 @@ Tab.propTypes = {
   children: PropTypes.node,
   onChange: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
-  title: PropTypes.string
+  title: PropTypes.string,
 };
 
 export default Tab;
