@@ -5,7 +5,7 @@ import Home from '../pages/home/home';
 import MediaContext from '../../context/media';
 import Footer from '../../components/footer/footer';
 
-const sizes = {phone: 768, tablet: 1366};
+const sizes = {phone: 767, tablet: 1023};
 const queries = Object.keys(sizes).map((el) => ({
   type: `is${el.charAt(0).toUpperCase() + el.slice(1)}`,
   query: `(max-width: ${sizes[el]}px)`,

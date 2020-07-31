@@ -1,14 +1,17 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef, useEffect, useContext} from 'react';
 import PropTypes from 'prop-types';
 import getClasses from '../../../utils/getClasses';
 import noop from '../../../utils/noop';
 import formatNumber from '../../../utils/format-number';
 import {block} from '../calculator';
+import MediaContext from '../../../context/media';
 
 function NumberInput({value, onChange, onFocus, onBlur, inputRef}) {
   const [position, setPosition] = useState(null);
   const isDelRef = useRef(null);
   const valueRef = useRef(null);
+
+  const media = useContext(MediaContext);
 
   const handleKeyDown = (e) => {
     isDelRef.current = e.keyCode === 46;
@@ -45,12 +48,15 @@ function NumberInput({value, onChange, onFocus, onBlur, inputRef}) {
     inputRef.current.style.width = `${
       valueRef.current.getBoundingClientRect().width || 10
     }px`;
-  }, [value, inputRef, valueRef]);
+  }, [value, inputRef, valueRef, media]);
 
   const modifiedValue = formatNumber(value);
 
   const handleFocus = () => {
-    inputRef.current.setSelectionRange(modifiedValue.length, modifiedValue.length);
+    inputRef.current.setSelectionRange(
+        modifiedValue.length,
+        modifiedValue.length
+    );
     onFocus();
   };
 
