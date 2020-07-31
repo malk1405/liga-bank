@@ -77,10 +77,10 @@ function Request({items, onSubmit, inputRef}) {
           <div className={getClasses({block, element: `fields`})}>
             <label className={getClasses({block, element: `label`})}>
               <input
-                className={`${getClasses({
-                  block: `calculator`,
+                className={`input ${getClasses({
+                  block: `request`,
                   element: `field`,
-                })} ${getClasses({block: `request`, element: `field`})}`}
+                })}`}
                 ref={inputRef}
                 type="text"
                 name="name"
@@ -101,10 +101,10 @@ function Request({items, onSubmit, inputRef}) {
               })}
             >
               <input
-                className={`${getClasses({
-                  block: `calculator`,
+                className={`input ${getClasses({
+                  block: `request`,
                   element: `field`,
-                })} ${getClasses({block: `request`, element: `field`})}`}
+                })}`}
                 type="tel"
                 name="phone"
                 placeholder="Телефон"
@@ -118,10 +118,10 @@ function Request({items, onSubmit, inputRef}) {
             </label>
             <label className={getClasses({block, element: `label`})}>
               <input
-                className={`${getClasses({
-                  block: `calculator`,
+                className={`input ${getClasses({
+                  block: `request`,
                   element: `field`,
-                })} ${getClasses({block: `request`, element: `field`})}`}
+                })}`}
                 type="email"
                 name="mail"
                 required

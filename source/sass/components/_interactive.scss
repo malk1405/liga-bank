@@ -3,10 +3,7 @@
 .button {
   background-color: transparent;
   padding: 0;
-
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 }
 
 .input,
@@ -70,6 +67,7 @@
 
 .input {
   border: 1px solid $text-color-primary;
+  cursor: text;
   font-size: 1.6rem;
   font-weight: 500;
   height: 6rem;
@@ -113,5 +111,11 @@
 
   &:hover {
     opacity: 0.8;
+  }
+}
+
+@include mq(phone) {
+  .input {
+    padding: 0 1.4rem;
   }
 }

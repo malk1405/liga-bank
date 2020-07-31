@@ -62,7 +62,8 @@ function Modal({children, onClose, onCreate, modifiers}) {
   }, []);
 
   return createPortal(
-      <section className="modal" tabIndex="0" onFocus={onFocus}>
+      <section className="modal">
+        <div className="visually-hidden" tabIndex="0" onFocus={onFocus}></div>
         <div className="modal-wrapper">
           <div className={getClasses({block, element: `body`, modifiers})}>
             <button
@@ -95,7 +96,7 @@ function Modal({children, onClose, onCreate, modifiers}) {
 
 Modal.defaultProps = {
   modifiers: [],
-  onCreate: noop
+  onCreate: noop,
 };
 
 Modal.propTypes = {

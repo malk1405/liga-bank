@@ -366,11 +366,8 @@ section:focus {
 .input,
 .button {
   background-color: transparent;
-  padding: 0; }
-  .input-label:hover,
-  .input:hover,
-  .button:hover {
-    cursor: pointer; }
+  padding: 0;
+  cursor: pointer; }
 
 .input:focus,
 .button:focus,
@@ -418,6 +415,7 @@ section:focus {
 
 .input {
   border: 1px solid #1f1e25;
+  cursor: text;
   font-size: 1.6rem;
   font-weight: 500;
   height: 6rem;
@@ -454,6 +452,10 @@ section:focus {
   cursor: pointer; }
   .checkbox-label:hover {
     opacity: 0.8; }
+
+@media screen and (max-width: 767px) {
+  .input {
+    padding: 0 1.4rem; } }
 
 .logo a,
 .logo__svg {
