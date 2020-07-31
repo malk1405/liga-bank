@@ -419,8 +419,8 @@ section:focus {
   font-size: 1.6rem;
   font-weight: 500;
   height: 6rem;
-  padding: 0 24px;
-  position: relative;
+  line-height: 2;
+  padding: 0 2.4rem;
   width: 100%; }
   .input:hover {
     background-color: rgba(44, 54, 242, 0.05); }
@@ -1796,25 +1796,17 @@ section:focus {
       -ms-flex-align: center;
           align-items: center;
   background-color: white;
-  border: 1px solid #1f1e25;
-  border-radius: 4px;
-  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  height: 6rem;
-  line-height: 2;
-  padding: 0 24px;
-  position: relative;
-  width: 100%; }
+  position: relative; }
   .calculator__field--input {
-    cursor: text;
     font-size: 1.8rem;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center; }
+  .calculator__field--select, .calculator__field--option {
+    cursor: pointer; }
   .calculator__field--option {
     border-top: none;
     border-radius: 0;
@@ -1985,8 +1977,6 @@ section:focus {
     margin-top: 2.8rem; }
   .calculator__field-container {
     margin-top: 2.1rem; }
-  .calculator__field {
-    padding: 0 14px; }
   .calculator__menu {
     right: 14px; }
   .calculator__checkbox-container {
