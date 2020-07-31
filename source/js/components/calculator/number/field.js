@@ -1,10 +1,11 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import NumberInput from './input';
 import conjugate from '../../../utils/conjugate';
 import noop from '../../../utils/noop';
 import getClasses from '../../../utils/getClasses';
 import {block} from '../calculator';
+import Increment from './increment';
 
 function clamp(num, min, max) {
   if (num <= min) {
@@ -60,6 +61,12 @@ function NumberField({
     onChange(clamp(value + step, min, max));
   };
 
+  const onIncrementDestroy = useCallback(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [inputRef]);
+
   const handleClick = () => {
     inputRef.current.focus();
   };
@@ -86,18 +93,13 @@ function NumberField({
         onClick={handleClick}
       >
         {step && value > min && (
-          <button
-            title="Уменьшить"
-            type="button"
+          <Increment
             onClick={decrement}
-            className={`button ${getClasses({
-              block,
-              element: `field-button`,
-              modifiers: [`dec`],
-            })}`}
+            modifiers={[`dec`]}
+            onDestroy={onIncrementDestroy}
           >
-            <span className="visually-hidden">Увеличить</span>
-          </button>
+            Уменьшить
+          </Increment>
         )}
         <NumberInput
           value={value}
@@ -108,18 +110,13 @@ function NumberField({
         ></NumberInput>
         <span>{conjugate(value, units)}</span>
         {step && value < max && (
-          <button
-            title="Увеличить"
-            type="button"
+          <Increment
             onClick={increment}
-            className={`button ${getClasses({
-              block,
-              element: `field-button`,
-              modifiers: [`inc`],
-            })}`}
+            modifiers={[`inc`]}
+            onDestroy={onIncrementDestroy}
           >
-            <span className="visually-hidden">Уменьшить</span>
-          </button>
+            Увеличить
+          </Increment>
         )}
         {hasError && errorText && (
           <div className={getClasses({block, element: `field-error`})}>
