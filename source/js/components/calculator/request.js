@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import getClasses from '../../utils/getClasses';
 import Step from './step';
+import {block as container} from './calculator';
 
 const block = `request`;
 
@@ -57,7 +58,12 @@ function Request({items, onSubmit, inputRef}) {
   const blockModifiers = error ? [`error`] : [];
 
   return (
-    <div className={getClasses({block, modifiers: blockModifiers})}>
+    <div
+      className={`${getClasses({
+        block: container,
+        element: block,
+      })} ${getClasses({block, modifiers: blockModifiers})}`}
+    >
       <Step num={3} title="Оформление заявки">
         <dl className={getClasses({block, element: `list`})}>
           {items.map(({title, value}, i) =>

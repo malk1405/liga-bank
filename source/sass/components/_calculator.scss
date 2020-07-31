@@ -234,6 +234,12 @@
   width: 300px;
 }
 
+.calculator__request {
+  margin: 0 auto;
+  margin-top: 6.5rem;
+  max-width: 770px;
+}
+
 @include mq(tablet) {
   .calculator__step h3 {
     font-size: 1.8rem;
@@ -244,13 +250,6 @@
   }
 
   .calculator__params {
-    width: 100%;
-  }
-
-  .calculator__offer {
-    margin: 0 auto;
-    margin-top: 3.7rem;
-    max-width: 700px;
     width: 100%;
   }
 
@@ -266,6 +265,21 @@
 
   .calculator__limits {
     margin-bottom: -0.6rem;
+  }
+
+  .calculator__offer,
+  .calculator__request {
+    max-width: 678px;
+    width: 100%;
+  }
+
+  .calculator__offer {
+    margin: 0 auto;
+    margin-top: 3.7rem;
+  }
+
+  .calculator__request {
+    margin-top: 5.8rem;
   }
 }
 
@@ -292,8 +306,17 @@
     margin-top: 2.1rem;
   }
 
+  .calculator__offer,
+  .calculator__request {
+    max-width: 450px;
+  }
+
   .calculator__offer {
     margin-top: 3rem;
+  }
+
+  .calculator__request {
+    margin-top: 4.5rem;
   }
 
   .calculator-modal {
