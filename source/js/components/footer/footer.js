@@ -17,7 +17,7 @@ function Footer() {
             <p>Генеральная лицензия Банка России №1050</p>
             <p>&copy; Лига Банк, 2019</p>
           </div>
-          <ul className="footer__links">
+          <ul className="footer__links list">
             {links.map(({text, href}) => (
               <li key={text} className="footer__link">
                 <Link href={href}>{text}</Link>

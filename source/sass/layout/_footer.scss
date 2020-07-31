@@ -20,6 +20,7 @@
   display: flex;
   flex-shrink: 0;
 }
+
 $mr: 80px;
 
 .footer__phone p,
@@ -36,10 +37,7 @@ $mr: 80px;
 }
 
 .footer__links {
-  list-style: none;
-  margin: 0;
   margin-right: $mr;
-  padding: 0;
 }
 
 .footer__link {
@@ -51,6 +49,7 @@ $mr: 80px;
 .footer__contacts {
   align-items: flex-start;
   display: flex;
+  flex-wrap: wrap;
   flex-grow: 1;
 }
 
@@ -60,6 +59,7 @@ $mr: 80px;
   flex-wrap: wrap;
   margin-top: 0.3rem;
   margin-right: auto;
+  width: 250px;
 }
 
 .footer__phone {
