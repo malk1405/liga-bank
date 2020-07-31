@@ -136,11 +136,14 @@
   }
 
   .request__fields {
+    margin-right: 0;
     margin-top: 1rem;
   }
 
   .request__label {
+    margin-right: 0;
     margin-top: 2rem;
+    width: 100%;
   }
 
   .request__field {
@@ -151,6 +154,5 @@
   .request .button {
     font-size: 1.4rem;
     margin-top: 3rem;
-    width: 100%;
   }
 }
