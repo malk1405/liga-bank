@@ -6,6 +6,18 @@ import noop from '../../../utils/noop';
 import getClasses from '../../../utils/getClasses';
 import {block} from '../calculator';
 
+function clamp(num, min, max) {
+  if (num <= min) {
+    return min;
+  }
+
+  if (num >= max) {
+    return max;
+  }
+
+  return num;
+}
+
 function NumberField({
   value,
   min,
@@ -40,12 +52,12 @@ function NumberField({
 
   const decrement = (e) => {
     e.stopPropagation();
-    onChange(Math.max(min, value - step));
+    onChange(clamp(value - step, min, max));
   };
 
   const increment = (e) => {
     e.stopPropagation();
-    onChange(Math.min(max, value + step));
+    onChange(clamp(value + step, min, max));
   };
 
   const handleClick = () => {
@@ -73,7 +85,7 @@ function NumberField({
         className={getClasses({block, element: `field`, modifiers})}
         onClick={handleClick}
       >
-        {step && (
+        {step && value > min && (
           <button
             title="Уменьшить"
             type="button"
@@ -95,7 +107,7 @@ function NumberField({
           inputRef={inputRef}
         ></NumberInput>
         <span>{conjugate(value, units)}</span>
-        {step && (
+        {step && value < max && (
           <button
             title="Увеличить"
             type="button"
