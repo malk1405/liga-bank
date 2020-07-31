@@ -120,7 +120,14 @@ gulp.task(`js`, () => {
                         loader: `react-svg-loader`,
                         options: {
                           svgo: {
-                            plugins: [{removeViewBox: false}],
+                            plugins: [
+                              {removeViewBox: false},
+                              {
+                                addAttributesToSVGElement: {
+                                  attributes: [`focusable="false"`],
+                                },
+                              },
+                            ],
                           },
                         },
                       },
