@@ -9,6 +9,7 @@ const block = `request`;
 function Request({items, onSubmit, inputRef}) {
   const [fields, setFields] = useState({});
   const [error, setError] = useState(false);
+  const [wasInvalid, setWasInvalid] = useState(false);
 
   useEffect(() => {
     inputRef.current.focus();
@@ -17,6 +18,7 @@ function Request({items, onSubmit, inputRef}) {
 
   const handleInvalid = () => {
     setError(true);
+    setWasInvalid(true);
   };
 
   useEffect(() => {
@@ -83,8 +85,11 @@ function Request({items, onSubmit, inputRef}) {
           <div className={getClasses({block, element: `fields`})}>
             <label className={getClasses({block, element: `label`})}>
               <input
-                className={`input ${getClasses({
-                  block: `request`,
+                className={`${getClasses({
+                  block: `input`,
+                  modifiers: fields.name || wasInvalid ? [`modified`] : [],
+                })} ${getClasses({
+                  block,
                   element: `field`,
                 })}`}
                 ref={inputRef}
@@ -107,8 +112,11 @@ function Request({items, onSubmit, inputRef}) {
               })}
             >
               <input
-                className={`input ${getClasses({
-                  block: `request`,
+                className={`${getClasses({
+                  block: `input`,
+                  modifiers: fields.phone || wasInvalid ? [`modified`] : [],
+                })} ${getClasses({
+                  block,
                   element: `field`,
                 })}`}
                 type="tel"
@@ -124,8 +132,11 @@ function Request({items, onSubmit, inputRef}) {
             </label>
             <label className={getClasses({block, element: `label`})}>
               <input
-                className={`input ${getClasses({
-                  block: `request`,
+                className={`${getClasses({
+                  block: `input`,
+                  modifiers: fields.mail || wasInvalid ? [`modified`] : [],
+                })} ${getClasses({
+                  block,
                   element: `field`,
                 })}`}
                 type="email"

@@ -443,6 +443,8 @@ input::-ms-clear {
     z-index: 2; }
   .input--error.input {
     background-color: rgba(255, 0, 0, 0.2); }
+  .input--modified:invalid {
+    background-color: rgba(255, 0, 0, 0.2); }
 
 .checkbox-clone {
   color: transparent;

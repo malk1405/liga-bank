@@ -88,6 +88,10 @@
   &--error#{&} {
     background-color: rgba(red, 0.2);
   }
+
+  &--modified:invalid {
+    background-color: rgba(red, 0.2);
+  }
 }
 
 .checkbox-clone {
