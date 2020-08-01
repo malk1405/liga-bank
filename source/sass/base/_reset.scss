@@ -27,6 +27,7 @@ input::-ms-clear {
 
 :invalid {
   box-shadow: none;
+  outline: none;
 }
 
 :-moz-submit-invalid {

@@ -352,7 +352,8 @@ input::-ms-clear {
 
 :invalid {
   -webkit-box-shadow: none;
-          box-shadow: none; }
+          box-shadow: none;
+  outline: none; }
 
 :-moz-submit-invalid {
   box-shadow: none; }
