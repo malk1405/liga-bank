@@ -350,6 +350,16 @@ section:focus {
 input::-ms-clear {
   display: none; }
 
+:invalid {
+  -webkit-box-shadow: none;
+          box-shadow: none; }
+
+:-moz-submit-invalid {
+  box-shadow: none; }
+
+:-moz-ui-invalid {
+  box-shadow: none; }
+
 .visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);

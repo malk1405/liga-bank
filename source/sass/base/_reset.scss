@@ -24,3 +24,15 @@ section {
 input::-ms-clear {
   display: none;
 }
+
+:invalid {
+  box-shadow: none;
+}
+
+:-moz-submit-invalid {
+  box-shadow: none;
+}
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
