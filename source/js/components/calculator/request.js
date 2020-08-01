@@ -35,16 +35,15 @@ function Request({items, onSubmit, inputRef}) {
 
   const onChange = ({target: {name, value}}) => {
     setFields((prev) => {
-      if (name === `phone` && /\D/.test(value)) {
-        return prev;
+      if (
+        (name === `phone` && /\D/.test(value)) ||
+        (name === `name` && /\d/.test(value))
+      ) {
+        value = prev[name] || ``;
       }
 
       if (name === `phone`) {
         value = value.substr(0, 11);
-      }
-
-      if (name === `name` && /\d/.test(value)) {
-        return prev;
       }
 
       return {...prev, [name]: value};
@@ -81,13 +80,20 @@ function Request({items, onSubmit, inputRef}) {
             ) : null
           )}
         </dl>
-        <form onSubmit={handleSubmit} onInvalid={handleInvalid}>
+        <form
+          autoComplete="off"
+          onSubmit={handleSubmit}
+          onInvalid={handleInvalid}
+        >
           <div className={getClasses({block, element: `fields`})}>
             <label className={getClasses({block, element: `label`})}>
               <input
                 className={`${getClasses({
                   block: `input`,
-                  modifiers: fields.name || wasInvalid ? [`modified`] : [],
+                  modifiers:
+                    typeof fields.name === `string` || wasInvalid
+                      ? [`modified`]
+                      : [],
                 })} ${getClasses({
                   block,
                   element: `field`,
@@ -114,7 +120,10 @@ function Request({items, onSubmit, inputRef}) {
               <input
                 className={`${getClasses({
                   block: `input`,
-                  modifiers: fields.phone || wasInvalid ? [`modified`] : [],
+                  modifiers:
+                    typeof fields.phone === `string` || wasInvalid
+                      ? [`modified`]
+                      : [],
                 })} ${getClasses({
                   block,
                   element: `field`,
@@ -134,7 +143,10 @@ function Request({items, onSubmit, inputRef}) {
               <input
                 className={`${getClasses({
                   block: `input`,
-                  modifiers: fields.mail || wasInvalid ? [`modified`] : [],
+                  modifiers:
+                    typeof fields.mail === `string` || wasInvalid
+                      ? [`modified`]
+                      : [],
                 })} ${getClasses({
                   block,
                   element: `field`,
