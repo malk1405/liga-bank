@@ -347,6 +347,9 @@ div:focus,
 section:focus {
   outline: 0; }
 
+input::-ms-clear {
+  display: none; }
+
 .visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -1855,8 +1858,6 @@ section:focus {
   font: inherit;
   height: 100%;
   padding: 0; }
-  .calculator__input::-ms-clear {
-    display: none; }
 
 .calculator__input-text {
   -webkit-user-select: none;
@@ -2102,8 +2103,6 @@ section:focus {
   .request__field:focus {
     -webkit-box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5);
             box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5); }
-  .request__field::-ms-clear {
-    display: none; }
 
 .request__field::-webkit-input-placeholder {
   color: #707c87; }
