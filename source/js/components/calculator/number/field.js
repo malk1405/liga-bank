@@ -110,7 +110,9 @@ function NumberField({
           onBlur={handleBlur}
           inputRef={inputRef}
         ></NumberInput>
-        <span>{conjugate(value, units)}</span>
+        <span className={getClasses({block, element: `input-text`})}>
+          {conjugate(value, units)}
+        </span>
         {step && value < max && (
           <Increment onClick={increment} modifiers={[`inc`]}>
             Увеличить
