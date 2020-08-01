@@ -1858,9 +1858,16 @@ section:focus {
   .calculator__input::-ms-clear {
     display: none; }
 
+.calculator__input-text {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+
 .calculator__input-clone {
   color: transparent;
   font: inherit;
+  pointer-events: none;
   position: absolute;
   z-index: -1000; }
 
