@@ -20,3 +20,7 @@ section {
     outline: 0;
   }
 }
+
+input::-ms-clear {
+  display: none;
+}

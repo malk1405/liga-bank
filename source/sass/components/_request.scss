@@ -74,10 +74,6 @@
   &:focus {
     box-shadow: $focus-shadow;
   }
-
-  &::-ms-clear {
-    display: none;
-  }
 }
 
 .request__field::placeholder {

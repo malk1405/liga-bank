@@ -126,10 +126,6 @@
   font: inherit;
   height: 100%;
   padding: 0;
-
-  &::-ms-clear {
-    display: none;
-  }
 }
 
 .calculator__input-text {
