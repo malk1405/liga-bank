@@ -122,11 +122,9 @@ function StepTwo({id, onError, onChange}) {
       return null;
     }
 
-    return Math.round(
-        Math.max(
-            (config.firstPay.getMax({price, checkboxes}) / price) * 100,
-            config.firstPay.minPercentage
-        )
+    return Math.max(
+        (config.firstPay.getMax({price, checkboxes}) / price) * 100,
+        config.firstPay.minPercentage
     );
   }, [config, price, checkboxes, percentageStep]);
 
@@ -240,7 +238,7 @@ function StepTwo({id, onError, onChange}) {
             min={config.firstPay.minPercentage}
             max={maxFirstPayPercentage}
             step={5}
-            value={Math.round(firstPayPercent)}
+            value={firstPayPercent}
             onChange={handlePercentChange}
           />
           <div className={getClasses({block, element: `limits`})}>
