@@ -7,6 +7,35 @@ import Input from '../input/input';
 
 const block = `request`;
 
+const inputs = [
+  {
+    type: `text`,
+    name: `name`,
+    placeholder: `ФИО`,
+    minLength: 3,
+    maxLength: 40,
+    validate(v) {
+      return !/\d/.test(v);
+    },
+  },
+  {
+    type: `tel`,
+    name: `phone`,
+    placeholder: `Телефон`,
+    maxLength: 11,
+    pattern: `8[0-9]{10}`,
+    title: `8XXXXXXXXXX`,
+    validate(v) {
+      return !/\D/.test(v);
+    },
+  },
+  {
+    type: `email`,
+    name: `mail`,
+    placeholder: `E-mail`,
+  },
+];
+
 function Request({items, onSubmit, inputRef}) {
   const [fields, setFields] = useState({});
   const [error, setError] = useState(false);
@@ -75,68 +104,22 @@ function Request({items, onSubmit, inputRef}) {
           onInvalid={handleInvalid}
         >
           <div className={getClasses({block, element: `fields`})}>
-            <label className={getClasses({block, element: `label`})}>
-              <Input
-                classes={getClasses({
-                  block,
-                  element: `field`,
-                })}
-                inputRef={inputRef}
-                type="text"
-                name="name"
-                placeholder="ФИО"
-                value={fields.name}
-                required
-                onChange={onChange}
-                minLength={3}
-                maxLength={40}
-                validate={(v) => !/\d/.test(v)}
-                wasInvalid={wasInvalid}
-              />
-              <span className="visually-hidden">ФИО</span>
-            </label>
-            <label
-              className={getClasses({
-                block,
-                element: `label`,
-                modifiers: [`phone`],
-              })}
-            >
-              <Input
-                classes={getClasses({
-                  block,
-                  element: `field`,
-                })}
-                type="tel"
-                name="phone"
-                placeholder="Телефон"
-                onChange={onChange}
-                value={fields.phone}
-                required
-                maxLength={11}
-                pattern="8[0-9]{10}"
-                title="8XXXXXXXXXX"
-                validate={(v) => !/\D/.test(v)}
-                wasInvalid={wasInvalid}
-              />
-              <span className="visually-hidden">Телефон</span>
-            </label>
-            <label className={getClasses({block, element: `label`})}>
-              <Input
-                classess={getClasses({
-                  block,
-                  element: `field`,
-                })}
-                type="email"
-                name="mail"
-                required
-                onChange={onChange}
-                placeholder="E-mail"
-                value={fields.mail}
-                wasInvalid={wasInvalid}
-              />
-              <span className="visually-hidden">E-mail</span>
-            </label>
+            {inputs.map((el, i) => (
+              <React.Fragment key={i}>
+                <label className={getClasses({block, element: `label`})}>
+                  <Input
+                    inputRef={i === 0 ? inputRef : null}
+                    {...el}
+                    classes={getClasses({block, element: `field`})}
+                    value={fields[el.name]}
+                    onChange={onChange}
+                    required
+                    wasInvalid={wasInvalid}
+                  />
+                  <span className="visually-hidden">{el.placeholder}</span>
+                </label>
+              </React.Fragment>
+            ))}
           </div>
           <button
             type="submit"

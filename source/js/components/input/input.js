@@ -47,7 +47,7 @@ function Input({
       className={`${getClasses({
         block: `input`,
         modifiers: isModified || wasInvalid ? [`modified`] : [],
-      })} ${classes}`}
+      })}${classes ? ` ${classes}` : ``}`}
       type={type}
       name={name}
       placeholder={placeholder}
