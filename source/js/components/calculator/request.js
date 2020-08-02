@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import getClasses from '../../utils/getClasses';
 import Step from './step';
 import {block as container} from './calculator';
+import Input from '../input/input';
 
 const block = `request`;
 
@@ -13,7 +14,6 @@ function Request({items, onSubmit, inputRef}) {
 
   useEffect(() => {
     inputRef.current.focus();
-    return () => {};
   }, []);
 
   const handleInvalid = () => {
@@ -33,19 +33,8 @@ function Request({items, onSubmit, inputRef}) {
     };
   }, [error]);
 
-  const onChange = ({target: {name, value}}) => {
+  const onChange = ({name, value}) => {
     setFields((prev) => {
-      if (
-        (name === `phone` && /\D/.test(value)) ||
-        (name === `name` && /\d/.test(value))
-      ) {
-        value = prev[name] || ``;
-      }
-
-      if (name === `phone`) {
-        value = value.substr(0, 11);
-      }
-
       return {...prev, [name]: value};
     });
   };
@@ -87,26 +76,22 @@ function Request({items, onSubmit, inputRef}) {
         >
           <div className={getClasses({block, element: `fields`})}>
             <label className={getClasses({block, element: `label`})}>
-              <input
-                className={`${getClasses({
-                  block: `input`,
-                  modifiers:
-                    typeof fields.name === `string` || wasInvalid
-                      ? [`modified`]
-                      : [],
-                })} ${getClasses({
+              <Input
+                classes={getClasses({
                   block,
                   element: `field`,
-                })}`}
-                ref={inputRef}
+                })}
+                inputRef={inputRef}
                 type="text"
                 name="name"
                 placeholder="ФИО"
-                value={fields.name || ``}
+                value={fields.name}
                 required
                 onChange={onChange}
                 minLength={3}
                 maxLength={40}
+                validate={(v) => !/\d/.test(v)}
+                wasInvalid={wasInvalid}
               />
               <span className="visually-hidden">ФИО</span>
             </label>
@@ -117,46 +102,38 @@ function Request({items, onSubmit, inputRef}) {
                 modifiers: [`phone`],
               })}
             >
-              <input
-                className={`${getClasses({
-                  block: `input`,
-                  modifiers:
-                    typeof fields.phone === `string` || wasInvalid
-                      ? [`modified`]
-                      : [],
-                })} ${getClasses({
+              <Input
+                classes={getClasses({
                   block,
                   element: `field`,
-                })}`}
+                })}
                 type="tel"
                 name="phone"
                 placeholder="Телефон"
                 onChange={onChange}
-                value={fields.phone || ``}
+                value={fields.phone}
                 required
+                maxLength={11}
                 pattern="8[0-9]{10}"
                 title="8XXXXXXXXXX"
+                validate={(v) => !/\D/.test(v)}
+                wasInvalid={wasInvalid}
               />
               <span className="visually-hidden">Телефон</span>
             </label>
             <label className={getClasses({block, element: `label`})}>
-              <input
-                className={`${getClasses({
-                  block: `input`,
-                  modifiers:
-                    typeof fields.mail === `string` || wasInvalid
-                      ? [`modified`]
-                      : [],
-                })} ${getClasses({
+              <Input
+                classess={getClasses({
                   block,
                   element: `field`,
-                })}`}
+                })}
                 type="email"
                 name="mail"
                 required
                 onChange={onChange}
                 placeholder="E-mail"
-                value={fields.mail || ``}
+                value={fields.mail}
+                wasInvalid={wasInvalid}
               />
               <span className="visually-hidden">E-mail</span>
             </label>
