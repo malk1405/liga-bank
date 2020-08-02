@@ -82,7 +82,7 @@ Input.propTypes = {
   required: PropTypes.bool,
   wasInvalid: PropTypes.bool,
   validate: PropTypes.func,
-  type: PropTypes.text,
+  type: PropTypes.string,
 };
 
 export default Input;
