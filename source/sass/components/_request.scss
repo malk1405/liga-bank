@@ -28,7 +28,7 @@
 
 .request__list {
   margin-bottom: 0;
-  margin-top: 2.8rem;
+  margin-top: 2.7rem;
 }
 
 .request__item {
@@ -36,8 +36,8 @@
   border-bottom: 1px solid #c4c4c4;
   display: flex;
   justify-content: space-between;
-  margin-top: 0.9rem;
-  padding-bottom: 0.5rem;
+  margin-top: 0.8rem;
+  padding-bottom: 0.6rem;
 }
 
 .request__title,
@@ -80,12 +80,11 @@
   color: #707c87;
 }
 
-.request .button {
+.request__button {
   display: block;
-  font-size: 1.6rem;
   margin: 0 auto;
   margin-top: 4rem;
-  min-height: 51px;
+  min-height: 5.1rem;
   min-width: 198px;
 }
 
@@ -99,7 +98,7 @@
     margin-top: 4.2rem;
   }
 
-  .request .button {
+  .request__button {
     width: 100%;
   }
 }
@@ -147,8 +146,7 @@
     letter-spacing: 0.02em;
   }
 
-  .request .button {
-    font-size: 1.4rem;
+  .request__button {
     margin-top: 3rem;
   }
 }

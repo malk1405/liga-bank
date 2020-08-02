@@ -16,7 +16,7 @@ const tabs = [
           href="#calculator"
           classes={`${getClasses({
             block: `button`,
-            modifiers: [`main`],
+            modifiers: [`main`, `features`],
           })} ${getClasses({
             block,
             element: `link`,
@@ -49,7 +49,7 @@ const tabs = [
           href="#departments"
           classes={`${getClasses({
             block: `button`,
-            modifiers: [`main`],
+            modifiers: [`main`, `features`],
           })} ${getClasses({block, element: `link`, modifiers: [`near`]})}`}
         >
           Найти отделение

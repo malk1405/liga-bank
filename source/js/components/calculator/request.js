@@ -123,7 +123,10 @@ function Request({items, onSubmit, inputRef}) {
           </div>
           <button
             type="submit"
-            className={getClasses({block: `button`, modifiers: [`main`]})}
+            className={`${getClasses({
+              block: `button`,
+              modifiers: [`main`],
+            })} ${getClasses({block, element: `button`})}`}
           >
             Отправить
           </button>
