@@ -47,14 +47,14 @@
     font-size: 1.6rem;
     font-weight: 500;
     justify-content: center;
-    min-height: 5.1rem;
-    padding: 1rem 1.4rem;
+    line-height: 2.3rem;
+    padding: 1.4rem;
     text-align: center;
   }
 
   &--features {
     font-size: 1.8rem;
-    min-height: 5.3rem;
+    line-height: 2.5rem;
   }
 
   &--main:hover {
@@ -129,7 +129,8 @@
 @include mq(tablet) {
   .button {
     &--main {
-      min-height: 4.8rem;
+      line-height: 2.2rem;
+      padding: 1.3rem;
     }
 
     &--features {
@@ -142,9 +143,11 @@
   .button {
     &--main {
       font-size: 1.4rem;
-      min-height: 4.3rem;
+      line-height: 1.9rem;
+      padding: 1.2rem;
     }
   }
+
   .input {
     padding: 0 1.4rem;
   }
