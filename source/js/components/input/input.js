@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import getClasses from '../../utils/getClasses';
 
@@ -18,8 +18,6 @@ function Input({
   validate,
   type,
 }) {
-  const [isModified, setIsModified] = useState(false);
-
   const handleChange = (e) => {
     let {value: newValue} = e.target;
 
@@ -28,8 +26,6 @@ function Input({
     if (maxLength) {
       newValue = newValue.substr(0, maxLength);
     }
-
-    setIsModified(true);
     onChange({name, value: newValue});
   };
 
@@ -46,7 +42,7 @@ function Input({
       ref={ref}
       className={`${getClasses({
         block: `input`,
-        modifiers: isModified || wasInvalid ? [`modified`] : [],
+        modifiers: wasInvalid ? [`modified`] : [],
       })}${classes ? ` ${classes}` : ``}`}
       type={type}
       name={name}
