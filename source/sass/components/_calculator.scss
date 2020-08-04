@@ -276,7 +276,10 @@
 
   .calculator__offer-container {
     margin: 0 auto;
-    margin-top: 3.7rem;
+
+    &--visible {
+      margin-top: 3.7rem;
+    }
   }
 
   .calculator__request {
@@ -312,7 +315,7 @@
     max-width: 450px;
   }
 
-  .calculator__offer-container {
+  .calculator__offer-container--visible {
     margin-top: 3rem;
   }
 

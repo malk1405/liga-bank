@@ -2022,8 +2022,9 @@ input::-ms-clear {
     max-width: 678px;
     width: 100%; }
   .calculator__offer-container {
-    margin: 0 auto;
-    margin-top: 3.7rem; }
+    margin: 0 auto; }
+    .calculator__offer-container--visible {
+      margin-top: 3.7rem; }
   .calculator__request {
     margin-top: 5.9rem; } }
 
@@ -2045,7 +2046,7 @@ input::-ms-clear {
   .calculator__offer-container,
   .calculator__request {
     max-width: 450px; }
-  .calculator__offer-container {
+  .calculator__offer-container--visible {
     margin-top: 3rem; }
   .calculator__request {
     margin-top: 4.6rem; }

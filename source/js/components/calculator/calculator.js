@@ -145,7 +145,13 @@ function Calculator() {
             </Step>
           )}
         </div>
-        <div className={getClasses({block, element: `offer-container`})}>
+        <div
+          className={getClasses({
+            block,
+            element: `offer-container`,
+            modifiers: typeof id === `number` ? [`visible`] : [],
+          })}
+        >
           {typeof id === `number` && params && (
             <Offer
               config={[
