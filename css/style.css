@@ -1145,7 +1145,7 @@ input::-ms-clear {
 
 @media screen and (max-width: 767px) {
   .footer {
-    padding: 4rem 0; }
+    padding: 4.1rem 0 3.9rem; }
   .footer__container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -2277,7 +2277,7 @@ input::-ms-clear {
 @media screen and (max-width: 767px) {
   .map {
     padding: 0;
-    margin-bottom: 5rem; }
+    margin-bottom: 6.1rem; }
   .map-container {
     height: 381px; }
   .map__controls {
