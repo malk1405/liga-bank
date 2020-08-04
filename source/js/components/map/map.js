@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 
+import DynamicMap from './dynamic/map';
+import StaticMap from './static/map';
+import Toggle from './static/toggle';
 import departments from './departments';
 import CheckBoxes from './dynamic/checkboxes';
-import DynamicMap from './dynamic/map';
 
 function generateConfig() {
   return Object.keys(departments).map((key, id) => ({
@@ -15,6 +17,7 @@ function generateConfig() {
 
 function Map() {
   const [config, setConfig] = useState(generateConfig);
+  const [isDynamic, setIsDynamic] = useState(false);
 
   const onChange = (e) => {
     const {id} = e.target.dataset;
@@ -25,6 +28,10 @@ function Map() {
     });
   };
 
+  const toggleDynamic = useCallback(() => {
+    setIsDynamic((value) => !value);
+  }, [setIsDynamic]);
+
   const locations = config.reduce((acc, el) => {
     if (el.checked) {
       return [...acc, ...departments[el.name].locations];
@@ -34,8 +41,16 @@ function Map() {
 
   return (
     <div className="map container">
-      <CheckBoxes config={config} onChange={onChange} />
-      <DynamicMap locations={locations} />
+      <div className="map__controls">
+        {isDynamic ? (
+          <CheckBoxes config={config} onChange={onChange} />
+        ) : (
+          <Toggle onClick={toggleDynamic} />
+        )}
+      </div>
+      <div className="map-container">
+        {isDynamic ? <DynamicMap locations={locations} /> : <StaticMap />}
+      </div>
     </div>
   );
 }
