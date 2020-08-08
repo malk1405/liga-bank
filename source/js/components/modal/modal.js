@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import SVG from '../../../img/svg/inline/close.svg';
 import getClasses from '../../utils/getClasses';
 import noop from '../../utils/noop';
+import {ESC} from '../../utils/key-codes';
 
 const block = `modal`;
 
@@ -34,7 +35,7 @@ function Modal({children, onClose, onCreate, modifiers}) {
     };
 
     function onEscape(e) {
-      if (e.keyCode === 27) {
+      if (e.keyCode === ESC) {
         onClose();
       }
     }

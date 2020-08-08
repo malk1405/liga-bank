@@ -5,6 +5,7 @@ import noop from '../../../utils/noop';
 import formatNumber from '../../../utils/format-number';
 import {block} from '../calculator';
 import MediaContext from '../../../context/media';
+import {DEL} from '../../../utils/key-codes';
 
 function NumberInput({value, onChange, onFocus, onBlur, inputRef}) {
   const [position, setPosition] = useState(null);
@@ -14,7 +15,7 @@ function NumberInput({value, onChange, onFocus, onBlur, inputRef}) {
   const media = useContext(MediaContext);
 
   const handleKeyDown = (e) => {
-    isDelRef.current = e.keyCode === 46;
+    isDelRef.current = e.keyCode === DEL;
   };
 
   const handleChange = (e) => {

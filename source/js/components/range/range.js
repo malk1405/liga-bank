@@ -1,7 +1,7 @@
 import React, {useRef, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import getClasses from '../../utils/getClasses';
-import {leftArrow, rightArrow} from '../../utils/key-codes';
+import {LEFT_ARROW, RIGHT_ARROW} from '../../utils/key-codes';
 import clamp from '../../utils/clamp';
 
 const block = `range`;
@@ -74,7 +74,7 @@ function Range({min, max, step, value, onChange, modifiers}) {
     let newValue = value;
     const remainder = newValue % step;
 
-    if (keyCode === leftArrow) {
+    if (keyCode === LEFT_ARROW) {
       if (remainder) {
         newValue -= remainder;
       } else {
@@ -82,7 +82,7 @@ function Range({min, max, step, value, onChange, modifiers}) {
       }
     }
 
-    if (keyCode === rightArrow) {
+    if (keyCode === RIGHT_ARROW) {
       newValue += step - remainder;
     }
 

@@ -6,18 +6,7 @@ import noop from '../../../utils/noop';
 import getClasses from '../../../utils/getClasses';
 import {block} from '../calculator';
 import Increment from './increment';
-
-function clamp(num, min, max) {
-  if (num <= min) {
-    return min;
-  }
-
-  if (num >= max) {
-    return max;
-  }
-
-  return num;
-}
+import clamp from '../../../utils/clamp';
 
 function NumberField({
   value,

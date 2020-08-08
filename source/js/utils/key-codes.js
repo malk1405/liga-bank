@@ -1,4 +1,4 @@
-export const esc = 27;
-export const leftArrow = 37;
-export const rightArrow = 39;
-export const del = 46;
+export const ESC = 27;
+export const LEFT_ARROW = 37;
+export const RIGHT_ARROW = 39;
+export const DEL = 46;
