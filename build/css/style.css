@@ -676,6 +676,9 @@ input::-ms-clear {
             transform: translate(-50%, -50%);
     top: 50%;
     width: 14px; }
+  .range__thumb:focus::after {
+    -webkit-box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5);
+            box-shadow: 0 0 0 1px white, 0 0 1px 4px rgba(255, 0, 0, 0.5); }
 
 .section {
   margin-top: 9.5rem; }

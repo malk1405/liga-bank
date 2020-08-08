@@ -1,6 +1,8 @@
 import React, {useRef, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import getClasses from '../../utils/getClasses';
+import {leftArrow, rightArrow} from '../../utils/key-codes';
+import clamp from '../../utils/clamp';
 
 const block = `range`;
 
@@ -68,10 +70,31 @@ function Range({min, max, step, value, onChange, modifiers}) {
     };
   };
 
+  const onKeyDown = ({keyCode}) => {
+    let newValue = value;
+    const remainder = newValue % step;
+
+    if (keyCode === leftArrow) {
+      if (remainder) {
+        newValue -= remainder;
+      } else {
+        newValue -= step;
+      }
+    }
+
+    if (keyCode === rightArrow) {
+      newValue += step - remainder;
+    }
+
+    onChange(clamp(newValue, min, max));
+  };
+
   return (
     <div className={getClasses({block, modifiers})} ref={trackRef}>
       <div
+        tabIndex={0}
         className="range__thumb"
+        onKeyDown={onKeyDown}
         onTouchStart={onDrag(`touch`)}
         onMouseDown={onDrag(`mouse`)}
         ref={thumbRef}

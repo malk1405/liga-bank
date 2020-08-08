@@ -32,4 +32,8 @@
     top: 50%;
     width: 14px;
   }
+
+  &:focus::after {
+    box-shadow: $focus-shadow;
+  }
 }
